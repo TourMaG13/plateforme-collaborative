@@ -287,8 +287,8 @@ a:hover { color: var(--teal-light); }
 .article-body p { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.5; }
 
 /* ===== CTA FLOTTANT ===== */
-.floating-cta { position: fixed; bottom: 24px; right: 24px; z-index: 100; animation: float-in 0.5s var(--ease) 1s both; }
-@keyframes float-in { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.floating-cta { position: absolute; bottom: 24px; right: 24px; z-index: 100; opacity: 0; transition: opacity 0.4s var(--ease); }
+.floating-cta.visible { opacity: 1; }
 .floating-cta .btn { padding: 14px 28px; font-size: 0.95rem; box-shadow: var(--shadow-xl); border-radius: var(--radius-xl); }
 .floating-cta .btn:hover { transform: translateY(-2px) scale(1.02); }
 
@@ -863,6 +863,28 @@ document.getElementById('videoModal').addEventListener('click', function(e) {
     _closeVideo();
     signalModalClose();
   };
+
+  // ===== FLOATING CTA — positionnement simulé "fixed" dans l'iframe =====
+  var floatingCta = document.querySelector('.floating-cta');
+
+  // Écoute la position de scroll envoyée par le parent
+  window.addEventListener('message', function(e) {
+    if (e.data && e.data.type === 'plateforme-parent-scroll' && floatingCta) {
+      // parentScrollY = scroll du parent, iframeTop = position de l'iframe dans la page parente, viewportH = hauteur du viewport parent
+      var bottomInIframe = e.data.parentScrollY - e.data.iframeTop + e.data.viewportHeight;
+      floatingCta.style.top = (bottomInIframe - 80) + 'px'; // 80px du bas du viewport
+      floatingCta.style.right = '24px';
+      if (!floatingCta.classList.contains('visible')) floatingCta.classList.add('visible');
+    }
+  });
+
+  // Fallback si pas dans une iframe (ouverture directe) : comportement fixed classique
+  if (window === window.parent) {
+    floatingCta.style.position = 'fixed';
+    floatingCta.style.bottom = '24px';
+    floatingCta.style.top = 'auto';
+    setTimeout(function() { floatingCta.classList.add('visible'); }, 1000);
+  }
 })();
 </script>
 
