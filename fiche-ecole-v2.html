@@ -212,7 +212,7 @@ a:hover { color: var(--teal-light); }
 
 /* ===== VIDÉOS ===== */
 .videos-carousel { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-.video-card { border-radius: var(--radius-lg); overflow: hidden; background: var(--white); box-shadow: var(--shadow-md); transition: all 0.3s var(--ease); cursor: pointer; }
+.video-card { border-radius: var(--radius-lg); overflow: hidden; background: var(--white); box-shadow: var(--shadow-md); transition: all 0.3s var(--ease); }
 .video-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-xl); }
 .video-thumb { position: relative; aspect-ratio: 16/9; background: var(--navy); overflow: hidden; }
 .video-thumb img { width: 100%; height: 100%; object-fit: cover; }
@@ -228,7 +228,7 @@ a:hover { color: var(--teal-light); }
 
 /* ===== GALERIE ===== */
 .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: 200px 200px; gap: 12px; }
-.gallery-item { border-radius: var(--radius-md); overflow: hidden; position: relative; cursor: pointer; }
+.gallery-item { border-radius: var(--radius-md); overflow: hidden; position: relative; }
 .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s var(--ease); }
 .gallery-item:hover img { transform: scale(1.05); }
 .gallery-item:first-child { grid-column: span 2; grid-row: span 2; }
@@ -286,11 +286,41 @@ a:hover { color: var(--teal-light); }
 .article-body h4 { font-size: 0.92rem; font-weight: 700; color: var(--navy); line-height: 1.4; margin-bottom: 8px; }
 .article-body p { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.5; }
 
-/* ===== CTA FLOTTANT ===== */
-.floating-cta { position: absolute; bottom: 24px; right: 24px; z-index: 100; opacity: 0; transition: opacity 0.4s var(--ease); }
-.floating-cta.visible { opacity: 1; }
-.floating-cta .btn { padding: 14px 28px; font-size: 0.95rem; box-shadow: var(--shadow-xl); border-radius: var(--radius-xl); }
-.floating-cta .btn:hover { transform: translateY(-2px) scale(1.02); }
+/* ===== CTA ONGLET LATÉRAL ===== */
+.side-cta {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  z-index: 100;
+  opacity: 0;
+  transition: opacity 0.4s var(--ease);
+}
+.side-cta.visible { opacity: 1; }
+.side-cta-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 16px;
+  background: var(--coral);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius-md) 0 0 var(--radius-md);
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: -4px 2px 16px rgba(27,42,74,0.15);
+  writing-mode: vertical-lr;
+  text-orientation: mixed;
+  letter-spacing: 0.5px;
+  transition: all 0.25s var(--ease);
+}
+.side-cta-btn:hover {
+  background: var(--coral-hover);
+  padding-right: 22px;
+  box-shadow: -6px 2px 24px rgba(27,42,74,0.2);
+}
+.side-cta-btn svg { width: 18px; height: 18px; transform: rotate(90deg); flex-shrink: 0; }
 
 /* ===== MODALES ===== */
 .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(27,42,74,0.5); backdrop-filter: blur(4px); z-index: 200; align-items: center; justify-content: center; padding: 32px; }
@@ -366,12 +396,12 @@ a:hover { color: var(--teal-light); }
   .events-list { grid-template-columns: 1fr; }
   .students-grid { grid-template-columns: 1fr; }
   .article-card { flex: 0 0 260px; }
-  .floating-cta { bottom: 16px; right: 16px; left: 16px; }
-  .floating-cta .btn { width: 100%; justify-content: center; }
 }
 </style>
 </head>
 <body>
+
+<div id="content-wrapper">
 
 <!-- HERO -->
 <section class="hero">
@@ -501,7 +531,7 @@ a:hover { color: var(--teal-light); }
       <h2 class="section-title">Découvrir l'ESCAET</h2>
     </div>
     <div class="videos-carousel">
-      <div class="video-card" onclick="openVideo('dQw4w9WgXcQ')">
+      <div class="video-card">
         <div class="video-thumb">
           <img src="https://images.unsplash.com/photo-1560439514-4e9645039924?w=600&q=80" alt="">
           <div class="video-play"><div class="video-play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
@@ -509,7 +539,7 @@ a:hover { color: var(--teal-light); }
         </div>
         <div class="video-info"><h4>Interview du Directeur</h4><p>La vision de l'ESCAET pour les 5 prochaines années</p></div>
       </div>
-      <div class="video-card" onclick="openVideo('dQw4w9WgXcQ')">
+      <div class="video-card">
         <div class="video-thumb">
           <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&q=80" alt="">
           <div class="video-play"><div class="video-play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
@@ -517,7 +547,7 @@ a:hover { color: var(--teal-light); }
         </div>
         <div class="video-info"><h4>Responsable du programme MBA</h4><p>Les spécificités de la formation tourisme</p></div>
       </div>
-      <div class="video-card" onclick="openVideo('dQw4w9WgXcQ')">
+      <div class="video-card">
         <div class="video-thumb">
           <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600&q=80" alt="">
           <div class="video-play"><div class="video-play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
@@ -537,12 +567,12 @@ a:hover { color: var(--teal-light); }
       <h2 class="section-title">La vie à l'ESCAET</h2>
     </div>
     <div class="gallery-grid" id="gallery">
-      <div class="gallery-item" onclick="openLightbox(0)"><img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=800&q=80" alt="Campus"><div class="gallery-overlay"><span>Le campus</span></div></div>
-      <div class="gallery-item" onclick="openLightbox(1)"><img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=400&q=80" alt="Cours"><div class="gallery-overlay"><span>En cours</span></div></div>
-      <div class="gallery-item" onclick="openLightbox(2)"><img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400&q=80" alt="Événement"><div class="gallery-overlay"><span>Événements</span></div></div>
-      <div class="gallery-item" onclick="openLightbox(3)"><img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=400&q=80" alt="Étudiants"><div class="gallery-overlay"><span>Vie étudiante</span></div></div>
-      <div class="gallery-item" onclick="openLightbox(4)"><img src="https://images.unsplash.com/photo-1559223607-a43c990c692c?w=400&q=80" alt="Voyage"><div class="gallery-overlay"><span>Voyage d'études</span></div></div>
-      <div class="gallery-item" onclick="openLightbox(5)"><img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?w=400&q=80" alt=""><div class="gallery-more">+12 photos</div></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=800&q=80" alt="Campus"><div class="gallery-overlay"><span>Le campus</span></div></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=400&q=80" alt="Cours"><div class="gallery-overlay"><span>En cours</span></div></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400&q=80" alt="Événement"><div class="gallery-overlay"><span>Événements</span></div></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=400&q=80" alt="Étudiants"><div class="gallery-overlay"><span>Vie étudiante</span></div></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1559223607-a43c990c692c?w=400&q=80" alt="Voyage"><div class="gallery-overlay"><span>Voyage d'études</span></div></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?w=400&q=80" alt=""><div class="gallery-more">+12 photos</div></div>
     </div>
   </div>
 </section>
@@ -594,8 +624,10 @@ a:hover { color: var(--teal-light); }
   </div>
 </section>
 
-<!-- CTA FLOTTANT -->
-<div class="floating-cta"><button class="btn btn-coral" onclick="openModal('contactModal')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Contacter l'ESCAET</button></div>
+</div><!-- /content-wrapper -->
+
+<!-- CTA ONGLET LATÉRAL -->
+<div class="side-cta"><button class="side-cta-btn" onclick="openModal('contactModal')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Contacter l'ESCAET</button></div>
 
 <!-- MODAL CONTACT -->
 <div class="modal-overlay" id="contactModal">
@@ -794,9 +826,10 @@ document.getElementById('videoModal').addEventListener('click', function(e) {
   var MODAL_OPEN_TYPE = 'plateforme-modal-open';
   var MODAL_CLOSE_TYPE = 'plateforme-modal-close';
 
-  // Envoie la hauteur du contenu au parent
+  // Envoie la hauteur du contenu au parent (mesure le wrapper, pas le scrollHeight global)
+  var contentWrapper = document.getElementById('content-wrapper');
   function sendHeight() {
-    var height = document.documentElement.scrollHeight;
+    var height = contentWrapper ? contentWrapper.offsetHeight : document.documentElement.scrollHeight;
     window.parent.postMessage({ type: RESIZE_TYPE, height: height }, '*');
   }
 
@@ -864,26 +897,25 @@ document.getElementById('videoModal').addEventListener('click', function(e) {
     signalModalClose();
   };
 
-  // ===== FLOATING CTA — positionnement simulé "fixed" dans l'iframe =====
-  var floatingCta = document.querySelector('.floating-cta');
+  // ===== ONGLET LATÉRAL — positionnement simulé "fixed" dans l'iframe =====
+  var sideCta = document.querySelector('.side-cta');
 
   // Écoute la position de scroll envoyée par le parent
   window.addEventListener('message', function(e) {
-    if (e.data && e.data.type === 'plateforme-parent-scroll' && floatingCta) {
-      // parentScrollY = scroll du parent, iframeTop = position de l'iframe dans la page parente, viewportH = hauteur du viewport parent
-      var bottomInIframe = e.data.parentScrollY - e.data.iframeTop + e.data.viewportHeight;
-      floatingCta.style.top = (bottomInIframe - 80) + 'px'; // 80px du bas du viewport
-      floatingCta.style.right = '24px';
-      if (!floatingCta.classList.contains('visible')) floatingCta.classList.add('visible');
+    if (e.data && e.data.type === 'plateforme-parent-scroll' && sideCta) {
+      var midViewport = e.data.parentScrollY - e.data.iframeTop + (e.data.viewportHeight / 2);
+      sideCta.style.top = midViewport + 'px';
+      sideCta.style.transform = 'translateY(-50%)';
+      if (!sideCta.classList.contains('visible')) sideCta.classList.add('visible');
     }
   });
 
   // Fallback si pas dans une iframe (ouverture directe) : comportement fixed classique
   if (window === window.parent) {
-    floatingCta.style.position = 'fixed';
-    floatingCta.style.bottom = '24px';
-    floatingCta.style.top = 'auto';
-    setTimeout(function() { floatingCta.classList.add('visible'); }, 1000);
+    sideCta.style.position = 'fixed';
+    sideCta.style.top = '50%';
+    sideCta.style.transform = 'translateY(-50%)';
+    setTimeout(function() { sideCta.classList.add('visible'); }, 1000);
   }
 })();
 </script>
