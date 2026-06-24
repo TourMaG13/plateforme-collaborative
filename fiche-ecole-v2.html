@@ -701,12 +701,20 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')document.que
 (function(){
   var R='plateforme-resize',MO='plateforme-modal-open',MC='plateforme-modal-close';
   var w=document.getElementById('content-wrapper');
-  function sendH(){var h=w?w.offsetHeight:document.documentElement.scrollHeight;window.parent.postMessage({type:R,height:h},'*')}
+  var lastSentHeight=0;
+  var heightTimer=null;
+  function sendH(){
+    var h=w?w.offsetHeight:document.documentElement.scrollHeight;
+    if(Math.abs(h-lastSentHeight)<2)return;
+    lastSentHeight=h;
+    window.parent.postMessage({type:R,height:h},'*');
+  }
+  function debouncedSendH(){if(heightTimer)clearTimeout(heightTimer);heightTimer=setTimeout(sendH,150)}
   function sigO(){window.parent.postMessage({type:MO},'*')}
   function sigC(){window.parent.postMessage({type:MC},'*')}
-  sendH();setInterval(sendH,2000);
+  sendH();setInterval(sendH,3000);
   window.addEventListener('load',function(){setTimeout(sendH,500)});
-  if(window.MutationObserver){new MutationObserver(function(){setTimeout(sendH,100)}).observe(document.body,{childList:true,subtree:true,attributes:true})}
+  if(window.MutationObserver){new MutationObserver(function(){debouncedSendH()}).observe(w||document.body,{childList:true,subtree:true})}
   var _o=window.openModal;window.openModal=function(id){_o(id);var m=document.getElementById(id);if(m)posM(m);sigO()};
   var _c=window.closeModal;window.closeModal=function(id){_c(id);sigC();setTimeout(sendH,300)};
   var sc=document.querySelector('.side-cta');
