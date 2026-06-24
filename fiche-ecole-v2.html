@@ -7,497 +7,303 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 <style>
-:root {
-  --navy:       #1B2A4A;
-  --navy-light: #243656;
-  --teal:       #0891B2;
-  --teal-light: #06B6D4;
-  --teal-bg:    #ECFEFF;
-  --coral:      #E8634A;
-  --coral-hover:#D4523A;
-  --warm-bg:    #FDF8F4;
-  --light-bg:   #F7F8FA;
-  --white:      #FFFFFF;
-  --text:       #1E293B;
-  --text-secondary: #64748B;
-  --text-light: #94A3B8;
-  --border:     #E2E8F0;
-  --shadow-sm:  0 1px 3px rgba(27,42,74,0.06);
-  --shadow-md:  0 4px 12px rgba(27,42,74,0.08);
-  --shadow-lg:  0 12px 32px rgba(27,42,74,0.10);
-  --shadow-xl:  0 20px 48px rgba(27,42,74,0.12);
-  --font-display: 'Plus Jakarta Sans', system-ui, sans-serif;
-  --font-body:    'Plus Jakarta Sans', system-ui, sans-serif;
-  --font-serif:   'Source Serif 4', Georgia, serif;
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 16px;
-  --radius-xl: 24px;
-  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+:root{--navy:#1B2A4A;--navy-light:#243656;--teal:#0891B2;--teal-light:#06B6D4;--teal-bg:#ECFEFF;--coral:#E8634A;--coral-hover:#D4523A;--warm-bg:#FDF8F4;--light-bg:#F7F8FA;--white:#FFFFFF;--text:#1E293B;--text-secondary:#64748B;--text-light:#94A3B8;--border:#E2E8F0;--shadow-sm:0 1px 3px rgba(27,42,74,0.06);--shadow-md:0 4px 12px rgba(27,42,74,0.08);--shadow-lg:0 12px 32px rgba(27,42,74,0.10);--shadow-xl:0 20px 48px rgba(27,42,74,0.12);--font-display:'Plus Jakarta Sans',system-ui,sans-serif;--font-body:'Plus Jakarta Sans',system-ui,sans-serif;--font-serif:'Source Serif 4',Georgia,serif;--radius-sm:6px;--radius-md:10px;--radius-lg:16px;--radius-xl:24px;--ease:cubic-bezier(0.4,0,0.2,1)}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;overflow:hidden;scrollbar-width:none}
+html::-webkit-scrollbar{display:none}
+body{font-family:var(--font-body);color:var(--text);background:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased;overflow:hidden}
+img{max-width:100%;display:block}
+a{color:var(--teal);text-decoration:none}a:hover{color:var(--teal-light)}
+#content-wrapper{overflow-x:hidden;max-width:100vw;scrollbar-width:none}
+#content-wrapper::-webkit-scrollbar{display:none}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity 0.7s var(--ease),transform 0.7s var(--ease)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* HERO */
+.hero{position:relative;min-height:420px;overflow:hidden;display:flex;align-items:flex-end}
+.hero-cover{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1400&q=80') center/cover}
+.hero-gradient{position:absolute;inset:0;background:linear-gradient(to top,rgba(27,42,74,0.92) 0%,rgba(27,42,74,0.55) 50%,rgba(27,42,74,0.35) 100%)}
+.hero-content{position:relative;z-index:2;width:100%;max-width:1200px;margin:0 auto;padding:60px 32px 48px;display:flex;align-items:flex-end;gap:32px}
+.hero-logo{width:110px;height:110px;border-radius:var(--radius-lg);background:var(--white);box-shadow:var(--shadow-lg);display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden;padding:10px}
+.hero-logo img{width:100%;height:100%;object-fit:contain}
+.hero-info{flex:1;color:#fff}
+.hero-info h1{font-family:var(--font-display);font-size:2.5rem;font-weight:800;line-height:1.15;letter-spacing:-0.5px;margin-bottom:8px}
+.hero-baseline{font-family:var(--font-serif);font-size:1.15rem;font-style:italic;opacity:0.9;margin-bottom:16px}
+.hero-meta{display:flex;flex-wrap:wrap;gap:16px;font-size:0.9rem;opacity:0.85}
+.hero-meta span{display:flex;align-items:center;gap:6px}
+.hero-meta svg{width:16px;height:16px;flex-shrink:0}
+.hero-actions{display:flex;gap:12px;flex-shrink:0;align-self:flex-end}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:var(--radius-md);font-family:var(--font-display);font-size:0.9rem;font-weight:600;border:none;cursor:pointer;transition:all 0.25s var(--ease);white-space:nowrap}
+.btn svg{width:18px;height:18px}
+.btn-coral{background:var(--coral);color:#fff}.btn-coral:hover{background:var(--coral-hover);transform:translateY(-1px);box-shadow:var(--shadow-md);color:#fff}
+.btn-outline{background:rgba(255,255,255,0.12);color:#fff;border:1.5px solid rgba(255,255,255,0.3);backdrop-filter:blur(8px)}.btn-outline:hover{background:rgba(255,255,255,0.2);border-color:rgba(255,255,255,0.5);color:#fff}
+.btn-teal{background:var(--teal);color:#fff}.btn-teal:hover{background:var(--teal-light);transform:translateY(-1px);color:#fff}
+.btn-ghost{background:transparent;color:var(--teal);border:1.5px solid var(--teal)}.btn-ghost:hover{background:var(--teal-bg);color:var(--teal)}
+
+/* CHIFFRES */
+.key-figures{background:var(--white);border-bottom:1px solid var(--border);position:relative;z-index:3}
+.key-figures-inner{max-width:1200px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:repeat(5,1fr)}
+.key-figure{text-align:center;padding:32px 16px;position:relative}
+.key-figure:not(:last-child)::after{content:'';position:absolute;right:0;top:50%;transform:translateY(-50%);width:1px;height:48px;background:var(--border)}
+.key-figure-value{font-family:var(--font-display);font-size:2.2rem;font-weight:800;color:var(--teal);line-height:1.1;letter-spacing:-1px}
+.key-figure-label{font-size:0.82rem;color:var(--text-secondary);margin-top:6px;font-weight:500}
+
+/* SECTIONS */
+.section{padding:64px 32px}.section-inner{max-width:1200px;margin:0 auto}
+.section-header{margin-bottom:40px}
+.section-eyebrow{font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--teal);margin-bottom:8px}
+.section-title{font-family:var(--font-display);font-size:1.75rem;font-weight:800;color:var(--navy);letter-spacing:-0.3px}
+.section-alt{background:var(--light-bg)}.section-warm{background:var(--warm-bg)}
+
+/* PRÉSENTATION */
+.presentation-grid{display:grid;grid-template-columns:2fr 1fr;gap:48px;align-items:start}
+.presentation-text{font-family:var(--font-serif);font-size:1.08rem;line-height:1.75;color:var(--text)}
+.presentation-text p+p{margin-top:16px}
+.presentation-links{display:flex;gap:12px;margin-top:24px}
+.presentation-links .btn{font-size:0.85rem;padding:10px 20px}
+.sidebar-cards{display:flex;flex-direction:column;gap:20px}
+.info-card{background:var(--white);border-radius:var(--radius-lg);padding:28px;box-shadow:var(--shadow-md);border:1px solid var(--border)}
+.info-card h3{font-size:0.95rem;font-weight:700;color:var(--navy);margin-bottom:16px}
+.info-row{padding:8px 0;border-bottom:1px solid var(--light-bg);font-size:0.85rem}
+.info-row:last-child{border-bottom:none}
+.info-row strong{color:var(--navy)}
+.info-row span{color:var(--text-secondary)}
+.values-list{display:flex;flex-wrap:wrap;gap:10px;list-style:none}
+.value-tag{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:100px;font-size:0.85rem;font-weight:600;background:var(--teal-bg);color:var(--teal);transition:all 0.2s var(--ease)}
+.value-tag:hover{background:var(--teal);color:#fff}
+.value-tag svg{width:14px;height:14px}
+
+/* FORMATIONS */
+.formations-tabs{display:flex;gap:4px;margin-bottom:32px;background:var(--light-bg);border-radius:var(--radius-md);padding:4px;width:fit-content}
+.formations-tab{padding:10px 20px;border-radius:var(--radius-sm);font-size:0.88rem;font-weight:600;color:var(--text-secondary);background:transparent;border:none;cursor:pointer;transition:all 0.2s var(--ease)}
+.formations-tab.active{background:var(--white);color:var(--navy);box-shadow:var(--shadow-sm)}
+.formations-tab:hover:not(.active){color:var(--text)}
+.formations-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:20px}
+.formation-card{background:var(--white);border-radius:var(--radius-lg);border:1px solid var(--border);padding:28px;transition:all 0.4s var(--ease);position:relative;overflow:hidden}
+.formation-card.hidden{opacity:0;transform:scale(0.95);max-height:0;padding:0 28px;margin:0;border:none;overflow:hidden}
+.formation-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--teal),var(--teal-light));opacity:0;transition:opacity 0.3s var(--ease)}
+.formation-card:hover{box-shadow:var(--shadow-lg);border-color:transparent;transform:translateY(-2px)}
+.formation-card:hover::before{opacity:1}
+.formation-badges{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap}
+.formation-badge{display:inline-block;padding:4px 12px;border-radius:100px;font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px}
+.badge-alternance{background:#DBEAFE;color:#1E40AF}
+.badge-continue{background:#FEF3C7;color:#92400E}
+.badge-pro{background:#D1FAE5;color:#065F46}
+.badge-initial{background:#EDE9FE;color:#5B21B6}
+.formation-card h4{font-size:1.05rem;font-weight:700;color:var(--navy);margin-bottom:10px;line-height:1.35}
+.formation-card>p{font-size:0.88rem;color:var(--text-secondary);line-height:1.55;margin-bottom:8px}
+.formation-objective{font-size:0.85rem;color:var(--navy);font-weight:600;font-style:italic;margin-bottom:16px;padding-left:12px;border-left:3px solid var(--teal)}
+.formation-meta{display:flex;flex-wrap:wrap;gap:16px;font-size:0.8rem;color:var(--text-secondary);padding-top:16px;border-top:1px solid var(--border)}
+.formation-meta span{display:flex;align-items:center;gap:5px}
+.formation-meta svg{width:14px;height:14px;color:var(--teal)}
+.formation-cta{display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:0.85rem;font-weight:600;color:var(--teal);cursor:pointer;border:none;background:none;padding:0;font-family:var(--font-display);transition:gap 0.2s var(--ease)}
+.formation-cta:hover{gap:10px}
+.formation-cta svg{width:16px;height:16px}
+.formation-details{max-height:0;overflow:hidden;transition:max-height 0.4s var(--ease),opacity 0.3s var(--ease);opacity:0}
+.formation-details.open{max-height:400px;opacity:1}
+.formation-details-inner{padding-top:20px;margin-top:16px;border-top:1px dashed var(--border);font-size:0.85rem;color:var(--text-secondary);line-height:1.6}
+.formation-details-inner h5{font-size:0.82rem;font-weight:700;color:var(--navy);margin-bottom:6px;margin-top:14px}
+.formation-details-inner h5:first-child{margin-top:0}
+
+/* PÉDAGOGIE */
+.pedagogy-intro{font-family:var(--font-serif);font-size:1.05rem;line-height:1.7;color:var(--text);max-width:860px;margin-bottom:32px}
+.pedagogy-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.pedagogy-card{background:var(--white);border-radius:var(--radius-lg);border:1px solid var(--border);padding:28px;transition:all 0.3s var(--ease)}
+.pedagogy-card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.pedagogy-num{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:var(--radius-sm);background:var(--teal-bg);color:var(--teal);font-weight:800;font-size:0.95rem;margin-bottom:16px}
+.pedagogy-card h4{font-size:0.95rem;font-weight:700;color:var(--navy);margin-bottom:8px}
+.pedagogy-card p{font-size:0.85rem;color:var(--text-secondary);line-height:1.55}
+
+/* INSERTION */
+.insertion-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.insertion-card{background:var(--white);border-radius:var(--radius-lg);border:1px solid var(--border);padding:24px}
+.insertion-card-title{font-size:0.88rem;font-weight:700;color:var(--navy);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.insertion-card-title .ic-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.ic-dot-blue{background:#3B82F6}.ic-dot-teal{background:var(--teal)}.ic-dot-violet{background:#8B5CF6}.ic-dot-coral{background:var(--coral)}
+.insertion-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--light-bg)}
+.insertion-row:last-child{border-bottom:none}
+.insertion-label{font-size:0.8rem;color:var(--text-secondary)}
+.insertion-value{font-family:var(--font-display);font-size:1.05rem;font-weight:800;color:var(--teal)}
+.insertion-source{font-size:0.75rem;color:var(--text-light);font-style:italic;text-align:center;margin-top:20px}
+
+/* MÉTIERS */
+.careers-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.career-domain{background:var(--white);border-radius:var(--radius-lg);border:1px solid var(--border);padding:24px;transition:all 0.3s var(--ease)}
+.career-domain:hover{border-color:var(--teal);box-shadow:var(--shadow-sm)}
+.career-domain h4{font-size:0.9rem;font-weight:700;color:var(--navy);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.career-domain h4 span{font-size:1.1rem}
+.career-domain p{font-size:0.82rem;color:var(--text-secondary);line-height:1.5}
+
+/* RÉSEAU */
+.network-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.network-card{background:var(--white);border-radius:var(--radius-lg);border:1px solid var(--border);padding:28px;transition:all 0.3s var(--ease)}
+.network-card:hover{box-shadow:var(--shadow-md)}
+.network-card h4{font-size:0.95rem;font-weight:700;color:var(--navy);margin-bottom:8px}
+.network-card p{font-size:0.85rem;color:var(--text-secondary);line-height:1.55}
+
+/* ÉTUDIANTS */
+.students-section{background:linear-gradient(135deg,var(--navy) 0%,#2D4A7A 100%);color:#fff}
+.students-section .section-eyebrow{color:var(--teal-light)}
+.students-section .section-title{color:#fff}
+.students-section .section-subtitle{font-family:var(--font-serif);font-style:italic;color:rgba(255,255,255,0.7);font-size:1rem;margin-top:8px}
+.students-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.student-card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:var(--radius-lg);padding:28px;backdrop-filter:blur(12px);transition:all 0.3s var(--ease)}
+.student-card:hover{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.2);transform:translateY(-2px)}
+.student-header{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.student-avatar{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--teal-light));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1rem;color:#fff;flex-shrink:0}
+.student-name{font-weight:700;font-size:0.95rem}
+.student-program{font-size:0.8rem;color:rgba(255,255,255,0.6)}
+.student-card blockquote{font-family:var(--font-serif);font-style:italic;font-size:0.92rem;line-height:1.6;color:rgba(255,255,255,0.85);margin-bottom:16px}
+.student-tags{display:flex;flex-wrap:wrap;gap:8px}
+.student-tag{padding:4px 12px;border-radius:100px;font-size:0.72rem;font-weight:600;background:rgba(8,145,178,0.2);color:var(--teal-light);border:1px solid rgba(8,145,178,0.3)}
+.student-profile-link{margin-top:14px;display:inline-flex;align-items:center;gap:6px;font-size:0.82rem;font-weight:600;color:var(--teal-light);cursor:pointer;transition:color 0.2s;text-decoration:none}
+.student-profile-link:hover{color:#fff}
+.student-profile-link svg{width:16px;height:16px}
+
+/* VIDÉOS */
+.videos-carousel{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.video-card{border-radius:var(--radius-lg);overflow:hidden;background:var(--white);box-shadow:var(--shadow-md);transition:all 0.3s var(--ease)}
+.video-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-xl)}
+.video-thumb{position:relative;aspect-ratio:16/9;background:var(--navy);overflow:hidden}
+.video-thumb img{width:100%;height:100%;object-fit:cover}
+.video-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(27,42,74,0.3);transition:background 0.3s var(--ease)}
+.video-card:hover .video-play{background:rgba(27,42,74,0.15)}
+.video-play-btn{width:56px;height:56px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-lg);transition:transform 0.2s var(--ease)}
+.video-card:hover .video-play-btn{transform:scale(1.08)}
+.video-play-btn svg{width:22px;height:22px;color:var(--coral);margin-left:2px}
+.video-label{position:absolute;top:12px;left:12px;padding:4px 12px;border-radius:100px;font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;background:rgba(27,42,74,0.8);color:#fff;backdrop-filter:blur(8px)}
+.video-info{padding:18px 20px}
+.video-info h4{font-size:0.92rem;font-weight:700;color:var(--navy);margin-bottom:4px}
+.video-info p{font-size:0.82rem;color:var(--text-secondary)}
+
+/* GALERIE */
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:200px 200px;gap:12px}
+.gallery-item{border-radius:var(--radius-md);overflow:hidden;position:relative}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s var(--ease)}
+.gallery-item:hover img{transform:scale(1.05)}
+.gallery-item:first-child{grid-column:span 2;grid-row:span 2}
+.gallery-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(27,42,74,0.6) 0%,transparent 50%);opacity:0;transition:opacity 0.3s var(--ease);display:flex;align-items:flex-end;padding:16px}
+.gallery-item:hover .gallery-overlay{opacity:1}
+.gallery-overlay span{color:#fff;font-size:0.85rem;font-weight:600}
+.gallery-more{position:absolute;inset:0;background:rgba(27,42,74,0.7);display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.1rem;font-weight:700;backdrop-filter:blur(2px)}
+
+/* ÉVÉNEMENTS */
+.events-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
+.event-card{background:var(--white);border-radius:var(--radius-lg);border:1px solid var(--border);padding:24px;display:flex;gap:20px;transition:all 0.3s var(--ease)}
+.event-card:hover{box-shadow:var(--shadow-md);border-color:var(--teal)}
+.event-date-block{flex-shrink:0;width:56px;text-align:center}
+.event-date-day{font-size:1.8rem;font-weight:800;color:var(--navy);line-height:1}
+.event-date-month{font-size:0.75rem;font-weight:700;text-transform:uppercase;color:var(--coral);letter-spacing:0.5px;margin-top:2px}
+.event-info h4{font-size:0.95rem;font-weight:700;color:var(--navy);margin-bottom:6px}
+.event-info p{font-size:0.82rem;color:var(--text-secondary);margin-bottom:10px}
+.event-type{display:inline-block;padding:3px 10px;border-radius:100px;font-size:0.72rem;font-weight:600;background:var(--coral);color:#fff}
+.event-type.event-type-recruit{background:var(--teal)}
+.event-register-btn{display:flex;width:fit-content;align-items:center;gap:5px;margin-top:12px;padding:5px 14px;border-radius:var(--radius-sm);font-size:0.78rem;font-weight:600;background:var(--white);color:var(--teal);cursor:pointer;border:1.5px solid var(--teal);font-family:var(--font-display);transition:all 0.2s var(--ease)}
+.event-register-btn:hover{background:var(--teal);color:#fff}
+.event-register-btn svg{width:11px;height:11px}
+
+/* ACCESSIBILITÉ */
+.access-content{background:var(--white);border-radius:var(--radius-lg);border:1px solid var(--border);padding:32px}
+.access-list{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+.access-item{display:flex;align-items:flex-start;gap:10px;font-size:0.88rem;color:var(--text)}
+.access-item svg{width:18px;height:18px;color:var(--teal);flex-shrink:0;margin-top:2px}
+.access-contact{margin-top:20px;padding-top:20px;border-top:1px solid var(--border);font-size:0.85rem;color:var(--text-secondary)}
+
+/* ARTICLES */
+.articles-scroll{display:flex;gap:20px;overflow-x:auto;padding-bottom:16px;scrollbar-width:thin;scrollbar-color:var(--border) transparent}
+.articles-scroll::-webkit-scrollbar{height:6px}
+.articles-scroll::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+.article-card{flex:0 0 300px;background:var(--white);border-radius:var(--radius-lg);border:1px solid var(--border);overflow:hidden;transition:all 0.3s var(--ease);cursor:pointer;text-decoration:none;color:inherit;display:block}
+.article-card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px);color:inherit}
+.article-thumb{height:160px;overflow:hidden}
+.article-thumb img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s var(--ease)}
+.article-card:hover .article-thumb img{transform:scale(1.05)}
+.article-body{padding:18px 20px}
+.article-date{font-size:0.75rem;color:var(--text-light);font-weight:500;margin-bottom:6px}
+.article-body h4{font-size:0.92rem;font-weight:700;color:var(--navy);line-height:1.4;margin-bottom:8px}
+.article-body p{font-size:0.82rem;color:var(--text-secondary);line-height:1.5}
+
+/* COORDONNÉES */
+.coords-layout{display:grid;grid-template-columns:2fr 1fr;gap:32px}
+.coords-list{display:flex;flex-direction:column;gap:14px}
+.coord-row{display:flex;gap:14px;align-items:flex-start}
+.coord-icon{width:38px;height:38px;border-radius:var(--radius-sm);background:var(--teal-bg);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--teal)}
+.coord-icon svg{width:16px;height:16px}
+.coord-label{font-size:0.75rem;color:var(--text-light);font-weight:500}
+.coord-value{font-size:0.9rem;color:var(--navy);font-weight:600}
+.coords-site{background:var(--light-bg);border-radius:var(--radius-lg);border:1px solid var(--border);padding:28px;text-align:center}
+.coords-site h4{font-size:0.9rem;font-weight:700;color:var(--navy);margin-bottom:8px}
+.coords-site p{font-size:0.82rem;color:var(--text-secondary);margin-bottom:16px}
+
+/* SIDE CTA */
+.side-cta{position:absolute;right:0;top:50%;z-index:100;opacity:0;transition:opacity 0.4s var(--ease)}
+.side-cta.visible{opacity:1}
+.side-cta-btn{display:flex;align-items:center;gap:8px;padding:14px 16px;background:var(--coral);color:#fff;border:none;border-radius:var(--radius-md) 0 0 var(--radius-md);font-family:var(--font-display);font-size:0.85rem;font-weight:700;cursor:pointer;box-shadow:-4px 2px 16px rgba(27,42,74,0.15);writing-mode:vertical-lr;text-orientation:mixed;letter-spacing:0.5px;transition:all 0.25s var(--ease)}
+.side-cta-btn:hover{background:var(--coral-hover);padding-right:22px}
+.side-cta-btn svg{width:18px;height:18px;transform:rotate(90deg);flex-shrink:0}
+
+/* MODALES */
+.modal-overlay{display:none;position:absolute;left:0;right:0;top:0;background:rgba(27,42,74,0.5);backdrop-filter:blur(4px);z-index:200;align-items:center;justify-content:center;padding:32px}
+.modal-overlay.active{display:flex}
+.modal{background:var(--white);border-radius:var(--radius-xl);max-width:520px;width:100%;padding:40px;box-shadow:var(--shadow-xl);position:relative}
+.modal-close{position:absolute;top:16px;right:16px;width:36px;height:36px;border-radius:50%;border:none;background:var(--light-bg);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.2s}
+.modal-close:hover{background:var(--border)}
+.modal-close svg{width:18px;height:18px;color:var(--text-secondary)}
+.modal h3{font-size:1.3rem;font-weight:800;color:var(--navy);margin-bottom:6px}
+.modal>p{font-size:0.9rem;color:var(--text-secondary);margin-bottom:24px}
+.form-group{margin-bottom:18px}
+.form-group label{display:block;font-size:0.82rem;font-weight:600;color:var(--text);margin-bottom:6px}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-family:var(--font-body);font-size:0.9rem;color:var(--text);transition:border-color 0.2s;background:var(--white)}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px rgba(8,145,178,0.1)}
+.form-group textarea{min-height:100px;resize:vertical}
+.modal .btn{width:100%;justify-content:center;margin-top:8px}
+.form-success{display:none;text-align:center;padding:40px 20px}
+.form-success.show{display:block}
+.form-fields.hide{display:none}
+.form-success-icon{width:64px;height:64px;border-radius:50%;background:#D1FAE5;margin:0 auto 20px;display:flex;align-items:center;justify-content:center}
+.form-success-icon svg{width:32px;height:32px;color:#059669}
+.form-success h4{font-size:1.1rem;font-weight:700;color:var(--navy);margin-bottom:8px}
+.form-success p{font-size:0.9rem;color:var(--text-secondary)}
+.modal-small{max-width:400px;padding:32px}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .hero-content{flex-wrap:wrap}.hero-actions{width:100%}
+  .presentation-grid{grid-template-columns:1fr;gap:32px}
+  .videos-carousel{grid-template-columns:repeat(2,1fr)}
+  .students-grid{grid-template-columns:repeat(2,1fr)}
+  .pedagogy-grid{grid-template-columns:1fr}
+  .careers-grid{grid-template-columns:repeat(2,1fr)}
+  .network-grid{grid-template-columns:1fr}
+  .insertion-grid{grid-template-columns:1fr}
 }
-*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior: smooth; overflow: hidden; scrollbar-width: none; }
-html::-webkit-scrollbar { display: none; }
-body { font-family: var(--font-body); color: var(--text); background: var(--white); line-height: 1.6; -webkit-font-smoothing: antialiased; overflow: hidden; }
-img { max-width:100%; display:block; }
-a { color: var(--teal); text-decoration: none; }
-a:hover { color: var(--teal-light); }
-#content-wrapper { overflow-x: hidden; max-width: 100vw; scrollbar-width: none; }
-#content-wrapper::-webkit-scrollbar { display: none; }
-
-/* ===== SCROLL REVEAL ===== */
-.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
-.reveal.visible { opacity: 1; transform: translateY(0); }
-
-/* ===== HERO ===== */
-.hero {
-  position: relative;
-  min-height: 420px;
-  overflow: hidden;
-  display: flex;
-  align-items: flex-end;
-}
-.hero-cover {
-  position: absolute;
-  inset: 0;
-  background: url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1400&q=80') center/cover;
-}
-.hero-gradient {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(27,42,74,0.92) 0%, rgba(27,42,74,0.55) 50%, rgba(27,42,74,0.35) 100%);
-}
-.hero-content {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 60px 32px 48px;
-  display: flex;
-  align-items: flex-end;
-  gap: 32px;
-}
-.hero-logo {
-  width: 110px;
-  height: 110px;
-  border-radius: var(--radius-lg);
-  background: var(--white);
-  box-shadow: var(--shadow-lg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  overflow: hidden;
-  padding: 10px;
-}
-.hero-logo img { width: 100%; height: 100%; object-fit: contain; }
-.hero-info { flex: 1; color: var(--white); }
-.hero-info h1 {
-  font-family: var(--font-display);
-  font-size: 2.5rem;
-  font-weight: 800;
-  line-height: 1.15;
-  letter-spacing: -0.5px;
-  margin-bottom: 8px;
-}
-.hero-baseline {
-  font-family: var(--font-serif);
-  font-size: 1.15rem;
-  font-style: italic;
-  opacity: 0.9;
-  margin-bottom: 16px;
-}
-.hero-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  font-size: 0.9rem;
-  opacity: 0.85;
-}
-.hero-meta span { display: flex; align-items: center; gap: 6px; }
-.hero-meta svg { width: 16px; height: 16px; flex-shrink:0; }
-.hero-actions {
-  display: flex;
-  gap: 12px;
-  flex-shrink: 0;
-  align-self: flex-end;
-}
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 24px;
-  border-radius: var(--radius-md);
-  font-family: var(--font-display);
-  font-size: 0.9rem;
-  font-weight: 600;
-  border: none;
-  cursor: pointer;
-  transition: all 0.25s var(--ease);
-  white-space: nowrap;
-}
-.btn svg { width: 18px; height: 18px; }
-.btn-coral { background: var(--coral); color: var(--white); }
-.btn-coral:hover { background: var(--coral-hover); transform: translateY(-1px); box-shadow: var(--shadow-md); color: var(--white); }
-.btn-outline {
-  background: rgba(255,255,255,0.12);
-  color: var(--white);
-  border: 1.5px solid rgba(255,255,255,0.3);
-  backdrop-filter: blur(8px);
-}
-.btn-outline:hover { background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.5); color: var(--white); }
-.btn-teal { background: var(--teal); color: var(--white); }
-.btn-teal:hover { background: var(--teal-light); transform: translateY(-1px); color: var(--white); }
-.btn-ghost { background: transparent; color: var(--teal); border: 1.5px solid var(--teal); }
-.btn-ghost:hover { background: var(--teal-bg); color: var(--teal); }
-
-/* ===== CHIFFRES CLÉS ===== */
-.key-figures { background: var(--white); border-bottom: 1px solid var(--border); position: relative; z-index: 3; }
-.key-figures-inner { max-width: 1200px; margin: 0 auto; padding: 0 32px; display: grid; grid-template-columns: repeat(5, 1fr); }
-.key-figure { text-align: center; padding: 32px 16px; position: relative; }
-.key-figure:not(:last-child)::after { content: ''; position: absolute; right: 0; top: 50%; transform: translateY(-50%); width: 1px; height: 48px; background: var(--border); }
-.key-figure-value { font-family: var(--font-display); font-size: 2.2rem; font-weight: 800; color: var(--teal); line-height: 1.1; letter-spacing: -1px; }
-.key-figure-label { font-size: 0.82rem; color: var(--text-secondary); margin-top: 6px; font-weight: 500; }
-
-/* ===== SECTIONS ===== */
-.section { padding: 64px 32px; }
-.section-inner { max-width: 1200px; margin: 0 auto; }
-.section-header { margin-bottom: 40px; }
-.section-eyebrow { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--teal); margin-bottom: 8px; }
-.section-title { font-family: var(--font-display); font-size: 1.75rem; font-weight: 800; color: var(--navy); letter-spacing: -0.3px; }
-.section-alt { background: var(--light-bg); }
-.section-warm { background: var(--warm-bg); }
-
-/* ===== PRÉSENTATION ===== */
-.presentation-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 48px; align-items: start; }
-.presentation-text { font-family: var(--font-serif); font-size: 1.08rem; line-height: 1.75; color: var(--text); }
-.presentation-text p + p { margin-top: 16px; }
-.presentation-links { display: flex; gap: 12px; margin-top: 24px; }
-.presentation-links .btn { font-size: 0.85rem; padding: 10px 20px; }
-.values-card { background: var(--white); border-radius: var(--radius-lg); padding: 32px; box-shadow: var(--shadow-md); border: 1px solid var(--border); }
-.values-card h3 { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 20px; }
-.values-list { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; }
-.value-tag { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: 100px; font-size: 0.85rem; font-weight: 600; background: var(--teal-bg); color: var(--teal); transition: all 0.2s var(--ease); }
-.value-tag:hover { background: var(--teal); color: var(--white); }
-.value-tag svg { width: 14px; height: 14px; }
-
-/* ===== FORMATIONS ===== */
-.formations-tabs { display: flex; gap: 4px; margin-bottom: 32px; background: var(--light-bg); border-radius: var(--radius-md); padding: 4px; width: fit-content; }
-.formations-tab { padding: 10px 20px; border-radius: var(--radius-sm); font-size: 0.88rem; font-weight: 600; color: var(--text-secondary); background: transparent; border: none; cursor: pointer; transition: all 0.2s var(--ease); }
-.formations-tab.active { background: var(--white); color: var(--navy); box-shadow: var(--shadow-sm); }
-.formations-tab:hover:not(.active) { color: var(--text); }
-.formations-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 20px; }
-.formation-card { background: var(--white); border-radius: var(--radius-lg); border: 1px solid var(--border); padding: 28px; transition: all 0.4s var(--ease); position: relative; overflow: hidden; }
-.formation-card.hidden { opacity: 0; transform: scale(0.95); max-height: 0; padding: 0 28px; margin: 0; border: none; overflow: hidden; }
-.formation-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--teal), var(--teal-light)); opacity: 0; transition: opacity 0.3s var(--ease); }
-.formation-card:hover { box-shadow: var(--shadow-lg); border-color: transparent; transform: translateY(-2px); }
-.formation-card:hover::before { opacity: 1; }
-.formation-badge { display: inline-block; padding: 4px 12px; border-radius: 100px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 14px; }
-.badge-alternance { background: #DBEAFE; color: #1E40AF; }
-.badge-continue { background: #FEF3C7; color: #92400E; }
-.badge-pro { background: #D1FAE5; color: #065F46; }
-.badge-initial { background: #EDE9FE; color: #5B21B6; }
-.formation-card h4 { font-size: 1.05rem; font-weight: 700; color: var(--navy); margin-bottom: 10px; line-height: 1.35; }
-.formation-card > p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.55; margin-bottom: 16px; }
-.formation-meta { display: flex; flex-wrap: wrap; gap: 16px; font-size: 0.8rem; color: var(--text-secondary); padding-top: 16px; border-top: 1px solid var(--border); }
-.formation-meta span { display: flex; align-items: center; gap: 5px; }
-.formation-meta svg { width: 14px; height: 14px; color: var(--teal); }
-.formation-cta { display: inline-flex; align-items: center; gap: 6px; margin-top: 16px; font-size: 0.85rem; font-weight: 600; color: var(--teal); cursor: pointer; border: none; background: none; padding: 0; font-family: var(--font-display); transition: gap 0.2s var(--ease); }
-.formation-cta:hover { gap: 10px; }
-.formation-cta svg { width: 16px; height: 16px; }
-/* Expandable details */
-.formation-details { max-height: 0; overflow: hidden; transition: max-height 0.4s var(--ease), opacity 0.3s var(--ease); opacity: 0; }
-.formation-details.open { max-height: 400px; opacity: 1; }
-.formation-details-inner { padding-top: 20px; margin-top: 16px; border-top: 1px dashed var(--border); font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; }
-.formation-details-inner h5 { font-size: 0.82rem; font-weight: 700; color: var(--navy); margin-bottom: 6px; margin-top: 14px; }
-.formation-details-inner h5:first-child { margin-top: 0; }
-
-/* ===== VIDÉOS ===== */
-.videos-carousel { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-.video-card { border-radius: var(--radius-lg); overflow: hidden; background: var(--white); box-shadow: var(--shadow-md); transition: all 0.3s var(--ease); }
-.video-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-xl); }
-.video-thumb { position: relative; aspect-ratio: 16/9; background: var(--navy); overflow: hidden; }
-.video-thumb img { width: 100%; height: 100%; object-fit: cover; }
-.video-play { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(27,42,74,0.3); transition: background 0.3s var(--ease); }
-.video-card:hover .video-play { background: rgba(27,42,74,0.15); }
-.video-play-btn { width: 56px; height: 56px; border-radius: 50%; background: var(--white); display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-lg); transition: transform 0.2s var(--ease); }
-.video-card:hover .video-play-btn { transform: scale(1.08); }
-.video-play-btn svg { width: 22px; height: 22px; color: var(--coral); margin-left: 2px; }
-.video-label { position: absolute; top: 12px; left: 12px; padding: 4px 12px; border-radius: 100px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; background: rgba(27,42,74,0.8); color: var(--white); backdrop-filter: blur(8px); }
-.video-info { padding: 18px 20px; }
-.video-info h4 { font-size: 0.92rem; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
-.video-info p { font-size: 0.82rem; color: var(--text-secondary); }
-
-/* ===== GALERIE ===== */
-.gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: 200px 200px; gap: 12px; }
-.gallery-item { border-radius: var(--radius-md); overflow: hidden; position: relative; }
-.gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s var(--ease); }
-.gallery-item:hover img { transform: scale(1.05); }
-.gallery-item:first-child { grid-column: span 2; grid-row: span 2; }
-.gallery-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(27,42,74,0.6) 0%, transparent 50%); opacity: 0; transition: opacity 0.3s var(--ease); display: flex; align-items: flex-end; padding: 16px; }
-.gallery-item:hover .gallery-overlay { opacity: 1; }
-.gallery-overlay span { color: var(--white); font-size: 0.85rem; font-weight: 600; }
-.gallery-more { position: absolute; inset: 0; background: rgba(27,42,74,0.7); display: flex; align-items: center; justify-content: center; color: var(--white); font-size: 1.1rem; font-weight: 700; backdrop-filter: blur(2px); transition: background 0.3s var(--ease); }
-.gallery-item:hover .gallery-more { background: rgba(27,42,74,0.55); }
-
-/* ===== ÉVÉNEMENTS ===== */
-.events-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
-.event-card { background: var(--white); border-radius: var(--radius-lg); border: 1px solid var(--border); padding: 24px; display: flex; gap: 20px; transition: all 0.3s var(--ease); }
-.event-card:hover { box-shadow: var(--shadow-md); border-color: var(--teal); }
-.event-date-block { flex-shrink: 0; width: 56px; text-align: center; }
-.event-date-day { font-size: 1.8rem; font-weight: 800; color: var(--navy); line-height: 1; }
-.event-date-month { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--coral); letter-spacing: 0.5px; margin-top: 2px; }
-.event-info h4 { font-size: 0.95rem; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
-.event-info p { font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 10px; }
-.event-type { display: inline-block; padding: 3px 10px; border-radius: 100px; font-size: 0.72rem; font-weight: 600; background: var(--coral); color: var(--white); }
-.event-type.event-type-recruit { background: var(--teal); }
-.event-register-btn { display: flex; width: fit-content; align-items: center; gap: 5px; margin-top: 12px; padding: 5px 14px; border-radius: var(--radius-sm); font-size: 0.78rem; font-weight: 600; background: var(--white); color: var(--teal); cursor: pointer; border: 1.5px solid var(--teal); font-family: var(--font-display); transition: all 0.2s var(--ease); }
-.event-register-btn:hover { background: var(--teal); color: var(--white); }
-.event-register-btn svg { width: 11px; height: 11px; }
-
-/* ===== ÉTUDIANTS ===== */
-.students-section { background: linear-gradient(135deg, var(--navy) 0%, #2D4A7A 100%); color: var(--white); }
-.students-section .section-eyebrow { color: var(--teal-light); }
-.students-section .section-title { color: var(--white); }
-.students-section .section-subtitle { font-family: var(--font-serif); font-style: italic; color: rgba(255,255,255,0.7); font-size: 1rem; margin-top: 8px; }
-.students-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-.student-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius-lg); padding: 28px; backdrop-filter: blur(12px); transition: all 0.3s var(--ease); }
-.student-card:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); transform: translateY(-2px); }
-.student-header { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
-.student-avatar { width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, var(--teal), var(--teal-light)); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1rem; color: var(--white); flex-shrink: 0; }
-.student-name { font-weight: 700; font-size: 0.95rem; }
-.student-program { font-size: 0.8rem; color: rgba(255,255,255,0.6); }
-.student-card blockquote { font-family: var(--font-serif); font-style: italic; font-size: 0.92rem; line-height: 1.6; color: rgba(255,255,255,0.85); margin-bottom: 16px; }
-.student-tags { display: flex; flex-wrap: wrap; gap: 8px; }
-.student-tag { padding: 4px 12px; border-radius: 100px; font-size: 0.72rem; font-weight: 600; background: rgba(8,145,178,0.2); color: var(--teal-light); border: 1px solid rgba(8,145,178,0.3); }
-.student-profile-link { margin-top: 14px; display: inline-flex; align-items: center; gap: 6px; font-size: 0.82rem; font-weight: 600; color: var(--teal-light); cursor: pointer; transition: color 0.2s; text-decoration: none; }
-.student-profile-link:hover { color: var(--white); }
-.student-profile-link svg { width: 16px; height: 16px; }
-
-/* ===== ARTICLES ===== */
-.articles-scroll { display: flex; gap: 20px; overflow-x: auto; padding-bottom: 16px; scrollbar-width: thin; scrollbar-color: var(--border) transparent; }
-.articles-scroll::-webkit-scrollbar { height: 6px; }
-.articles-scroll::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
-.article-card { flex: 0 0 300px; background: var(--white); border-radius: var(--radius-lg); border: 1px solid var(--border); overflow: hidden; transition: all 0.3s var(--ease); cursor: pointer; text-decoration: none; color: inherit; display: block; }
-.article-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); color: inherit; }
-.article-thumb { height: 160px; overflow: hidden; }
-.article-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s var(--ease); }
-.article-card:hover .article-thumb img { transform: scale(1.05); }
-.article-body { padding: 18px 20px; }
-.article-date { font-size: 0.75rem; color: var(--text-light); font-weight: 500; margin-bottom: 6px; }
-.article-body h4 { font-size: 0.92rem; font-weight: 700; color: var(--navy); line-height: 1.4; margin-bottom: 8px; }
-.article-body p { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.5; }
-
-/* ===== TABLEAU COMPARATIF ===== */
-.compare-table-wrap { overflow-x: auto; margin-top: 32px; border-radius: var(--radius-lg); border: 1px solid var(--border); }
-.compare-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
-.compare-table thead { background: var(--navy); color: var(--white); }
-.compare-table th { padding: 14px 18px; font-weight: 700; text-align: left; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; }
-.compare-table td { padding: 14px 18px; border-bottom: 1px solid var(--border); color: var(--text); vertical-align: top; }
-.compare-table tbody tr:last-child td { border-bottom: none; }
-.compare-table tbody tr:hover { background: var(--teal-bg); }
-.compare-table .ct-prog { font-weight: 700; color: var(--navy); }
-
-/* ===== INDICATEURS D'INSERTION ===== */
-.insertion-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
-.insertion-card { background: var(--white); border-radius: var(--radius-lg); border: 1px solid var(--border); padding: 28px; }
-.insertion-card-title { font-size: 0.92rem; font-weight: 700; color: var(--navy); margin-bottom: 18px; display: flex; align-items: center; gap: 8px; }
-.insertion-card-title .ic-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
-.ic-dot-alt { background: #3B82F6; }
-.ic-dot-app { background: var(--teal); }
-.insertion-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--light-bg); }
-.insertion-row:last-child { border-bottom: none; }
-.insertion-label { font-size: 0.82rem; color: var(--text-secondary); }
-.insertion-value { font-family: var(--font-display); font-size: 1.1rem; font-weight: 800; color: var(--teal); }
-.insertion-source { font-size: 0.75rem; color: var(--text-light); font-style: italic; text-align: center; margin-top: 20px; }
-
-/* ===== PÉDAGOGIE ===== */
-.pedagogy-intro { font-family: var(--font-serif); font-size: 1.05rem; line-height: 1.7; color: var(--text); max-width: 860px; margin-bottom: 32px; }
-.pedagogy-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-.pedagogy-card { background: var(--white); border-radius: var(--radius-lg); border: 1px solid var(--border); padding: 28px; transition: all 0.3s var(--ease); position: relative; }
-.pedagogy-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
-.pedagogy-num { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: var(--radius-sm); background: var(--teal-bg); color: var(--teal); font-weight: 800; font-size: 0.95rem; margin-bottom: 16px; }
-.pedagogy-card h4 { font-size: 0.95rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
-.pedagogy-card p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.55; }
-
-/* ===== MÉTIERS ACCESSIBLES ===== */
-.careers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-.career-domain { background: var(--white); border-radius: var(--radius-lg); border: 1px solid var(--border); padding: 24px; transition: all 0.3s var(--ease); }
-.career-domain:hover { border-color: var(--teal); box-shadow: var(--shadow-sm); }
-.career-domain h4 { font-size: 0.9rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
-.career-domain h4 span { font-size: 1.1rem; }
-.career-domain p { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.5; }
-
-/* ===== RÉSEAU & INNOVATION ===== */
-.network-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-.network-card { background: var(--white); border-radius: var(--radius-lg); border: 1px solid var(--border); padding: 28px; transition: all 0.3s var(--ease); }
-.network-card:hover { box-shadow: var(--shadow-md); }
-.network-card h4 { font-size: 0.95rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
-.network-card p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.55; }
-
-/* ===== ACCESSIBILITÉ ===== */
-.access-content { background: var(--white); border-radius: var(--radius-lg); border: 1px solid var(--border); padding: 32px; max-width: 860px; }
-.access-list { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
-.access-item { display: flex; align-items: flex-start; gap: 10px; font-size: 0.88rem; color: var(--text); }
-.access-item svg { width: 18px; height: 18px; color: var(--teal); flex-shrink: 0; margin-top: 2px; }
-.access-contact { margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--text-secondary); }
-
-/* ===== COORDONNÉES ===== */
-.coords-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 32px; }
-.coords-list { display: flex; flex-direction: column; gap: 14px; }
-.coord-row { display: flex; gap: 14px; align-items: flex-start; }
-.coord-icon { width: 38px; height: 38px; border-radius: var(--radius-sm); background: var(--teal-bg); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--teal); }
-.coord-icon svg { width: 16px; height: 16px; }
-.coord-label { font-size: 0.75rem; color: var(--text-light); font-weight: 500; }
-.coord-value { font-size: 0.9rem; color: var(--navy); font-weight: 600; }
-.coords-site { background: var(--light-bg); border-radius: var(--radius-lg); border: 1px solid var(--border); padding: 28px; text-align: center; }
-.coords-site h4 { font-size: 0.9rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
-.coords-site p { font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 16px; }
-
-/* ===== CTA ONGLET LATÉRAL ===== */
-.side-cta {
-  position: absolute;
-  right: 0;
-  top: 50%;
-  z-index: 100;
-  opacity: 0;
-  transition: opacity 0.4s var(--ease);
-}
-.side-cta.visible { opacity: 1; }
-.side-cta-btn {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 14px 16px;
-  background: var(--coral);
-  color: var(--white);
-  border: none;
-  border-radius: var(--radius-md) 0 0 var(--radius-md);
-  font-family: var(--font-display);
-  font-size: 0.85rem;
-  font-weight: 700;
-  cursor: pointer;
-  box-shadow: -4px 2px 16px rgba(27,42,74,0.15);
-  writing-mode: vertical-lr;
-  text-orientation: mixed;
-  letter-spacing: 0.5px;
-  transition: all 0.25s var(--ease);
-}
-.side-cta-btn:hover {
-  background: var(--coral-hover);
-  padding-right: 22px;
-  box-shadow: -6px 2px 24px rgba(27,42,74,0.2);
-}
-.side-cta-btn svg { width: 18px; height: 18px; transform: rotate(90deg); flex-shrink: 0; }
-
-/* CTA mobile — désactivé, le hero suffit */
-
-/* ===== MODALES ===== */
-.modal-overlay { display: none; position: absolute; left: 0; right: 0; top: 0; background: rgba(27,42,74,0.5); backdrop-filter: blur(4px); z-index: 200; align-items: center; justify-content: center; padding: 32px; }
-.modal-overlay.active { display: flex; }
-.modal { background: var(--white); border-radius: var(--radius-xl); max-width: 520px; width: 100%; padding: 40px; box-shadow: var(--shadow-xl); position: relative; }
-.modal-close { position: absolute; top: 16px; right: 16px; width: 36px; height: 36px; border-radius: 50%; border: none; background: var(--light-bg); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
-.modal-close:hover { background: var(--border); }
-.modal-close svg { width: 18px; height: 18px; color: var(--text-secondary); }
-.modal h3 { font-size: 1.3rem; font-weight: 800; color: var(--navy); margin-bottom: 6px; }
-.modal > p { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 24px; }
-.form-group { margin-bottom: 18px; }
-.form-group label { display: block; font-size: 0.82rem; font-weight: 600; color: var(--text); margin-bottom: 6px; }
-.form-group input, .form-group select, .form-group textarea { width: 100%; padding: 11px 14px; border: 1.5px solid var(--border); border-radius: var(--radius-sm); font-family: var(--font-body); font-size: 0.9rem; color: var(--text); transition: border-color 0.2s; background: var(--white); }
-.form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--teal); box-shadow: 0 0 0 3px rgba(8,145,178,0.1); }
-.form-group textarea { min-height: 100px; resize: vertical; }
-.modal .btn { width: 100%; justify-content: center; margin-top: 8px; }
-/* Success state */
-.form-success { display: none; text-align: center; padding: 40px 20px; }
-.form-success.show { display: block; }
-.form-fields.hide { display: none; }
-.form-success-icon { width: 64px; height: 64px; border-radius: 50%; background: #D1FAE5; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; }
-.form-success-icon svg { width: 32px; height: 32px; color: #059669; }
-.form-success h4 { font-size: 1.1rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
-.form-success p { font-size: 0.9rem; color: var(--text-secondary); }
-
-/* ===== LIGHTBOX ===== */
-.lightbox { display: none; position: absolute; left: 0; right: 0; background: rgba(0,0,0,0.9); z-index: 300; align-items: center; justify-content: center; padding: 40px; }
-.lightbox.active { display: flex; }
-.lightbox img { max-width: 90vw; max-height: 85vh; border-radius: var(--radius-md); object-fit: contain; }
-.lightbox-close { position: absolute; top: 20px; right: 20px; width: 44px; height: 44px; border-radius: 50%; border: none; background: rgba(255,255,255,0.15); color: var(--white); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
-.lightbox-close:hover { background: rgba(255,255,255,0.3); }
-.lightbox-close svg { width: 24px; height: 24px; }
-.lightbox-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; border-radius: 50%; border: none; background: rgba(255,255,255,0.15); color: var(--white); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
-.lightbox-nav:hover { background: rgba(255,255,255,0.3); }
-.lightbox-nav svg { width: 24px; height: 24px; }
-.lightbox-prev { left: 20px; }
-.lightbox-next { right: 20px; }
-.lightbox-counter { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.7); font-size: 0.85rem; font-weight: 600; }
-
-/* ===== VIDEO MODAL ===== */
-.video-modal { display: none; position: absolute; left: 0; right: 0; background: rgba(0,0,0,0.9); z-index: 300; align-items: center; justify-content: center; padding: 40px; }
-.video-modal.active { display: flex; }
-.video-modal-inner { width: 90vw; max-width: 900px; aspect-ratio: 16/9; position: relative; }
-.video-modal-inner iframe { width: 100%; height: 100%; border: none; border-radius: var(--radius-md); }
-.video-modal-close { position: absolute; top: -48px; right: 0; width: 40px; height: 40px; border-radius: 50%; border: none; background: rgba(255,255,255,0.15); color: var(--white); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
-.video-modal-close:hover { background: rgba(255,255,255,0.3); }
-.video-modal-close svg { width: 22px; height: 22px; }
-
-/* ===== EVENT REGISTER MODAL ===== */
-.modal-small { max-width: 400px; padding: 32px; }
-
-/* ===== RESPONSIVE ===== */
-@media (max-width: 1024px) {
-  .hero-content { flex-wrap: wrap; }
-  .hero-actions { width: 100%; }
-  .presentation-grid { grid-template-columns: 1fr; gap: 32px; }
-  .videos-carousel { grid-template-columns: repeat(2, 1fr); }
-  .students-grid { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 768px) {
-  .hero { min-height: 360px; }
-  .hero-content { padding: 40px 16px 32px; gap: 16px; }
-  .hero-logo { width: 72px; height: 72px; }
-  .hero-info h1 { font-size: 1.5rem; }
-  .hero-baseline { font-size: 0.95rem; }
-  .hero-meta { font-size: 0.8rem; gap: 10px; }
-  .hero-actions { flex-direction: column; }
-  .hero-actions .btn { font-size: 0.85rem; padding: 10px 18px; }
-  .key-figures-inner { grid-template-columns: repeat(2, 1fr); }
-  .key-figure-value { font-size: 1.6rem; }
-  .section { padding: 40px 16px; }
-  .section-title { font-size: 1.3rem; }
-  .presentation-text { font-size: 0.95rem; }
-  .presentation-links { flex-direction: column; }
-  .presentation-links .btn { width: 100%; justify-content: center; }
-  .values-list { gap: 8px; }
-  .value-tag { font-size: 0.78rem; padding: 6px 12px; }
-  .formations-tabs { width: 100%; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
-  .formations-tabs::-webkit-scrollbar { display: none; }
-  .formations-tab { flex-shrink: 0; font-size: 0.82rem; padding: 8px 14px; }
-  .formations-grid { grid-template-columns: 1fr; }
-  .formation-card h4 { font-size: 0.95rem; }
-  .formation-meta { gap: 10px; font-size: 0.75rem; }
-  .videos-carousel { grid-template-columns: 1fr; }
-  .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: 160px 160px 160px; }
-  .gallery-item:first-child { grid-column: span 2; }
-  .events-list { grid-template-columns: 1fr; }
-  .event-card { padding: 18px; gap: 14px; }
-  .students-grid { grid-template-columns: 1fr; }
-  .student-card { padding: 22px; }
-  .student-card blockquote { font-size: 0.85rem; }
-  .article-card { flex: 0 0 240px; }
-  .insertion-grid { grid-template-columns: 1fr; }
-  .pedagogy-grid { grid-template-columns: 1fr; }
-  .careers-grid { grid-template-columns: 1fr; }
-  .network-grid { grid-template-columns: 1fr; }
-  .access-list { grid-template-columns: 1fr; }
-  .coords-layout { grid-template-columns: 1fr; }
-  .compare-table { font-size: 0.8rem; }
-  .compare-table th, .compare-table td { padding: 10px 12px; }
-  .side-cta { display: none !important; }
+@media(max-width:768px){
+  .hero{min-height:360px}.hero-content{padding:40px 16px 32px;gap:16px}
+  .hero-logo{width:72px;height:72px}.hero-info h1{font-size:1.5rem}
+  .hero-baseline{font-size:0.95rem}.hero-meta{font-size:0.8rem;gap:10px}
+  .hero-actions{flex-direction:column}.hero-actions .btn{font-size:0.85rem;padding:10px 18px}
+  .key-figures-inner{grid-template-columns:repeat(2,1fr)}
+  .key-figure-value{font-size:1.6rem}
+  .section{padding:40px 16px}.section-title{font-size:1.3rem}
+  .presentation-links{flex-direction:column}.presentation-links .btn{width:100%;justify-content:center}
+  .formations-tabs{width:100%;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .formations-tabs::-webkit-scrollbar{display:none}
+  .formations-tab{flex-shrink:0;font-size:0.82rem;padding:8px 14px}
+  .formations-grid{grid-template-columns:1fr}
+  .videos-carousel{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:repeat(2,1fr);grid-template-rows:160px 160px 160px}
+  .gallery-item:first-child{grid-column:span 2}
+  .events-list{grid-template-columns:1fr}
+  .students-grid{grid-template-columns:1fr}
+  .article-card{flex:0 0 240px}
+  .careers-grid{grid-template-columns:1fr}
+  .access-list{grid-template-columns:1fr}
+  .coords-layout{grid-template-columns:1fr}
+  .side-cta{display:none!important}
 }
 </style>
 </head>
 <body>
-
 <div id="content-wrapper">
 
 <!-- HERO -->
@@ -505,9 +311,7 @@ a:hover { color: var(--teal-light); }
   <div class="hero-cover"></div>
   <div class="hero-gradient"></div>
   <div class="hero-content">
-    <div class="hero-logo">
-      <img src="https://www.tourmag.com/my/test/plateforme_collaborative/logo_ESCAET_new_2024.png" alt="ESCAET">
-    </div>
+    <div class="hero-logo"><img src="https://www.tourmag.com/my/test/plateforme_collaborative/logo_ESCAET_new_2024.png" alt="ESCAET"></div>
     <div class="hero-info">
       <h1>ESCAET</h1>
       <p class="hero-baseline">École Supérieure de Commerce spécialisée dans le Tourisme et les Voyages depuis 1984</p>
@@ -529,53 +333,57 @@ a:hover { color: var(--teal-light); }
   <div class="key-figures-inner">
     <div class="key-figure reveal"><div class="key-figure-value" data-target="40" data-suffix="">0</div><div class="key-figure-label">ans d'expertise</div></div>
     <div class="key-figure reveal"><div class="key-figure-value" data-target="94" data-suffix="%">0</div><div class="key-figure-label">taux d'insertion</div></div>
-    <div class="key-figure reveal"><div class="key-figure-value" data-target="850" data-suffix="+">0</div><div class="key-figure-label">diplômés en activité</div></div>
-    <div class="key-figure reveal"><div class="key-figure-value" data-target="120" data-suffix="">0</div><div class="key-figure-label">entreprises partenaires</div></div>
+    <div class="key-figure reveal"><div class="key-figure-value" data-target="3000" data-suffix="+">0</div><div class="key-figure-label">alumni en activité</div></div>
+    <div class="key-figure reveal"><div class="key-figure-value" data-target="1200" data-suffix="+">0</div><div class="key-figure-label">entreprises partenaires</div></div>
     <div class="key-figure reveal"><div class="key-figure-value" data-target="35" data-suffix="%">0</div><div class="key-figure-label">étudiants en alternance</div></div>
   </div>
 </section>
 
-<!-- PRÉSENTATION & VALEURS -->
+<!-- 1. PRÉSENTATION (identité + valeurs) -->
 <section class="section reveal">
   <div class="section-inner">
-    <div class="section-header">
-      <div class="section-eyebrow">Présentation</div>
-      <h2 class="section-title">L'école du tourisme de demain</h2>
-    </div>
+    <div class="section-header"><div class="section-eyebrow">Présentation</div><h2 class="section-title">L'école du tourisme de demain</h2></div>
     <div class="presentation-grid">
       <div>
         <div class="presentation-text">
-          <p>Depuis 1984, l'ESCAET forme les futurs cadres et dirigeants du secteur du tourisme et des voyages. Implantée à Aix-en-Provence, l'école a su construire un réseau solide avec les acteurs majeurs de l'industrie : tour-opérateurs, compagnies aériennes, hôteliers, réceptifs et agences de voyages.</p>
-          <p>Notre approche pédagogique repose sur un équilibre entre expertise sectorielle pointue et vision stratégique globale. Chaque étudiant bénéficie d'un accompagnement personnalisé, de missions terrain en entreprise dès la première année, et d'une immersion internationale obligatoire.</p>
-          <p>L'ESCAET est également un acteur majeur de la formation professionnelle continue, avec des parcours certifiants accessibles aux salariés du secteur souhaitant monter en compétences ou se reconvertir.</p>
+          <p>Depuis 1984, l'ESCAET forme les futurs cadres et dirigeants du secteur du tourisme et des voyages. Implantée à Aix-en-Provence, l'école a tissé un maillage étroit avec les acteurs du secteur — tour-opérateurs, compagnies aériennes, hôteliers, réceptifs, agences — pour proposer des formations au plus proche des réalités opérationnelles.</p>
+          <p>La pédagogie de l'ESCAET s'appuie sur un double ancrage : une spécialisation sectorielle pointue et une ouverture stratégique aux enjeux de transformation digitale, de yield management et de tourisme responsable. Chaque étudiant est accompagné individuellement, avec des immersions en entreprise dès la première année.</p>
+          <p>Au-delà de la formation initiale, l'ESCAET accompagne aussi les professionnels en poste à travers des parcours certifiants courts et des dispositifs de reconversion, accessibles en ligne ou en présentiel.</p>
         </div>
         <div class="presentation-links">
           <a href="https://www.escaet.fr" target="_blank" class="btn btn-teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>Visiter le site</a>
           <a href="#" class="btn btn-ghost"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Télécharger la brochure</a>
         </div>
       </div>
-      <div class="values-card">
-        <h3>Nos valeurs</h3>
-        <ul class="values-list">
-          <li class="value-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>International</li>
-          <li class="value-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>Proximité</li>
-          <li class="value-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Excellence</li>
-          <li class="value-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>Innovation</li>
-          <li class="value-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3.85 8.62a4 4 0 014.78-4.77 4 4 0 016.74 0 4 4 0 014.78 4.78 4 4 0 010 6.74 4 4 0 01-4.77 4.78 4 4 0 01-6.75 0 4 4 0 01-4.78-4.77 4 4 0 010-6.76z"/></svg>RSE</li>
-          <li class="value-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>Professionnalisation</li>
-        </ul>
+      <div class="sidebar-cards">
+        <div class="info-card">
+          <h3>Carte d'identité</h3>
+          <div class="info-row"><strong>Nom officiel :</strong> <span>École Supérieure de Commerce et de Management du Tourisme (ESCAET)</span></div>
+          <div class="info-row"><strong>Statut :</strong> <span>Établissement d'enseignement supérieur technique privé indépendant</span></div>
+          <div class="info-row"><strong>Fondation :</strong> <span>1984, par Jean-Maurice et Gaëtane Thurot</span></div>
+          <div class="info-row"><strong>Certifications :</strong> <span>Titres RNCP niveau 6 (Bachelor) et niveau 7 (MBA)</span></div>
+          <div class="info-row"><strong>Qualiopi :</strong> <span>Certifié AFNOR — formation, VAE, apprentissage</span></div>
+        </div>
+        <div class="info-card">
+          <h3>Nos valeurs</h3>
+          <ul class="values-list">
+            <li class="value-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>International</li>
+            <li class="value-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>Proximité</li>
+            <li class="value-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Excellence</li>
+            <li class="value-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>Innovation</li>
+            <li class="value-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3.85 8.62a4 4 0 014.78-4.77 4 4 0 016.74 0 4 4 0 014.78 4.78 4 4 0 010 6.74 4 4 0 01-4.77 4.78 4 4 0 01-6.75 0 4 4 0 01-4.78-4.77 4 4 0 010-6.76z"/></svg>RSE</li>
+            <li class="value-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>Professionnalisation</li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FORMATIONS -->
+<!-- 2. NOS PROGRAMMES -->
 <section class="section section-alt reveal">
   <div class="section-inner">
-    <div class="section-header">
-      <div class="section-eyebrow">Formations</div>
-      <h2 class="section-title">Nos programmes</h2>
-    </div>
+    <div class="section-header"><div class="section-eyebrow">Formations</div><h2 class="section-title">Nos programmes</h2></div>
     <div class="formations-tabs">
       <button class="formations-tab active" onclick="filterFormations(this,'all')">Toutes</button>
       <button class="formations-tab" onclick="filterFormations(this,'initial')">Formation initiale</button>
@@ -585,153 +393,148 @@ a:hover { color: var(--teal-light); }
     </div>
     <div class="formations-grid">
       <div class="formation-card" data-type="initial alternance">
-        <span class="formation-badge badge-initial">Formation initiale</span>
+        <div class="formation-badges"><span class="formation-badge badge-initial">Formation initiale</span><span class="formation-badge badge-alternance">Alternance</span></div>
         <h4>Bachelor spécialisé Travel</h4>
         <p>Titre certifié RNCP niveau 6 — "Responsable des Activités du Tourisme et des Voyages". Accessible après un Bac+2 ou titre de niveau 5.</p>
+        <div class="formation-objective">Acquérir les compétences opérationnelles pour les métiers du tourisme, de l'événementiel, de la production et du digital</div>
         <div class="formation-meta"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>1 an</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5"/></svg>Bac+3</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>RNCP niv. 6</span></div>
         <button class="formation-cta" onclick="toggleDetails(this)">En savoir plus <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
-        <div class="formation-details"><div class="formation-details-inner"><h5>Programme</h5><p>Marketing touristique, distribution, revenue management, e-tourisme, management des opérations, droit du tourisme, langues vivantes (anglais + LV2).</p><h5>Admission</h5><p>Sur dossier + entretien de motivation. Titulaires d'un Bac+2 (BTS Tourisme, DUT, L2) ou titre de niveau 5. Rentrée en septembre.</p><h5>Tarif</h5><p>7 200€/an en initial. Gratuit en alternance (prise en charge OPCO).</p></div></div>
+        <div class="formation-details"><div class="formation-details-inner"><h5>Programme</h5><p>Marketing touristique, distribution, revenue management, e-tourisme, management des opérations, droit du tourisme, langues vivantes.</p><h5>Admission</h5><p>Dossier + entretien de motivation. Titulaires d'un Bac+2 minimum. Rentrée en octobre.</p><h5>Tarif</h5><p>7 200€/an en initial. Gratuit en alternance (prise en charge OPCO).</p></div></div>
       </div>
       <div class="formation-card" data-type="initial alternance">
-        <span class="formation-badge badge-alternance">Alternance possible</span>
+        <div class="formation-badges"><span class="formation-badge badge-initial">Formation initiale</span><span class="formation-badge badge-alternance">Alternance</span></div>
         <h4>MBA International Travel Management</h4>
-        <p>Titre certifié RNCP niveau 7 — "Manager des Activités du Tourisme et des Voyages". Vision stratégique et management international du tourisme.</p>
+        <p>Titre certifié RNCP niveau 7 — "Manager des Activités du Tourisme et des Voyages". Deux ans pour accéder à des fonctions d'encadrement et de pilotage stratégique.</p>
+        <div class="formation-objective">Former des managers capables de piloter une stratégie, des revenus, des achats complexes ou un projet touristique d'envergure</div>
         <div class="formation-meta"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>2 ans</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5"/></svg>Bac+5</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>RNCP niv. 7</span></div>
         <button class="formation-cta" onclick="toggleDetails(this)">En savoir plus <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
-        <div class="formation-details"><div class="formation-details-inner"><h5>Programme</h5><p>Stratégie d'entreprise, management international, yield management avancé, data analytics tourisme, leadership, mémoire de recherche appliquée.</p><h5>Admission</h5><p>Titulaires d'un Bac+3 minimum (Bachelor, Licence). Dossier + tests + entretien. Alternance 3 semaines entreprise / 1 semaine école.</p><h5>Tarif</h5><p>8 500€/an en initial. Gratuit en alternance.</p></div></div>
+        <div class="formation-details"><div class="formation-details-inner"><h5>Programme</h5><p>Stratégie d'entreprise, management international, yield management avancé, data analytics tourisme, leadership, mémoire de recherche appliquée.</p><h5>Admission</h5><p>Titulaires d'un Bac+3 minimum. Dossier + tests + entretien. Alternance 3 semaines entreprise / 1 semaine école.</p><h5>Tarif</h5><p>8 500€/an en initial. Gratuit en alternance.</p></div></div>
       </div>
       <div class="formation-card" data-type="continue">
-        <span class="formation-badge badge-continue">Formation continue</span>
+        <div class="formation-badges"><span class="formation-badge badge-continue">Formation continue</span></div>
         <h4>Parcours certifiants courts</h4>
-        <p>7 parcours certifiants thématiques accessibles aux professionnels du tourisme. Dispositifs 100% digitalisés, quelques jours seulement.</p>
+        <p>7 modules thématiques conçus pour les salariés du tourisme qui veulent se spécialiser ou actualiser leurs compétences, sans quitter leur poste.</p>
+        <div class="formation-objective">Monter en compétences sur une thématique précise en quelques jours, avec certification à la clé</div>
         <div class="formation-meta"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>2 à 5 jours</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>100% en ligne</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5"/></svg>Certifiant</span></div>
         <button class="formation-cta" onclick="toggleDetails(this)">En savoir plus <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
-        <div class="formation-details"><div class="formation-details-inner"><h5>Thématiques disponibles</h5><p>Revenue management, marketing digital tourisme, billetterie GDS, management d'équipe, tourisme durable, relation client premium, réseaux sociaux & influence.</p><h5>Public</h5><p>Salariés du secteur tourisme, demandeurs d'emploi, indépendants. Éligible CPF et OPCO.</p><h5>Tarif</h5><p>De 890€ à 2 400€ selon le parcours. Financement CPF possible.</p></div></div>
+        <div class="formation-details"><div class="formation-details-inner"><h5>Thématiques</h5><p>Revenue management, marketing digital tourisme, billetterie GDS, management d'équipe, tourisme durable, relation client premium, réseaux sociaux.</p><h5>Public</h5><p>Salariés du secteur, demandeurs d'emploi, indépendants. Éligible CPF et OPCO.</p><h5>Tarif</h5><p>De 890€ à 2 400€ selon le parcours.</p></div></div>
       </div>
       <div class="formation-card" data-type="pro">
-        <span class="formation-badge badge-pro">Reconversion pro</span>
+        <div class="formation-badges"><span class="formation-badge badge-pro">Reconversion pro</span></div>
         <h4>Bachelor Travel — Parcours accéléré</h4>
-        <p>Formation intensive d'un an pour les professionnels en reconversion. Même diplôme RNCP niveau 6, rythme adapté aux profils expérimentés.</p>
+        <p>Un an intensif pour les professionnels en reconversion vers le tourisme. Même diplôme RNCP niveau 6, avec un rythme et un accompagnement adaptés aux profils expérimentés.</p>
+        <div class="formation-objective">Permettre une transition professionnelle complète vers les métiers du voyage en un an</div>
         <div class="formation-meta"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>1 an intensif</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>VAE possible</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>RNCP niv. 6</span></div>
         <button class="formation-cta" onclick="toggleDetails(this)">En savoir plus <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
-        <div class="formation-details"><div class="formation-details-inner"><h5>Spécificités</h5><p>Rythme intensif adapté aux reconversions professionnelles. Valorisation des acquis professionnels. Accompagnement individualisé par un tuteur référent. Stage de 4 mois en entreprise.</p><h5>Admission</h5><p>Professionnels en reconversion, tous secteurs. Justifier de 3 ans d'expérience minimum. Dossier + entretien approfondi.</p><h5>Tarif</h5><p>7 200€. Éligible CPF, Transitions Pro, Pôle Emploi.</p></div></div>
+        <div class="formation-details"><div class="formation-details-inner"><h5>Spécificités</h5><p>Rythme intensif avec valorisation des acquis professionnels. Tuteur référent dédié. Stage de 4 mois en entreprise.</p><h5>Admission</h5><p>Professionnels en reconversion, tous secteurs. 3 ans d'expérience minimum. Dossier + entretien.</p><h5>Tarif</h5><p>7 200€. Éligible CPF, Transitions Pro.</p></div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- VIDÉOS -->
+<!-- 3. NOS MÉTHODES D'ENSEIGNEMENT -->
 <section class="section reveal">
   <div class="section-inner">
-    <div class="section-header"><div class="section-eyebrow">Comparatif</div><h2 class="section-title">Vue d'ensemble des programmes</h2></div>
-    <div class="compare-table-wrap">
-      <table class="compare-table">
-        <thead><tr><th>Programme</th><th>Niveau d'entrée</th><th>Durée</th><th>Certification</th><th>Format</th><th>Objectif</th></tr></thead>
-        <tbody>
-          <tr><td class="ct-prog">Bachelor spécialisé Travel</td><td>Bac+2 / titre niv. 5</td><td>1 an</td><td>RNCP Niveau 6</td><td>Initial, alternance</td><td>Profils opérationnels pour les métiers du tourisme, de l'événementiel et du digital</td></tr>
-          <tr><td class="ct-prog">MBA International Travel Management</td><td>Bac+3 / titre niv. 6</td><td>2 ans</td><td>RNCP Niveau 7</td><td>Initial, alternance</td><td>Managers capables de piloter stratégie, achats et équipes dans l'industrie du voyage</td></tr>
-          <tr><td class="ct-prog">Parcours certifiants courts</td><td>Professionnels</td><td>2 à 5 j</td><td>Certifiant</td><td>100% en ligne</td><td>Montée en compétences ciblée pour les salariés du secteur</td></tr>
-          <tr><td class="ct-prog">Bachelor — Reconversion</td><td>3 ans exp. min.</td><td>1 an</td><td>RNCP Niveau 6</td><td>Intensif, VAE</td><td>Reconversion professionnelle vers les métiers du tourisme</td></tr>
-        </tbody>
-      </table>
+    <div class="section-header"><div class="section-eyebrow">Pédagogie</div><h2 class="section-title">Nos méthodes d'enseignement</h2></div>
+    <p class="pedagogy-intro">L'ESCAET a développé un modèle pédagogique qui articule temps en entreprise et temps à l'école, avec des modules accessibles en présentiel à Aix-en-Provence et à distance. L'objectif : que chaque apprenant soit opérationnel dès sa sortie.</p>
+    <div class="pedagogy-grid">
+      <div class="pedagogy-card"><div class="pedagogy-num">1</div><h4>Des intervenants en prise avec le terrain</h4><p>Les enseignements sont dispensés par des professionnels en activité — responsables distribution, experts pricing, directeurs marketing — qui apportent leur expérience quotidienne en cours.</p></div>
+      <div class="pedagogy-card"><div class="pedagogy-num">2</div><h4>Mises en situation et projets réels</h4><p>Chaque semestre est ponctué d'études de cas proposées par des entreprises partenaires, de challenges d'innovation et de masterclasses animées par des dirigeants du secteur.</p></div>
+      <div class="pedagogy-card"><div class="pedagogy-num">3</div><h4>Un suivi personnalisé de A à Z</h4><p>De la recherche d'alternance au placement post-diplôme, chaque étudiant bénéficie d'un accompagnement sur-mesure : coaching projet pro, préparation aux entretiens, tutorat individuel.</p></div>
     </div>
   </div>
 </section>
 
-<!-- INDICATEURS D'INSERTION -->
+<!-- 4. TAUX D'INSERTION -->
 <section class="section section-alt reveal">
   <div class="section-inner">
-    <div class="section-header"><div class="section-eyebrow">Résultats</div><h2 class="section-title">Indicateurs d'insertion professionnelle</h2></div>
+    <div class="section-header"><div class="section-eyebrow">Résultats</div><h2 class="section-title">Taux d'insertion</h2></div>
     <div class="insertion-grid">
       <div class="insertion-card">
-        <div class="insertion-card-title"><span class="ic-dot ic-dot-alt"></span> Parcours Stage alterné</div>
-        <div class="insertion-row"><span class="insertion-label">Taux de réussite à la certification</span><span class="insertion-value">97%</span></div>
-        <div class="insertion-row"><span class="insertion-label">Taux d'insertion à 6 mois</span><span class="insertion-value">71%</span></div>
-        <div class="insertion-row"><span class="insertion-label">Satisfaction à froid</span><span class="insertion-value">80%</span></div>
+        <div class="insertion-card-title"><span class="ic-dot ic-dot-violet"></span> Bachelor — Stage alterné</div>
+        <div class="insertion-row"><span class="insertion-label">Réussite à la certification</span><span class="insertion-value">95%</span></div>
+        <div class="insertion-row"><span class="insertion-label">Insertion à 6 mois</span><span class="insertion-value">68%</span></div>
+        <div class="insertion-row"><span class="insertion-label">Satisfaction globale</span><span class="insertion-value">82%</span></div>
       </div>
       <div class="insertion-card">
-        <div class="insertion-card-title"><span class="ic-dot ic-dot-app"></span> Parcours Apprentissage</div>
-        <div class="insertion-row"><span class="insertion-label">Taux de réussite à la certification</span><span class="insertion-value">97%</span></div>
-        <div class="insertion-row"><span class="insertion-label">Taux d'insertion à 6 mois</span><span class="insertion-value">59%</span></div>
-        <div class="insertion-row"><span class="insertion-label">Satisfaction à froid</span><span class="insertion-value">73%</span></div>
+        <div class="insertion-card-title"><span class="ic-dot ic-dot-teal"></span> Bachelor — Apprentissage</div>
+        <div class="insertion-row"><span class="insertion-label">Réussite à la certification</span><span class="insertion-value">93%</span></div>
+        <div class="insertion-row"><span class="insertion-label">Insertion à 6 mois</span><span class="insertion-value">72%</span></div>
+        <div class="insertion-row"><span class="insertion-label">Satisfaction globale</span><span class="insertion-value">78%</span></div>
+      </div>
+      <div class="insertion-card">
+        <div class="insertion-card-title"><span class="ic-dot ic-dot-blue"></span> MBA — Stage alterné</div>
+        <div class="insertion-row"><span class="insertion-label">Réussite à la certification</span><span class="insertion-value">97%</span></div>
+        <div class="insertion-row"><span class="insertion-label">Insertion à 6 mois</span><span class="insertion-value">71%</span></div>
+        <div class="insertion-row"><span class="insertion-label">Satisfaction globale</span><span class="insertion-value">80%</span></div>
+      </div>
+      <div class="insertion-card">
+        <div class="insertion-card-title"><span class="ic-dot ic-dot-coral"></span> MBA — Apprentissage</div>
+        <div class="insertion-row"><span class="insertion-label">Réussite à la certification</span><span class="insertion-value">97%</span></div>
+        <div class="insertion-row"><span class="insertion-label">Insertion à 6 mois</span><span class="insertion-value">59%</span></div>
+        <div class="insertion-row"><span class="insertion-label">Satisfaction globale</span><span class="insertion-value">73%</span></div>
       </div>
     </div>
-    <p class="insertion-source">Source : données officielles de l'ESCAET — Promotion MBA 2024</p>
+    <p class="insertion-source">Source : données officielles ESCAET — Promotions 2024</p>
   </div>
 </section>
 
-<!-- APPROCHE PÉDAGOGIQUE -->
-<section class="section reveal">
-  <div class="section-inner">
-    <div class="section-header"><div class="section-eyebrow">Pédagogie</div><h2 class="section-title">Notre approche de la formation</h2></div>
-    <p class="pedagogy-intro">L'ESCAET combine enseignements en présentiel à Aix-en-Provence et modules digitaux à distance, dans un format hybride conçu pour s'adapter aux réalités du terrain et aux exigences des entreprises partenaires.</p>
-    <div class="pedagogy-grid">
-      <div class="pedagogy-card"><div class="pedagogy-num">1</div><h4>Experts du secteur en activité</h4><p>Les cours sont assurés par des professionnels toujours en poste — cadres de la distribution, du pricing, de la communication digitale, du revenue management.</p></div>
-      <div class="pedagogy-card"><div class="pedagogy-num">2</div><h4>Cas réels & challenges</h4><p>Masterclasses, études de cas sectorielles, challenges d'innovation avec des entreprises partenaires — chaque semestre est rythmé par des mises en situation concrètes.</p></div>
-      <div class="pedagogy-card"><div class="pedagogy-num">3</div><h4>Accompagnement individuel</h4><p>Suivi personnalisé dans le placement en stage et en apprentissage, coaching projet professionnel, et tutorat tout au long du parcours.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- MÉTIERS ACCESSIBLES -->
+<!-- 5. MÉTIERS ACCESSIBLES -->
 <section class="section section-warm reveal">
   <div class="section-inner">
     <div class="section-header"><div class="section-eyebrow">Débouchés</div><h2 class="section-title">Les métiers après l'ESCAET</h2></div>
     <div class="careers-grid">
       <div class="career-domain"><h4><span>🎯</span> Commercial & Développement</h4><p>Conseiller voyage, business developer, account manager, chargé de développement, responsable relation client</p></div>
-      <div class="career-domain"><h4><span>🗺️</span> Production & Achats</h4><p>Chef de produit, responsable production touristique, coordinateur transport et logistique, acheteur</p></div>
+      <div class="career-domain"><h4><span>🗺️</span> Production & Achats</h4><p>Chef de produit, responsable production touristique, coordinateur transport, acheteur voyage</p></div>
       <div class="career-domain"><h4><span>📱</span> Marketing & Digital</h4><p>Community manager, responsable webmarketing, chargé de communication, social media manager</p></div>
       <div class="career-domain"><h4><span>📊</span> Revenue Management & Data</h4><p>Revenue manager, yield manager, flight analyst, analyste pricing, inventaire hôtelier</p></div>
-      <div class="career-domain"><h4><span>🎪</span> Événementiel & Projet</h4><p>Chef de projet événementiel (MICE), chargé de projets d'innovation, consultant tourisme</p></div>
-      <div class="career-domain"><h4><span>🏢</span> Direction & Entrepreneuriat</h4><p>Créateur d'entreprise, responsable d'activité, directeur de marque, directeur d'établissement touristique</p></div>
+      <div class="career-domain"><h4><span>🎪</span> Événementiel & Projet</h4><p>Chef de projet MICE, chargé de projets d'innovation, consultant tourisme, organisateur de congrès</p></div>
+      <div class="career-domain"><h4><span>🏢</span> Direction & Entrepreneuriat</h4><p>Créateur d'entreprise, responsable d'activité, directeur de marque, gérant d'agence</p></div>
     </div>
   </div>
 </section>
 
-<!-- VIDÉOS -->
+<!-- 6. RÉSEAU & INNOVATION -->
 <section class="section reveal">
   <div class="section-inner">
-    <div class="section-header">
-      <div class="section-eyebrow">En vidéo</div>
-      <h2 class="section-title">Découvrir l'ESCAET</h2>
-    </div>
-    <div class="videos-carousel">
-      <div class="video-card">
-        <div class="video-thumb">
-          <img src="https://images.unsplash.com/photo-1560439514-4e9645039924?w=600&q=80" alt="">
-          <div class="video-play"><div class="video-play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
-          <span class="video-label">Direction</span>
-        </div>
-        <div class="video-info"><h4>Interview du Directeur</h4><p>La vision de l'ESCAET pour les 5 prochaines années</p></div>
-      </div>
-      <div class="video-card">
-        <div class="video-thumb">
-          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&q=80" alt="">
-          <div class="video-play"><div class="video-play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
-          <span class="video-label">Formation</span>
-        </div>
-        <div class="video-info"><h4>Responsable du programme MBA</h4><p>Les spécificités de la formation tourisme</p></div>
-      </div>
-      <div class="video-card">
-        <div class="video-thumb">
-          <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600&q=80" alt="">
-          <div class="video-play"><div class="video-play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
-          <span class="video-label">Témoignage</span>
-        </div>
-        <div class="video-info"><h4>Sarah, diplômée MBA 2024</h4><p>De l'alternance au poste de Revenue Manager</p></div>
-      </div>
+    <div class="section-header"><div class="section-eyebrow">Écosystème</div><h2 class="section-title">Réseau & Innovation</h2></div>
+    <div class="network-grid">
+      <div class="network-card"><h4>🚀 Un incubateur dédié au voyage</h4><p>Provence Travel Innovation, cofondé avec des acteurs régionaux, a accompagné plus de 30 startups dans la travel tech, le tourisme durable et les solutions de mobilité.</p></div>
+      <div class="network-card"><h4>🎓 3 000+ alumni dans le secteur</h4><p>Les diplômés de l'ESCAET occupent des postes à responsabilité dans les agences, chez les TO, dans l'aérien, l'hôtellerie et les plateformes de distribution du voyage.</p></div>
+      <div class="network-card"><h4>💡 Recherche et prospective</h4><p>L'école organise des rencontres régulières entre professionnels, chercheurs et étudiants pour analyser les mutations du secteur et anticiper les besoins de demain.</p></div>
     </div>
   </div>
 </section>
 
-<!-- GALERIE PHOTOS -->
+<!-- 7. ILS FONT L'ESCAET (étudiants) -->
+<section class="section students-section reveal">
+  <div class="section-inner">
+    <div class="section-header"><div class="section-eyebrow">Parole aux étudiants</div><h2 class="section-title">Ils font l'ESCAET d'aujourd'hui</h2><p class="section-subtitle">Témoignages, visions du secteur et parcours de nos étudiants et jeunes diplômés</p></div>
+    <div class="students-grid">
+      <div class="student-card"><div class="student-header"><div class="student-avatar">ML</div><div><div class="student-name">Marie Lecomte</div><div class="student-program">MBA 2e année — Alternance chez Kuoni</div></div></div><blockquote>« Le tourisme est en pleine mutation. L'alternance m'a permis de voir concrètement comment les TO s'adaptent aux nouvelles attentes des voyageurs, entre personnalisation et responsabilité environnementale. »</blockquote><div class="student-tags"><span class="student-tag">Alternance</span><span class="student-tag">Tour-operating</span><span class="student-tag">Tourisme durable</span></div><a class="student-profile-link" href="fiche-etudiant-prototype.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Voir son profil</a></div>
+      <div class="student-card"><div class="student-header"><div class="student-avatar">TD</div><div><div class="student-name">Thomas Dupont</div><div class="student-program">Diplômé Bachelor 2025 — Travel Designer</div></div></div><blockquote>« La plus grande difficulté quand on débute dans le tourisme, c'est de faire comprendre que c'est un vrai métier de conseil. L'ESCAET m'a donné les armes techniques et la posture professionnelle pour y arriver. »</blockquote><div class="student-tags"><span class="student-tag">Travel design</span><span class="student-tag">Sur-mesure</span><span class="student-tag">Insertion pro</span></div><a class="student-profile-link" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Voir son profil</a></div>
+      <div class="student-card"><div class="student-header"><div class="student-avatar">AN</div><div><div class="student-name">Amira Nasri</div><div class="student-program">MBA 1re année — Stage chez Air France</div></div></div><blockquote>« Ce qui me passionne dans l'aérien, c'est la complexité du revenue management. Mon stage m'a ouvert les yeux sur un monde de données et de stratégie derrière chaque billet vendu. »</blockquote><div class="student-tags"><span class="student-tag">Aérien</span><span class="student-tag">Revenue management</span><span class="student-tag">Data</span></div><a class="student-profile-link" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Voir son profil</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. DÉCOUVRIR L'ESCAET (vidéos) -->
+<section class="section reveal">
+  <div class="section-inner">
+    <div class="section-header"><div class="section-eyebrow">En vidéo</div><h2 class="section-title">Découvrir l'ESCAET</h2></div>
+    <div class="videos-carousel">
+      <div class="video-card"><div class="video-thumb"><img src="https://images.unsplash.com/photo-1560439514-4e9645039924?w=600&q=80" alt=""><div class="video-play"><div class="video-play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><span class="video-label">Direction</span></div><div class="video-info"><h4>Interview du Directeur</h4><p>La vision de l'ESCAET pour les 5 prochaines années</p></div></div>
+      <div class="video-card"><div class="video-thumb"><img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&q=80" alt=""><div class="video-play"><div class="video-play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><span class="video-label">Formation</span></div><div class="video-info"><h4>Responsable du programme MBA</h4><p>Les spécificités de la formation tourisme</p></div></div>
+      <div class="video-card"><div class="video-thumb"><img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600&q=80" alt=""><div class="video-play"><div class="video-play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><span class="video-label">Témoignage</span></div><div class="video-info"><h4>Sarah, diplômée MBA 2024</h4><p>De l'alternance au poste de Revenue Manager</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 9. LA VIE À L'ESCAET (galerie) -->
 <section class="section section-alt reveal">
   <div class="section-inner">
-    <div class="section-header">
-      <div class="section-eyebrow">En images</div>
-      <h2 class="section-title">La vie à l'ESCAET</h2>
-    </div>
-    <div class="gallery-grid" id="gallery">
+    <div class="section-header"><div class="section-eyebrow">En images</div><h2 class="section-title">La vie à l'ESCAET</h2></div>
+    <div class="gallery-grid">
       <div class="gallery-item"><img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=800&q=80" alt="Campus"><div class="gallery-overlay"><span>Le campus</span></div></div>
       <div class="gallery-item"><img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=400&q=80" alt="Cours"><div class="gallery-overlay"><span>En cours</span></div></div>
       <div class="gallery-item"><img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400&q=80" alt="Événement"><div class="gallery-overlay"><span>Événements</span></div></div>
@@ -742,25 +545,10 @@ a:hover { color: var(--teal-light); }
   </div>
 </section>
 
-<!-- RÉSEAU & INNOVATION -->
+<!-- 10. ÉVÉNEMENTS -->
 <section class="section reveal">
   <div class="section-inner">
-    <div class="section-header"><div class="section-eyebrow">Écosystème</div><h2 class="section-title">Réseau & Innovation</h2></div>
-    <div class="network-grid">
-      <div class="network-card"><h4>🚀 Incubateur Travel Innovation</h4><p>Cofondé en 2017 avec Provence Tourisme, l'incubateur a déjà accompagné plus de 30 startups orientées Travel Tech et solutions innovantes pour le secteur.</p></div>
-      <div class="network-card"><h4>🎓 Réseau Alumni actif</h4><p>Plus de 3 000 diplômés occupent des postes clés dans les agences, tour-opérateurs, compagnies aériennes, plateformes de voyage et services d'achats.</p></div>
-      <div class="network-card"><h4>💡 Événements de prospective</h4><p>Forum des Pionniers, Stratégos, conférences sectorielles — des espaces de recherche et d'analyse qui nourrissent l'expertise de l'école et de ses partenaires.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ÉVÉNEMENTS -->
-<section class="section reveal">
-  <div class="section-inner">
-    <div class="section-header">
-      <div class="section-eyebrow">Agenda</div>
-      <h2 class="section-title">Événements & actualités</h2>
-    </div>
+    <div class="section-header"><div class="section-eyebrow">Agenda</div><h2 class="section-title">Événements & actualités</h2></div>
     <div class="events-list">
       <div class="event-card"><div class="event-date-block"><div class="event-date-day">28</div><div class="event-date-month">Juin</div></div><div class="event-info"><h4>Journée Portes Ouvertes</h4><p>Venez découvrir le campus, rencontrer les équipes pédagogiques et échanger avec nos étudiants.</p><span class="event-type">Portes ouvertes</span><button class="event-register-btn" onclick="openModal('eventModal')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>S'inscrire</button></div></div>
       <div class="event-card"><div class="event-date-block"><div class="event-date-day">05</div><div class="event-date-month">Juil.</div></div><div class="event-info"><h4>Forum Recrutement Tourisme</h4><p>30 entreprises du secteur présentes pour des entretiens de recrutement et de stage.</p><span class="event-type event-type-recruit">Recrutement</span><button class="event-register-btn" onclick="openModal('eventModal')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>S'inscrire</button></div></div>
@@ -769,48 +557,29 @@ a:hover { color: var(--teal-light); }
   </div>
 </section>
 
-<!-- ÉTUDIANTS -->
-<section class="section students-section reveal">
-  <div class="section-inner">
-    <div class="section-header">
-      <div class="section-eyebrow">Parole aux étudiants</div>
-      <h2 class="section-title">Ils font l'ESCAET d'aujourd'hui</h2>
-      <p class="section-subtitle">Témoignages, visions du secteur et parcours de nos étudiants et jeunes diplômés</p>
-    </div>
-    <div class="students-grid">
-      <div class="student-card"><div class="student-header"><div class="student-avatar">ML</div><div><div class="student-name">Marie Lecomte</div><div class="student-program">MBA 2e année — Alternance chez Kuoni</div></div></div><blockquote>« Le tourisme est en pleine mutation. L'alternance m'a permis de voir concrètement comment les TO s'adaptent aux nouvelles attentes des voyageurs, entre personnalisation et responsabilité environnementale. »</blockquote><div class="student-tags"><span class="student-tag">Alternance</span><span class="student-tag">Tour-operating</span><span class="student-tag">Tourisme durable</span></div><a class="student-profile-link" href="fiche-etudiant-prototype.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Voir son profil</a></div>
-      <div class="student-card"><div class="student-header"><div class="student-avatar">TD</div><div><div class="student-name">Thomas Dupont</div><div class="student-program">Diplômé Bachelor 2025 — Travel Designer</div></div></div><blockquote>« La plus grande difficulté quand on débute dans le tourisme, c'est de faire comprendre que c'est un vrai métier de conseil. L'ESCAET m'a donné les armes techniques et la posture professionnelle pour y arriver. »</blockquote><div class="student-tags"><span class="student-tag">Travel design</span><span class="student-tag">Sur-mesure</span><span class="student-tag">Insertion pro</span></div><a class="student-profile-link" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Voir son profil</a></div>
-      <div class="student-card"><div class="student-header"><div class="student-avatar">AN</div><div><div class="student-name">Amira Nasri</div><div class="student-program">MBA 1re année — Stage chez Air France</div></div></div><blockquote>« Ce qui me passionne dans l'aérien, c'est la complexité du revenue management. Mon stage m'a ouvert les yeux sur un monde de données et de stratégie derrière chaque billet vendu. »</blockquote><div class="student-tags"><span class="student-tag">Aérien</span><span class="student-tag">Revenue management</span><span class="student-tag">Data</span></div><a class="student-profile-link" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Voir son profil</a></div>
-    </div>
-  </div>
-</section>
-
-<!-- ACCESSIBILITÉ -->
+<!-- 11. ACCESSIBILITÉ -->
 <section class="section section-alt reveal">
   <div class="section-inner">
     <div class="section-header"><div class="section-eyebrow">Inclusion</div><h2 class="section-title">Accessibilité & accueil des personnes en situation de handicap</h2></div>
     <div class="access-content">
-      <p style="font-size:0.92rem;color:var(--text);line-height:1.6;margin-bottom:16px">L'école met en place une démarche inclusive dès la phase de candidature, avec des aménagements adaptés à chaque situation.</p>
+      <p style="font-size:0.92rem;color:var(--text);line-height:1.6;margin-bottom:16px">L'ESCAET s'engage dans une démarche inclusive à chaque étape du parcours, de la candidature jusqu'au placement en entreprise.</p>
       <div class="access-list">
-        <div class="access-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Entretien individuel systématique à la candidature</span></div>
-        <div class="access-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Étude personnalisée de faisabilité pédagogique</span></div>
-        <div class="access-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Outils de visioconférence et tiers-temps d'évaluation</span></div>
-        <div class="access-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Locaux accessibles au rez-de-chaussée</span></div>
-        <div class="access-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Accompagnement ciblé pour la recherche de stage et d'alternance</span></div>
-        <div class="access-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Sanitaires et espaces communs adaptés</span></div>
+        <div class="access-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Entretien individuel dès la candidature</span></div>
+        <div class="access-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Étude de faisabilité pédagogique personnalisée</span></div>
+        <div class="access-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Cours accessibles en visio + tiers-temps aux évaluations</span></div>
+        <div class="access-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Locaux et sanitaires adaptés</span></div>
+        <div class="access-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Accompagnement renforcé pour la recherche de stage/alternance</span></div>
+        <div class="access-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Référent handicap joignable à tout moment</span></div>
       </div>
-      <div class="access-contact">Un référent handicap est disponible pour toute question — <a href="mailto:pedagogie@escaet.fr">contactez l'école</a></div>
+      <div class="access-contact">Pour toute question relative à l'accessibilité — <a href="mailto:pedagogie@escaet.fr">contactez l'école</a></div>
     </div>
   </div>
 </section>
 
-<!-- ARTICLES -->
+<!-- 12. ARTICLES TOURMAG -->
 <section class="section reveal">
   <div class="section-inner">
-    <div class="section-header">
-      <div class="section-eyebrow">Sur TourMaG.com</div>
-      <h2 class="section-title">Les derniers articles</h2>
-    </div>
+    <div class="section-header"><div class="section-eyebrow">Sur TourMaG.com</div><h2 class="section-title">Les derniers articles</h2></div>
     <div class="articles-scroll">
       <a class="article-card" href="https://www.tourmag.com" target="_blank"><div class="article-thumb"><img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=400&q=80" alt=""></div><div class="article-body"><div class="article-date">15 juin 2026</div><h4>Moins d'apprentis, plus de seniors : le défi de la formation pour les opérateurs de voyage</h4><p>Le secteur du tourisme fait face à une évolution démographique inédite dans ses effectifs en formation…</p></div></a>
       <a class="article-card" href="https://www.tourmag.com" target="_blank"><div class="article-thumb"><img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=400&q=80" alt=""></div><div class="article-body"><div class="article-date">8 juin 2026</div><h4>L'ESCAET signe un partenariat avec Amadeus pour l'intégration des GDS dans ses cursus</h4><p>Un accord qui renforce l'ancrage technologique de la formation et l'employabilité des diplômés…</p></div></a>
@@ -820,7 +589,7 @@ a:hover { color: var(--teal-light); }
   </div>
 </section>
 
-<!-- COORDONNÉES -->
+<!-- 13. COORDONNÉES & ACCÈS -->
 <section class="section section-alt reveal">
   <div class="section-inner">
     <div class="section-header"><div class="section-eyebrow">Contact</div><h2 class="section-title">Coordonnées & accès</h2></div>
@@ -833,8 +602,8 @@ a:hover { color: var(--teal-light); }
       </div>
       <div class="coords-site">
         <h4>Site internet officiel</h4>
-        <p>Candidatures en ligne, tarifs, journées portes ouvertes et informations détaillées sur les programmes.</p>
-        <a href="https://www.escaet.fr" target="_blank" class="btn btn-teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/></svg>Visiter escaet.fr</a>
+        <p>Candidatures en ligne, tarifs et informations détaillées sur les programmes.</p>
+        <a href="https://www.escaet.fr" target="_blank" class="btn btn-teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Visiter escaet.fr</a>
       </div>
     </div>
   </div>
@@ -842,333 +611,62 @@ a:hover { color: var(--teal-light); }
 
 </div><!-- /content-wrapper -->
 
-<!-- CTA ONGLET LATÉRAL (desktop) -->
+<!-- SIDE CTA -->
 <div class="side-cta"><button class="side-cta-btn" onclick="openModal('contactModal')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Contacter l'ESCAET</button></div>
 
 <!-- MODAL CONTACT -->
-<div class="modal-overlay" id="contactModal">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal('contactModal')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
-    <div class="form-fields" id="contactFields">
-      <h3>Contacter l'ESCAET</h3>
-      <p>Recevez des informations sur les formations, les conditions d'admission et les prochains événements.</p>
-      <div class="form-group"><label>Nom complet</label><input type="text" placeholder="Votre nom et prénom"></div>
-      <div class="form-group"><label>Email</label><input type="email" placeholder="votre@email.com"></div>
-      <div class="form-group"><label>Téléphone</label><input type="tel" placeholder="06 00 00 00 00"></div>
-      <div class="form-group"><label>Vous êtes</label><select><option value="">Sélectionnez votre profil</option><option>Étudiant(e)</option><option>Professionnel(le) du tourisme</option><option>En reconversion</option><option>Entreprise / recruteur</option><option>Autre</option></select></div>
-      <div class="form-group"><label>Formation qui vous intéresse</label><select><option value="">Sélectionnez une formation</option><option>Bachelor spécialisé Travel</option><option>MBA International Travel Management</option><option>Parcours certifiants courts</option><option>Reconversion professionnelle</option></select></div>
-      <div class="form-group"><label>Votre message</label><textarea placeholder="Décrivez votre projet ou posez vos questions…"></textarea></div>
-      <button class="btn btn-coral" onclick="submitForm('contactModal')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>Envoyer ma demande</button>
-    </div>
-    <div class="form-success" id="contactSuccess">
-      <div class="form-success-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
-      <h4>Demande envoyée !</h4>
-      <p>L'ESCAET vous recontactera sous 48h. Pensez à vérifier vos spams.</p>
-    </div>
-  </div>
-</div>
+<div class="modal-overlay" id="contactModal"><div class="modal"><button class="modal-close" onclick="closeModal('contactModal')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button><div class="form-fields" id="contactFields"><h3>Contacter l'ESCAET</h3><p>Recevez des informations sur les formations, les conditions d'admission et les prochains événements.</p><div class="form-group"><label>Nom complet</label><input type="text" placeholder="Votre nom et prénom"></div><div class="form-group"><label>Email</label><input type="email" placeholder="votre@email.com"></div><div class="form-group"><label>Téléphone</label><input type="tel" placeholder="06 00 00 00 00"></div><div class="form-group"><label>Vous êtes</label><select><option value="">Sélectionnez votre profil</option><option>Étudiant(e)</option><option>Professionnel(le) du tourisme</option><option>En reconversion</option><option>Entreprise / recruteur</option><option>Autre</option></select></div><div class="form-group"><label>Formation qui vous intéresse</label><select><option value="">Sélectionnez une formation</option><option>Bachelor spécialisé Travel</option><option>MBA International Travel Management</option><option>Parcours certifiants courts</option><option>Reconversion professionnelle</option></select></div><div class="form-group"><label>Votre message</label><textarea placeholder="Décrivez votre projet ou posez vos questions…"></textarea></div><button class="btn btn-coral" onclick="submitForm('contactModal')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>Envoyer ma demande</button></div><div class="form-success" id="contactSuccess"><div class="form-success-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div><h4>Demande envoyée !</h4><p>L'ESCAET vous recontactera sous 48h.</p></div></div></div>
 
 <!-- MODAL ÉVÉNEMENT -->
-<div class="modal-overlay" id="eventModal">
-  <div class="modal modal-small">
-    <button class="modal-close" onclick="closeModal('eventModal')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
-    <div class="form-fields" id="eventFields">
-      <h3>S'inscrire à l'événement</h3>
-      <p>Réservez votre place, c'est gratuit et sans engagement.</p>
-      <div class="form-group"><label>Nom complet</label><input type="text" placeholder="Votre nom et prénom"></div>
-      <div class="form-group"><label>Email</label><input type="email" placeholder="votre@email.com"></div>
-      <div class="form-group"><label>Téléphone</label><input type="tel" placeholder="06 00 00 00 00"></div>
-      <button class="btn btn-coral" onclick="submitForm('eventModal')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Confirmer mon inscription</button>
-    </div>
-    <div class="form-success" id="eventSuccess">
-      <div class="form-success-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
-      <h4>Inscription confirmée !</h4>
-      <p>Vous recevrez un email de confirmation avec les détails pratiques.</p>
-    </div>
-  </div>
-</div>
-
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox">
-  <button class="lightbox-close" onclick="closeLightbox()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
-  <button class="lightbox-nav lightbox-prev" onclick="navLightbox(-1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
-  <img id="lightboxImg" src="" alt="">
-  <button class="lightbox-nav lightbox-next" onclick="navLightbox(1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
-  <div class="lightbox-counter" id="lightboxCounter"></div>
-</div>
-
-<!-- VIDEO MODAL -->
-<div class="video-modal" id="videoModal">
-  <div class="video-modal-inner">
-    <button class="video-modal-close" onclick="closeVideo()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
-    <iframe id="videoFrame" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-  </div>
-</div>
+<div class="modal-overlay" id="eventModal"><div class="modal modal-small"><button class="modal-close" onclick="closeModal('eventModal')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button><div class="form-fields" id="eventFields"><h3>S'inscrire à l'événement</h3><p>Réservez votre place, c'est gratuit et sans engagement.</p><div class="form-group"><label>Nom complet</label><input type="text" placeholder="Votre nom et prénom"></div><div class="form-group"><label>Email</label><input type="email" placeholder="votre@email.com"></div><div class="form-group"><label>Téléphone</label><input type="tel" placeholder="06 00 00 00 00"></div><button class="btn btn-coral" onclick="submitForm('eventModal')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Confirmer mon inscription</button></div><div class="form-success" id="eventSuccess"><div class="form-success-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div><h4>Inscription confirmée !</h4><p>Vous recevrez un email de confirmation.</p></div></div></div>
 
 <script>
-// ===== SCROLL REVEAL =====
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-}, { threshold: 0.15 });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+// REVEAL
+var obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target)}})},{threshold:0.15});
+document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el)});
 
-// ===== COUNTER ANIMATION =====
-const counterObserver = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (!e.isIntersecting) return;
-    const el = e.target;
-    const target = +el.dataset.target;
-    const suffix = el.dataset.suffix || '';
-    const duration = 1500;
-    const start = performance.now();
-    function tick(now) {
-      const p = Math.min((now - start) / duration, 1);
-      const ease = 1 - Math.pow(1 - p, 3);
-      el.textContent = Math.round(target * ease) + suffix;
-      if (p < 1) requestAnimationFrame(tick);
-    }
-    requestAnimationFrame(tick);
-    counterObserver.unobserve(el);
-  });
-}, { threshold: 0.5 });
-document.querySelectorAll('.key-figure-value').forEach(el => counterObserver.observe(el));
+// COUNTERS
+var cobs=new IntersectionObserver(function(e){e.forEach(function(x){if(!x.isIntersecting)return;var el=x.target,t=+el.dataset.target,s=el.dataset.suffix||'',st=performance.now();function tick(n){var p=Math.min((n-st)/1500,1),v=1-Math.pow(1-p,3);el.textContent=Math.round(t*v)+s;if(p<1)requestAnimationFrame(tick)}requestAnimationFrame(tick);cobs.unobserve(el)})},{threshold:0.5});
+document.querySelectorAll('.key-figure-value').forEach(function(el){cobs.observe(el)});
 
-// ===== FORMATIONS FILTER =====
-function filterFormations(btn, type) {
-  document.querySelectorAll('.formations-tab').forEach(t => t.classList.remove('active'));
-  btn.classList.add('active');
-  document.querySelectorAll('.formation-card').forEach(card => {
-    if (type === 'all' || card.dataset.type.includes(type)) {
-      card.classList.remove('hidden');
-    } else {
-      card.classList.add('hidden');
-    }
-  });
-}
+// FORMATIONS
+function filterFormations(b,t){document.querySelectorAll('.formations-tab').forEach(function(x){x.classList.remove('active')});b.classList.add('active');document.querySelectorAll('.formation-card').forEach(function(c){if(t==='all'||c.dataset.type.includes(t)){c.classList.remove('hidden')}else{c.classList.add('hidden')}})}
+function toggleDetails(b){var d=b.nextElementSibling,o=d.classList.contains('open');document.querySelectorAll('.formation-details.open').forEach(function(x){x.classList.remove('open')});document.querySelectorAll('.formation-cta.active').forEach(function(x){x.classList.remove('active');x.innerHTML='En savoir plus <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>'});if(!o){d.classList.add('open');b.classList.add('active');b.innerHTML='Réduire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>'}}
 
-// ===== FORMATION DETAILS TOGGLE =====
-function toggleDetails(btn) {
-  const details = btn.nextElementSibling;
-  const isOpen = details.classList.contains('open');
-  // Close all
-  document.querySelectorAll('.formation-details.open').forEach(d => d.classList.remove('open'));
-  document.querySelectorAll('.formation-cta.active').forEach(b => { b.classList.remove('active'); b.innerHTML = 'En savoir plus <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>'; });
-  if (!isOpen) {
-    details.classList.add('open');
-    btn.classList.add('active');
-    btn.innerHTML = 'Réduire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>';
-  }
-}
+// MODALS
+function openModal(id){document.getElementById(id).classList.add('active');document.body.style.overflow='hidden'}
+function closeModal(id){var m=document.getElementById(id);m.classList.remove('active');document.body.style.overflow='';setTimeout(function(){var f=m.querySelector('.form-fields'),s=m.querySelector('.form-success');if(f&&s){f.classList.remove('hide');s.classList.remove('show')}},300)}
+function submitForm(id){var m=document.getElementById(id);m.querySelector('.form-fields').classList.add('hide');m.querySelector('.form-success').classList.add('show')}
+document.querySelectorAll('.modal-overlay').forEach(function(m){m.addEventListener('click',function(e){if(e.target===this)closeModal(this.id)})});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')document.querySelectorAll('.modal-overlay.active').forEach(function(m){closeModal(m.id)})});
 
-// ===== MODALS =====
-function openModal(id) {
-  document.getElementById(id).classList.add('active');
-  document.body.style.overflow = 'hidden';
-}
-function closeModal(id) {
-  const modal = document.getElementById(id);
-  modal.classList.remove('active');
-  document.body.style.overflow = '';
-  // Reset form after close
-  setTimeout(() => {
-    const fields = modal.querySelector('.form-fields');
-    const success = modal.querySelector('.form-success');
-    if (fields && success) { fields.classList.remove('hide'); success.classList.remove('show'); }
-  }, 300);
-}
-function submitForm(modalId) {
-  const modal = document.getElementById(modalId);
-  modal.querySelector('.form-fields').classList.add('hide');
-  modal.querySelector('.form-success').classList.add('show');
-}
-document.querySelectorAll('.modal-overlay').forEach(m => {
-  m.addEventListener('click', function(e) { if (e.target === this) closeModal(this.id); });
-});
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') {
-    document.querySelectorAll('.modal-overlay.active').forEach(m => closeModal(m.id));
-    closeLightbox();
-    closeVideo();
-  }
-});
-
-// ===== LIGHTBOX =====
-const galleryImages = [
-  'https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=1200&q=80',
-  'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1200&q=80',
-  'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&q=80',
-  'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1200&q=80',
-  'https://images.unsplash.com/photo-1559223607-a43c990c692c?w=1200&q=80',
-  'https://images.unsplash.com/photo-1577896851231-70ef18881754?w=1200&q=80'
-];
-let currentImg = 0;
-function openLightbox(i) {
-  currentImg = i;
-  updateLightbox();
-  document.getElementById('lightbox').classList.add('active');
-  document.body.style.overflow = 'hidden';
-}
-function closeLightbox() {
-  document.getElementById('lightbox').classList.remove('active');
-  document.body.style.overflow = '';
-}
-function navLightbox(dir) {
-  currentImg = (currentImg + dir + galleryImages.length) % galleryImages.length;
-  updateLightbox();
-}
-function updateLightbox() {
-  document.getElementById('lightboxImg').src = galleryImages[currentImg];
-  document.getElementById('lightboxCounter').textContent = (currentImg + 1) + ' / ' + galleryImages.length;
-}
-
-// ===== VIDEO MODAL =====
-function openVideo(youtubeId) {
-  document.getElementById('videoFrame').src = 'https://www.youtube.com/embed/' + youtubeId + '?autoplay=1';
-  document.getElementById('videoModal').classList.add('active');
-  document.body.style.overflow = 'hidden';
-}
-function closeVideo() {
-  document.getElementById('videoFrame').src = '';
-  document.getElementById('videoModal').classList.remove('active');
-  document.body.style.overflow = '';
-}
-document.getElementById('videoModal').addEventListener('click', function(e) {
-  if (e.target === this) closeVideo();
-});
-
-// ===== IFRAME POSTMESSAGE (communication avec la page TourMaG parente) =====
-(function() {
-  var RESIZE_TYPE = 'plateforme-resize';
-  var MODAL_OPEN_TYPE = 'plateforme-modal-open';
-  var MODAL_CLOSE_TYPE = 'plateforme-modal-close';
-
-  // Envoie la hauteur du contenu au parent (mesure le wrapper, pas le scrollHeight global)
-  var contentWrapper = document.getElementById('content-wrapper');
-  function sendHeight() {
-    var height = contentWrapper ? contentWrapper.offsetHeight : document.documentElement.scrollHeight;
-    window.parent.postMessage({ type: RESIZE_TYPE, height: height }, '*');
-  }
-
-  // Signale l'ouverture d'une modale au parent
-  function signalModalOpen() {
-    window.parent.postMessage({ type: MODAL_OPEN_TYPE }, '*');
-  }
-
-  // Signale la fermeture d'une modale au parent
-  function signalModalClose() {
-    window.parent.postMessage({ type: MODAL_CLOSE_TYPE }, '*');
-  }
-
-  // Envoi initial + périodique (toutes les 2s pour capter les changements de hauteur)
-  sendHeight();
-  setInterval(sendHeight, 2000);
-
-  // Envoi aussi après chargement complet (images, fonts)
-  window.addEventListener('load', function() {
-    setTimeout(sendHeight, 500);
-  });
-
-  // Observer les changements de DOM (sections dépliées, etc.)
-  if (window.MutationObserver) {
-    new MutationObserver(function() {
-      setTimeout(sendHeight, 100);
-    }).observe(document.body, { childList: true, subtree: true, attributes: true });
-  }
-
-  // Hook sur les fonctions de fermeture de modales existantes
-  var _closeModal = window.closeModal;
-  window.closeModal = function(id) {
-    _closeModal(id);
-    signalModalClose();
-    setTimeout(sendHeight, 300);
-  };
-
-  var _openLightbox = window.openLightbox;
-  window.openLightbox = function(i) {
-    _openLightbox(i);
-    signalModalOpen();
-  };
-
-  var _closeLightbox = window.closeLightbox;
-  window.closeLightbox = function() {
-    _closeLightbox();
-    signalModalClose();
-  };
-
-  var _openVideo = window.openVideo;
-  window.openVideo = function(id) {
-    _openVideo(id);
-    signalModalOpen();
-  };
-
-  var _closeVideo = window.closeVideo;
-  window.closeVideo = function() {
-    _closeVideo();
-    signalModalClose();
-  };
-
-  // ===== CTA — positionnement simulé "fixed" dans l'iframe =====
-  var sideCta = document.querySelector('.side-cta');
-  var lastParentScroll = { scrollY: 0, iframeTop: 0, viewportHeight: window.innerHeight };
-
-  // Écoute la position de scroll envoyée par le parent
-  window.addEventListener('message', function(e) {
-    if (e.data && e.data.type === 'plateforme-parent-scroll') {
-      lastParentScroll = {
-        scrollY: e.data.parentScrollY,
-        iframeTop: e.data.iframeTop,
-        viewportHeight: e.data.viewportHeight
-      };
-
-      // Positionne l'onglet latéral (desktop)
-      if (sideCta) {
-        var midViewport = e.data.parentScrollY - e.data.iframeTop + (e.data.viewportHeight / 2) - 100;
-        sideCta.style.top = midViewport + 'px';
-        sideCta.style.transform = 'translateY(-50%)';
-        if (!sideCta.classList.contains('visible')) sideCta.classList.add('visible');
-      }
-
-      // Repositionne les modales ouvertes
-      document.querySelectorAll('.modal-overlay.active, .lightbox.active, .video-modal.active').forEach(function(modal) {
-        positionModal(modal);
-      });
+// IFRAME POSTMESSAGE
+(function(){
+  var R='plateforme-resize',MO='plateforme-modal-open',MC='plateforme-modal-close';
+  var w=document.getElementById('content-wrapper');
+  function sendH(){var h=w?w.offsetHeight:document.documentElement.scrollHeight;window.parent.postMessage({type:R,height:h},'*')}
+  function sigO(){window.parent.postMessage({type:MO},'*')}
+  function sigC(){window.parent.postMessage({type:MC},'*')}
+  sendH();setInterval(sendH,2000);
+  window.addEventListener('load',function(){setTimeout(sendH,500)});
+  if(window.MutationObserver){new MutationObserver(function(){setTimeout(sendH,100)}).observe(document.body,{childList:true,subtree:true,attributes:true})}
+  var _o=window.openModal;window.openModal=function(id){_o(id);var m=document.getElementById(id);if(m)posM(m);sigO()};
+  var _c=window.closeModal;window.closeModal=function(id){_c(id);sigC();setTimeout(sendH,300)};
+  var sc=document.querySelector('.side-cta');
+  var ls={scrollY:0,iframeTop:0,viewportHeight:window.innerHeight};
+  window.addEventListener('message',function(e){
+    if(e.data&&e.data.type==='plateforme-parent-scroll'){
+      ls={scrollY:e.data.parentScrollY,iframeTop:e.data.iframeTop,viewportHeight:e.data.viewportHeight};
+      if(sc){var mid=e.data.parentScrollY-e.data.iframeTop+(e.data.viewportHeight/2)-100;sc.style.top=mid+'px';sc.style.transform='translateY(-50%)';if(!sc.classList.contains('visible'))sc.classList.add('visible')}
+      document.querySelectorAll('.modal-overlay.active').forEach(function(m){posM(m)});
     }
   });
-
-  // Positionne une modale sur la zone visible du viewport
-  function positionModal(modal) {
-    var topInIframe = lastParentScroll.scrollY - lastParentScroll.iframeTop;
-    if (topInIframe < 0) topInIframe = 0;
-    modal.style.top = topInIframe + 'px';
-    modal.style.height = lastParentScroll.viewportHeight + 'px';
-  }
-
-  // Hook openModal pour positionner avant affichage
-  var _openModal = window.openModal;
-  window.openModal = function(id) {
-    _openModal(id);
-    var modal = document.getElementById(id);
-    if (modal) positionModal(modal);
-    signalModalOpen();
-  };
-
-  // Fallback si pas dans une iframe (ouverture directe) : comportement fixed classique
-  if (window === window.parent) {
-    if (sideCta) {
-      sideCta.style.position = 'fixed';
-      sideCta.style.top = 'calc(50% - 100px)';
-      sideCta.style.transform = 'translateY(-50%)';
-      setTimeout(function() { sideCta.classList.add('visible'); }, 1000);
-    }
-    // Remettre les modales en fixed pour le standalone
-    document.querySelectorAll('.modal-overlay, .lightbox, .video-modal').forEach(function(m) {
-      m.style.position = 'fixed';
-      m.style.top = '0';
-      m.style.height = '100%';
-    });
+  function posM(m){var t=ls.scrollY-ls.iframeTop;if(t<0)t=0;m.style.top=t+'px';m.style.height=ls.viewportHeight+'px'}
+  if(window===window.parent){
+    if(sc){sc.style.position='fixed';sc.style.top='calc(50% - 100px)';sc.style.transform='translateY(-50%)';setTimeout(function(){sc.classList.add('visible')},1000)}
+    document.querySelectorAll('.modal-overlay').forEach(function(m){m.style.position='fixed';m.style.top='0';m.style.height='100%'});
   }
 })();
 </script>
-
 </body>
 </html>
