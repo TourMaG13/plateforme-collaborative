@@ -322,6 +322,37 @@ a:hover { color: var(--teal-light); }
 }
 .side-cta-btn svg { width: 18px; height: 18px; transform: rotate(90deg); flex-shrink: 0; }
 
+/* CTA mobile — barre en bas */
+.mobile-cta {
+  display: none;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  opacity: 0;
+  transition: opacity 0.4s var(--ease);
+}
+.mobile-cta.visible { opacity: 1; }
+.mobile-cta-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 20px;
+  background: var(--coral);
+  color: var(--white);
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  width: 100%;
+  box-shadow: 0 -4px 16px rgba(27,42,74,0.15);
+}
+.mobile-cta-inner:hover { background: var(--coral-hover); }
+.mobile-cta-inner svg { width: 18px; height: 18px; flex-shrink: 0; }
+
 /* ===== MODALES ===== */
 .modal-overlay { display: none; position: absolute; left: 0; right: 0; top: 0; background: rgba(27,42,74,0.5); backdrop-filter: blur(4px); z-index: 200; align-items: center; justify-content: center; padding: 32px; }
 .modal-overlay.active { display: flex; }
@@ -389,6 +420,9 @@ a:hover { color: var(--teal-light); }
   .key-figures-inner { grid-template-columns: repeat(2, 1fr); }
   .section { padding: 48px 20px; }
   .section-title { font-size: 1.4rem; }
+  .formations-tabs { width: 100%; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .formations-tabs::-webkit-scrollbar { display: none; }
+  .formations-tab { flex-shrink: 0; }
   .formations-grid { grid-template-columns: 1fr; }
   .videos-carousel { grid-template-columns: 1fr; }
   .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: 160px 160px 160px; }
@@ -396,6 +430,8 @@ a:hover { color: var(--teal-light); }
   .events-list { grid-template-columns: 1fr; }
   .students-grid { grid-template-columns: 1fr; }
   .article-card { flex: 0 0 260px; }
+  .side-cta { display: none !important; }
+  .mobile-cta { display: block; }
 }
 </style>
 </head>
@@ -626,8 +662,11 @@ a:hover { color: var(--teal-light); }
 
 </div><!-- /content-wrapper -->
 
-<!-- CTA ONGLET LATÉRAL -->
+<!-- CTA ONGLET LATÉRAL (desktop) -->
 <div class="side-cta"><button class="side-cta-btn" onclick="openModal('contactModal')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Contacter l'ESCAET</button></div>
+
+<!-- CTA BARRE MOBILE -->
+<div class="mobile-cta"><button class="mobile-cta-inner" onclick="openModal('contactModal')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Contacter l'ESCAET</button></div>
 
 <!-- MODAL CONTACT -->
 <div class="modal-overlay" id="contactModal">
@@ -891,8 +930,9 @@ document.getElementById('videoModal').addEventListener('click', function(e) {
     signalModalClose();
   };
 
-  // ===== ONGLET LATÉRAL — positionnement simulé "fixed" dans l'iframe =====
+  // ===== CTA — positionnement simulé "fixed" dans l'iframe =====
   var sideCta = document.querySelector('.side-cta');
+  var mobileCta = document.querySelector('.mobile-cta');
   var lastParentScroll = { scrollY: 0, iframeTop: 0, viewportHeight: window.innerHeight };
 
   // Écoute la position de scroll envoyée par le parent
@@ -904,12 +944,19 @@ document.getElementById('videoModal').addEventListener('click', function(e) {
         viewportHeight: e.data.viewportHeight
       };
 
-      // Positionne l'onglet latéral
+      // Positionne l'onglet latéral (desktop)
       if (sideCta) {
         var midViewport = e.data.parentScrollY - e.data.iframeTop + (e.data.viewportHeight / 2) - 100;
         sideCta.style.top = midViewport + 'px';
         sideCta.style.transform = 'translateY(-50%)';
         if (!sideCta.classList.contains('visible')) sideCta.classList.add('visible');
+      }
+
+      // Positionne la barre mobile en bas du viewport
+      if (mobileCta) {
+        var bottomViewport = e.data.parentScrollY - e.data.iframeTop + e.data.viewportHeight;
+        mobileCta.style.top = (bottomViewport - 48) + 'px';
+        if (!mobileCta.classList.contains('visible')) mobileCta.classList.add('visible');
       }
 
       // Repositionne les modales ouvertes
@@ -943,6 +990,12 @@ document.getElementById('videoModal').addEventListener('click', function(e) {
       sideCta.style.top = 'calc(50% - 100px)';
       sideCta.style.transform = 'translateY(-50%)';
       setTimeout(function() { sideCta.classList.add('visible'); }, 1000);
+    }
+    if (mobileCta) {
+      mobileCta.style.position = 'fixed';
+      mobileCta.style.top = 'auto';
+      mobileCta.style.bottom = '0';
+      setTimeout(function() { mobileCta.classList.add('visible'); }, 1000);
     }
     // Remettre les modales en fixed pour le standalone
     document.querySelectorAll('.modal-overlay, .lightbox, .video-modal').forEach(function(m) {
