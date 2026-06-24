@@ -906,7 +906,7 @@ document.getElementById('videoModal').addEventListener('click', function(e) {
 
       // Positionne l'onglet latéral
       if (sideCta) {
-        var midViewport = e.data.parentScrollY - e.data.iframeTop + (e.data.viewportHeight / 2);
+        var midViewport = e.data.parentScrollY - e.data.iframeTop + (e.data.viewportHeight / 2) - 100;
         sideCta.style.top = midViewport + 'px';
         sideCta.style.transform = 'translateY(-50%)';
         if (!sideCta.classList.contains('visible')) sideCta.classList.add('visible');
@@ -940,7 +940,7 @@ document.getElementById('videoModal').addEventListener('click', function(e) {
   if (window === window.parent) {
     if (sideCta) {
       sideCta.style.position = 'fixed';
-      sideCta.style.top = '50%';
+      sideCta.style.top = 'calc(50% - 100px)';
       sideCta.style.transform = 'translateY(-50%)';
       setTimeout(function() { sideCta.classList.add('visible'); }, 1000);
     }
