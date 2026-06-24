@@ -289,6 +289,72 @@ a:hover { color: var(--teal-light); }
 .article-body h4 { font-size: 0.92rem; font-weight: 700; color: var(--navy); line-height: 1.4; margin-bottom: 8px; }
 .article-body p { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.5; }
 
+/* ===== TABLEAU COMPARATIF ===== */
+.compare-table-wrap { overflow-x: auto; margin-top: 32px; border-radius: var(--radius-lg); border: 1px solid var(--border); }
+.compare-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+.compare-table thead { background: var(--navy); color: var(--white); }
+.compare-table th { padding: 14px 18px; font-weight: 700; text-align: left; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; }
+.compare-table td { padding: 14px 18px; border-bottom: 1px solid var(--border); color: var(--text); vertical-align: top; }
+.compare-table tbody tr:last-child td { border-bottom: none; }
+.compare-table tbody tr:hover { background: var(--teal-bg); }
+.compare-table .ct-prog { font-weight: 700; color: var(--navy); }
+
+/* ===== INDICATEURS D'INSERTION ===== */
+.insertion-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.insertion-card { background: var(--white); border-radius: var(--radius-lg); border: 1px solid var(--border); padding: 28px; }
+.insertion-card-title { font-size: 0.92rem; font-weight: 700; color: var(--navy); margin-bottom: 18px; display: flex; align-items: center; gap: 8px; }
+.insertion-card-title .ic-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.ic-dot-alt { background: #3B82F6; }
+.ic-dot-app { background: var(--teal); }
+.insertion-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--light-bg); }
+.insertion-row:last-child { border-bottom: none; }
+.insertion-label { font-size: 0.82rem; color: var(--text-secondary); }
+.insertion-value { font-family: var(--font-display); font-size: 1.1rem; font-weight: 800; color: var(--teal); }
+.insertion-source { font-size: 0.75rem; color: var(--text-light); font-style: italic; text-align: center; margin-top: 20px; }
+
+/* ===== PÉDAGOGIE ===== */
+.pedagogy-intro { font-family: var(--font-serif); font-size: 1.05rem; line-height: 1.7; color: var(--text); max-width: 860px; margin-bottom: 32px; }
+.pedagogy-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.pedagogy-card { background: var(--white); border-radius: var(--radius-lg); border: 1px solid var(--border); padding: 28px; transition: all 0.3s var(--ease); position: relative; }
+.pedagogy-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.pedagogy-num { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: var(--radius-sm); background: var(--teal-bg); color: var(--teal); font-weight: 800; font-size: 0.95rem; margin-bottom: 16px; }
+.pedagogy-card h4 { font-size: 0.95rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+.pedagogy-card p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.55; }
+
+/* ===== MÉTIERS ACCESSIBLES ===== */
+.careers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.career-domain { background: var(--white); border-radius: var(--radius-lg); border: 1px solid var(--border); padding: 24px; transition: all 0.3s var(--ease); }
+.career-domain:hover { border-color: var(--teal); box-shadow: var(--shadow-sm); }
+.career-domain h4 { font-size: 0.9rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+.career-domain h4 span { font-size: 1.1rem; }
+.career-domain p { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.5; }
+
+/* ===== RÉSEAU & INNOVATION ===== */
+.network-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.network-card { background: var(--white); border-radius: var(--radius-lg); border: 1px solid var(--border); padding: 28px; transition: all 0.3s var(--ease); }
+.network-card:hover { box-shadow: var(--shadow-md); }
+.network-card h4 { font-size: 0.95rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+.network-card p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.55; }
+
+/* ===== ACCESSIBILITÉ ===== */
+.access-content { background: var(--white); border-radius: var(--radius-lg); border: 1px solid var(--border); padding: 32px; max-width: 860px; }
+.access-list { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
+.access-item { display: flex; align-items: flex-start; gap: 10px; font-size: 0.88rem; color: var(--text); }
+.access-item svg { width: 18px; height: 18px; color: var(--teal); flex-shrink: 0; margin-top: 2px; }
+.access-contact { margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--text-secondary); }
+
+/* ===== COORDONNÉES ===== */
+.coords-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 32px; }
+.coords-list { display: flex; flex-direction: column; gap: 14px; }
+.coord-row { display: flex; gap: 14px; align-items: flex-start; }
+.coord-icon { width: 38px; height: 38px; border-radius: var(--radius-sm); background: var(--teal-bg); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--teal); }
+.coord-icon svg { width: 16px; height: 16px; }
+.coord-label { font-size: 0.75rem; color: var(--text-light); font-weight: 500; }
+.coord-value { font-size: 0.9rem; color: var(--navy); font-weight: 600; }
+.coords-site { background: var(--light-bg); border-radius: var(--radius-lg); border: 1px solid var(--border); padding: 28px; text-align: center; }
+.coords-site h4 { font-size: 0.9rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+.coords-site p { font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 16px; }
+
 /* ===== CTA ONGLET LATÉRAL ===== */
 .side-cta {
   position: absolute;
@@ -418,6 +484,14 @@ a:hover { color: var(--teal-light); }
   .student-card { padding: 22px; }
   .student-card blockquote { font-size: 0.85rem; }
   .article-card { flex: 0 0 240px; }
+  .insertion-grid { grid-template-columns: 1fr; }
+  .pedagogy-grid { grid-template-columns: 1fr; }
+  .careers-grid { grid-template-columns: 1fr; }
+  .network-grid { grid-template-columns: 1fr; }
+  .access-list { grid-template-columns: 1fr; }
+  .coords-layout { grid-template-columns: 1fr; }
+  .compare-table { font-size: 0.8rem; }
+  .compare-table th, .compare-table td { padding: 10px 12px; }
   .side-cta { display: none !important; }
 }
 </style>
@@ -549,6 +623,74 @@ a:hover { color: var(--teal-light); }
 <!-- VIDÉOS -->
 <section class="section reveal">
   <div class="section-inner">
+    <div class="section-header"><div class="section-eyebrow">Comparatif</div><h2 class="section-title">Vue d'ensemble des programmes</h2></div>
+    <div class="compare-table-wrap">
+      <table class="compare-table">
+        <thead><tr><th>Programme</th><th>Niveau d'entrée</th><th>Durée</th><th>Certification</th><th>Format</th><th>Objectif</th></tr></thead>
+        <tbody>
+          <tr><td class="ct-prog">Bachelor spécialisé Travel</td><td>Bac+2 / titre niv. 5</td><td>1 an</td><td>RNCP Niveau 6</td><td>Initial, alternance</td><td>Profils opérationnels pour les métiers du tourisme, de l'événementiel et du digital</td></tr>
+          <tr><td class="ct-prog">MBA International Travel Management</td><td>Bac+3 / titre niv. 6</td><td>2 ans</td><td>RNCP Niveau 7</td><td>Initial, alternance</td><td>Managers capables de piloter stratégie, achats et équipes dans l'industrie du voyage</td></tr>
+          <tr><td class="ct-prog">Parcours certifiants courts</td><td>Professionnels</td><td>2 à 5 j</td><td>Certifiant</td><td>100% en ligne</td><td>Montée en compétences ciblée pour les salariés du secteur</td></tr>
+          <tr><td class="ct-prog">Bachelor — Reconversion</td><td>3 ans exp. min.</td><td>1 an</td><td>RNCP Niveau 6</td><td>Intensif, VAE</td><td>Reconversion professionnelle vers les métiers du tourisme</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- INDICATEURS D'INSERTION -->
+<section class="section section-alt reveal">
+  <div class="section-inner">
+    <div class="section-header"><div class="section-eyebrow">Résultats</div><h2 class="section-title">Indicateurs d'insertion professionnelle</h2></div>
+    <div class="insertion-grid">
+      <div class="insertion-card">
+        <div class="insertion-card-title"><span class="ic-dot ic-dot-alt"></span> Parcours Stage alterné</div>
+        <div class="insertion-row"><span class="insertion-label">Taux de réussite à la certification</span><span class="insertion-value">97%</span></div>
+        <div class="insertion-row"><span class="insertion-label">Taux d'insertion à 6 mois</span><span class="insertion-value">71%</span></div>
+        <div class="insertion-row"><span class="insertion-label">Satisfaction à froid</span><span class="insertion-value">80%</span></div>
+      </div>
+      <div class="insertion-card">
+        <div class="insertion-card-title"><span class="ic-dot ic-dot-app"></span> Parcours Apprentissage</div>
+        <div class="insertion-row"><span class="insertion-label">Taux de réussite à la certification</span><span class="insertion-value">97%</span></div>
+        <div class="insertion-row"><span class="insertion-label">Taux d'insertion à 6 mois</span><span class="insertion-value">59%</span></div>
+        <div class="insertion-row"><span class="insertion-label">Satisfaction à froid</span><span class="insertion-value">73%</span></div>
+      </div>
+    </div>
+    <p class="insertion-source">Source : données officielles de l'ESCAET — Promotion MBA 2024</p>
+  </div>
+</section>
+
+<!-- APPROCHE PÉDAGOGIQUE -->
+<section class="section reveal">
+  <div class="section-inner">
+    <div class="section-header"><div class="section-eyebrow">Pédagogie</div><h2 class="section-title">Notre approche de la formation</h2></div>
+    <p class="pedagogy-intro">L'ESCAET combine enseignements en présentiel à Aix-en-Provence et modules digitaux à distance, dans un format hybride conçu pour s'adapter aux réalités du terrain et aux exigences des entreprises partenaires.</p>
+    <div class="pedagogy-grid">
+      <div class="pedagogy-card"><div class="pedagogy-num">1</div><h4>Experts du secteur en activité</h4><p>Les cours sont assurés par des professionnels toujours en poste — cadres de la distribution, du pricing, de la communication digitale, du revenue management.</p></div>
+      <div class="pedagogy-card"><div class="pedagogy-num">2</div><h4>Cas réels & challenges</h4><p>Masterclasses, études de cas sectorielles, challenges d'innovation avec des entreprises partenaires — chaque semestre est rythmé par des mises en situation concrètes.</p></div>
+      <div class="pedagogy-card"><div class="pedagogy-num">3</div><h4>Accompagnement individuel</h4><p>Suivi personnalisé dans le placement en stage et en apprentissage, coaching projet professionnel, et tutorat tout au long du parcours.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- MÉTIERS ACCESSIBLES -->
+<section class="section section-warm reveal">
+  <div class="section-inner">
+    <div class="section-header"><div class="section-eyebrow">Débouchés</div><h2 class="section-title">Les métiers après l'ESCAET</h2></div>
+    <div class="careers-grid">
+      <div class="career-domain"><h4><span>🎯</span> Commercial & Développement</h4><p>Conseiller voyage, business developer, account manager, chargé de développement, responsable relation client</p></div>
+      <div class="career-domain"><h4><span>🗺️</span> Production & Achats</h4><p>Chef de produit, responsable production touristique, coordinateur transport et logistique, acheteur</p></div>
+      <div class="career-domain"><h4><span>📱</span> Marketing & Digital</h4><p>Community manager, responsable webmarketing, chargé de communication, social media manager</p></div>
+      <div class="career-domain"><h4><span>📊</span> Revenue Management & Data</h4><p>Revenue manager, yield manager, flight analyst, analyste pricing, inventaire hôtelier</p></div>
+      <div class="career-domain"><h4><span>🎪</span> Événementiel & Projet</h4><p>Chef de projet événementiel (MICE), chargé de projets d'innovation, consultant tourisme</p></div>
+      <div class="career-domain"><h4><span>🏢</span> Direction & Entrepreneuriat</h4><p>Créateur d'entreprise, responsable d'activité, directeur de marque, directeur d'établissement touristique</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDÉOS -->
+<section class="section reveal">
+  <div class="section-inner">
     <div class="section-header">
       <div class="section-eyebrow">En vidéo</div>
       <h2 class="section-title">Découvrir l'ESCAET</h2>
@@ -600,6 +742,18 @@ a:hover { color: var(--teal-light); }
   </div>
 </section>
 
+<!-- RÉSEAU & INNOVATION -->
+<section class="section reveal">
+  <div class="section-inner">
+    <div class="section-header"><div class="section-eyebrow">Écosystème</div><h2 class="section-title">Réseau & Innovation</h2></div>
+    <div class="network-grid">
+      <div class="network-card"><h4>🚀 Incubateur Travel Innovation</h4><p>Cofondé en 2017 avec Provence Tourisme, l'incubateur a déjà accompagné plus de 30 startups orientées Travel Tech et solutions innovantes pour le secteur.</p></div>
+      <div class="network-card"><h4>🎓 Réseau Alumni actif</h4><p>Plus de 3 000 diplômés occupent des postes clés dans les agences, tour-opérateurs, compagnies aériennes, plateformes de voyage et services d'achats.</p></div>
+      <div class="network-card"><h4>💡 Événements de prospective</h4><p>Forum des Pionniers, Stratégos, conférences sectorielles — des espaces de recherche et d'analyse qui nourrissent l'expertise de l'école et de ses partenaires.</p></div>
+    </div>
+  </div>
+</section>
+
 <!-- ÉVÉNEMENTS -->
 <section class="section reveal">
   <div class="section-inner">
@@ -631,6 +785,25 @@ a:hover { color: var(--teal-light); }
   </div>
 </section>
 
+<!-- ACCESSIBILITÉ -->
+<section class="section section-alt reveal">
+  <div class="section-inner">
+    <div class="section-header"><div class="section-eyebrow">Inclusion</div><h2 class="section-title">Accessibilité & accueil des personnes en situation de handicap</h2></div>
+    <div class="access-content">
+      <p style="font-size:0.92rem;color:var(--text);line-height:1.6;margin-bottom:16px">L'école met en place une démarche inclusive dès la phase de candidature, avec des aménagements adaptés à chaque situation.</p>
+      <div class="access-list">
+        <div class="access-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Entretien individuel systématique à la candidature</span></div>
+        <div class="access-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Étude personnalisée de faisabilité pédagogique</span></div>
+        <div class="access-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Outils de visioconférence et tiers-temps d'évaluation</span></div>
+        <div class="access-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Locaux accessibles au rez-de-chaussée</span></div>
+        <div class="access-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Accompagnement ciblé pour la recherche de stage et d'alternance</span></div>
+        <div class="access-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Sanitaires et espaces communs adaptés</span></div>
+      </div>
+      <div class="access-contact">Un référent handicap est disponible pour toute question — <a href="mailto:pedagogie@escaet.fr">contactez l'école</a></div>
+    </div>
+  </div>
+</section>
+
 <!-- ARTICLES -->
 <section class="section reveal">
   <div class="section-inner">
@@ -643,6 +816,26 @@ a:hover { color: var(--teal-light); }
       <a class="article-card" href="https://www.tourmag.com" target="_blank"><div class="article-thumb"><img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=400&q=80" alt=""></div><div class="article-body"><div class="article-date">8 juin 2026</div><h4>L'ESCAET signe un partenariat avec Amadeus pour l'intégration des GDS dans ses cursus</h4><p>Un accord qui renforce l'ancrage technologique de la formation et l'employabilité des diplômés…</p></div></a>
       <a class="article-card" href="https://www.tourmag.com" target="_blank"><div class="article-thumb"><img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=400&q=80" alt=""></div><div class="article-body"><div class="article-date">29 mai 2026</div><h4>Portrait : de l'ESCAET à la direction d'une agence réceptive au Vietnam</h4><p>Retour sur le parcours inspirant d'un diplômé de la promotion 2018…</p></div></a>
       <a class="article-card" href="https://www.tourmag.com" target="_blank"><div class="article-thumb"><img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=400&q=80" alt=""></div><div class="article-body"><div class="article-date">22 mai 2026</div><h4>Les écoles de tourisme face au défi de l'IA : comment adapter les programmes ?</h4><p>Intelligence artificielle, chatbots, personnalisation automatisée : les cursus doivent évoluer…</p></div></a>
+    </div>
+  </div>
+</section>
+
+<!-- COORDONNÉES -->
+<section class="section section-alt reveal">
+  <div class="section-inner">
+    <div class="section-header"><div class="section-eyebrow">Contact</div><h2 class="section-title">Coordonnées & accès</h2></div>
+    <div class="coords-layout">
+      <div class="coords-list">
+        <div class="coord-row"><div class="coord-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><div class="coord-label">Adresse</div><div class="coord-value">6 avenue de Grassi, 13100 Aix-en-Provence</div></div></div>
+        <div class="coord-row"><div class="coord-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div><div><div class="coord-label">Téléphone</div><div class="coord-value"><a href="tel:0442266350">04 42 26 63 50</a></div></div></div>
+        <div class="coord-row"><div class="coord-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div><div class="coord-label">Horaires d'accueil</div><div class="coord-value">Lundi – Vendredi, 8h30 – 12h30 / 13h30 – 17h</div></div></div>
+        <div class="coord-row"><div class="coord-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><div class="coord-label">Email</div><div class="coord-value"><a href="mailto:info@escaet.fr">info@escaet.fr</a></div></div></div>
+      </div>
+      <div class="coords-site">
+        <h4>Site internet officiel</h4>
+        <p>Candidatures en ligne, tarifs, journées portes ouvertes et informations détaillées sur les programmes.</p>
+        <a href="https://www.escaet.fr" target="_blank" class="btn btn-teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/></svg>Visiter escaet.fr</a>
+      </div>
     </div>
   </div>
 </section>
