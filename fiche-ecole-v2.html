@@ -120,11 +120,51 @@ a{color:var(--teal);text-decoration:none}a:hover{color:var(--teal-light)}
 .insertion-card-title{font-size:0.88rem;font-weight:700;color:var(--navy);margin-bottom:16px;display:flex;align-items:center;gap:8px}
 .insertion-card-title .ic-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
 .ic-dot-blue{background:#3B82F6}.ic-dot-teal{background:var(--teal)}.ic-dot-violet{background:#8B5CF6}.ic-dot-coral{background:var(--coral)}
-.insertion-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--light-bg)}
+.insertion-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--light-bg);gap:16px}
 .insertion-row:last-child{border-bottom:none}
-.insertion-label{font-size:0.8rem;color:var(--text-secondary)}
-.insertion-value{font-family:var(--font-display);font-size:1.05rem;font-weight:800;color:var(--teal)}
+.insertion-label{font-size:0.8rem;color:var(--text-secondary);flex-shrink:0}
+.insertion-bar-wrap{flex:1;max-width:120px;height:8px;border-radius:4px;background:var(--light-bg);overflow:hidden}
+.insertion-bar{height:100%;border-radius:4px;transition:width 1.2s var(--ease);width:0}
+.insertion-bar-teal{background:linear-gradient(90deg,var(--teal),var(--teal-light))}
+.insertion-bar-coral{background:linear-gradient(90deg,var(--coral),#F59E0B)}
+.insertion-bar-blue{background:linear-gradient(90deg,#3B82F6,#60A5FA)}
+.insertion-bar-violet{background:linear-gradient(90deg,#8B5CF6,#A78BFA)}
+.insertion-value{font-family:var(--font-display);font-size:1.05rem;font-weight:800;color:var(--teal);flex-shrink:0;min-width:42px;text-align:right}
 .insertion-source{font-size:0.75rem;color:var(--text-light);font-style:italic;text-align:center;margin-top:20px}
+
+/* FORMATION ICONS */
+.formation-icon{width:44px;height:44px;border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.formation-icon svg{width:22px;height:22px}
+.fi-bachelor{background:#EDE9FE;color:#7C3AED}
+.fi-mba{background:var(--teal-bg);color:var(--teal)}
+.fi-continue{background:#FEF3C7;color:#D97706}
+.fi-reconv{background:#D1FAE5;color:#059669}
+
+/* TIMELINE */
+.timeline{display:flex;align-items:center;gap:0;margin-top:20px;padding-top:20px;border-top:1px solid var(--border);position:relative}
+.timeline::before{content:'';position:absolute;top:calc(20px + 14px);left:24px;right:24px;height:2px;background:linear-gradient(90deg,var(--teal-bg),var(--teal),var(--navy))}
+.timeline-step{flex:1;text-align:center;position:relative;z-index:1}
+.timeline-dot{width:12px;height:12px;border-radius:50%;background:var(--teal);margin:0 auto 8px;border:2px solid var(--white);box-shadow:0 0 0 2px var(--teal)}
+.timeline-year{font-family:var(--font-display);font-size:0.78rem;font-weight:800;color:var(--navy)}
+.timeline-label{font-size:0.65rem;color:var(--text-light);margin-top:2px;line-height:1.3}
+
+/* CAREER DOMAIN ICONS */
+.cd-icon{width:40px;height:40px;border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;margin-bottom:12px;flex-shrink:0}
+.cd-icon svg{width:20px;height:20px}
+.cd-teal{background:var(--teal-bg);color:var(--teal)}
+.cd-coral{background:rgba(232,99,74,0.1);color:var(--coral)}
+.cd-navy{background:rgba(27,42,74,0.08);color:var(--navy)}
+.cd-green{background:#D1FAE5;color:#059669}
+.cd-violet{background:#EDE9FE;color:#7C3AED}
+.cd-amber{background:#FEF3C7;color:#D97706}
+
+/* NETWORK ICONS */
+.nw-icon{width:44px;height:44px;border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.nw-icon svg{width:22px;height:22px}
+
+/* WARM BG PATTERN */
+.section-warm{background:var(--warm-bg);position:relative}
+.section-warm::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,var(--border) 1px,transparent 1px);background-size:24px 24px;opacity:0.4;pointer-events:none}
 
 /* MÉTIERS */
 .careers-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
@@ -358,11 +398,17 @@ a{color:var(--teal);text-decoration:none}a:hover{color:var(--teal-light)}
       <div class="sidebar-cards">
         <div class="info-card">
           <h3>Carte d'identité</h3>
-          <div class="info-row"><strong>Nom officiel :</strong> <span>École Supérieure de Commerce et de Management du Tourisme (ESCAET)</span></div>
+          <div class="info-row"><strong>Nom officiel :</strong> <span>École Supérieure de Commerce et d'Administration des Entreprises du Tourisme (ESCAET)</span></div>
           <div class="info-row"><strong>Statut :</strong> <span>Établissement d'enseignement supérieur technique privé indépendant</span></div>
           <div class="info-row"><strong>Fondation :</strong> <span>1984, par Jean-Maurice et Gaëtane Thurot</span></div>
           <div class="info-row"><strong>Certifications :</strong> <span>Titres RNCP niveau 6 (Bachelor) et niveau 7 (MBA)</span></div>
           <div class="info-row"><strong>Qualiopi :</strong> <span>Certifié AFNOR — formation, VAE, apprentissage</span></div>
+          <div class="timeline">
+            <div class="timeline-step"><div class="timeline-dot"></div><div class="timeline-year">1984</div><div class="timeline-label">Fondation</div></div>
+            <div class="timeline-step"><div class="timeline-dot"></div><div class="timeline-year">2017</div><div class="timeline-label">Incubateur</div></div>
+            <div class="timeline-step"><div class="timeline-dot"></div><div class="timeline-year">2021</div><div class="timeline-label">Format hybride</div></div>
+            <div class="timeline-step"><div class="timeline-dot"></div><div class="timeline-year">2024</div><div class="timeline-label">40 ans</div></div>
+          </div>
         </div>
         <div class="info-card">
           <h3>Nos valeurs</h3>
@@ -394,6 +440,7 @@ a{color:var(--teal);text-decoration:none}a:hover{color:var(--teal-light)}
     <div class="formations-grid">
       <div class="formation-card" data-type="initial alternance">
         <div class="formation-badges"><span class="formation-badge badge-initial">Formation initiale</span><span class="formation-badge badge-alternance">Alternance</span></div>
+        <div class="formation-icon fi-bachelor"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5"/></svg></div>
         <h4>Bachelor spécialisé Travel</h4>
         <p>Titre certifié RNCP niveau 6 — "Responsable des Activités du Tourisme et des Voyages". Accessible après un Bac+2 ou titre de niveau 5.</p>
         <div class="formation-objective">Acquérir les compétences opérationnelles pour les métiers du tourisme, de l'événementiel, de la production et du digital</div>
@@ -403,6 +450,7 @@ a{color:var(--teal);text-decoration:none}a:hover{color:var(--teal-light)}
       </div>
       <div class="formation-card" data-type="initial alternance">
         <div class="formation-badges"><span class="formation-badge badge-initial">Formation initiale</span><span class="formation-badge badge-alternance">Alternance</span></div>
+        <div class="formation-icon fi-mba"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
         <h4>MBA International Travel Management</h4>
         <p>Titre certifié RNCP niveau 7 — "Manager des Activités du Tourisme et des Voyages". Deux ans pour accéder à des fonctions d'encadrement et de pilotage stratégique.</p>
         <div class="formation-objective">Former des managers capables de piloter une stratégie, des revenus, des achats complexes ou un projet touristique d'envergure</div>
@@ -412,6 +460,7 @@ a{color:var(--teal);text-decoration:none}a:hover{color:var(--teal-light)}
       </div>
       <div class="formation-card" data-type="continue">
         <div class="formation-badges"><span class="formation-badge badge-continue">Formation continue</span></div>
+        <div class="formation-icon fi-continue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
         <h4>Parcours certifiants courts</h4>
         <p>7 modules thématiques conçus pour les salariés du tourisme qui veulent se spécialiser ou actualiser leurs compétences, sans quitter leur poste.</p>
         <div class="formation-objective">Monter en compétences sur une thématique précise en quelques jours, avec certification à la clé</div>
@@ -421,6 +470,7 @@ a{color:var(--teal);text-decoration:none}a:hover{color:var(--teal-light)}
       </div>
       <div class="formation-card" data-type="pro">
         <div class="formation-badges"><span class="formation-badge badge-pro">Reconversion pro</span></div>
+        <div class="formation-icon fi-reconv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg></div>
         <h4>Bachelor Travel — Parcours accéléré</h4>
         <p>Un an intensif pour les professionnels en reconversion vers le tourisme. Même diplôme RNCP niveau 6, avec un rythme et un accompagnement adaptés aux profils expérimentés.</p>
         <div class="formation-objective">Permettre une transition professionnelle complète vers les métiers du voyage en un an</div>
@@ -452,27 +502,27 @@ a{color:var(--teal);text-decoration:none}a:hover{color:var(--teal-light)}
     <div class="insertion-grid">
       <div class="insertion-card">
         <div class="insertion-card-title"><span class="ic-dot ic-dot-violet"></span> Bachelor — Stage alterné</div>
-        <div class="insertion-row"><span class="insertion-label">Réussite à la certification</span><span class="insertion-value">95%</span></div>
-        <div class="insertion-row"><span class="insertion-label">Insertion à 6 mois</span><span class="insertion-value">68%</span></div>
-        <div class="insertion-row"><span class="insertion-label">Satisfaction globale</span><span class="insertion-value">82%</span></div>
+        <div class="insertion-row"><span class="insertion-label">Réussite à la certification</span><div class="insertion-bar-wrap"><div class="insertion-bar insertion-bar-violet" data-width="95"></div></div><span class="insertion-value" data-target="95" data-suffix="%">0</span></div>
+        <div class="insertion-row"><span class="insertion-label">Insertion à 6 mois</span><div class="insertion-bar-wrap"><div class="insertion-bar insertion-bar-violet" data-width="68"></div></div><span class="insertion-value" data-target="68" data-suffix="%">0</span></div>
+        <div class="insertion-row"><span class="insertion-label">Satisfaction globale</span><div class="insertion-bar-wrap"><div class="insertion-bar insertion-bar-violet" data-width="82"></div></div><span class="insertion-value" data-target="82" data-suffix="%">0</span></div>
       </div>
       <div class="insertion-card">
         <div class="insertion-card-title"><span class="ic-dot ic-dot-teal"></span> Bachelor — Apprentissage</div>
-        <div class="insertion-row"><span class="insertion-label">Réussite à la certification</span><span class="insertion-value">93%</span></div>
-        <div class="insertion-row"><span class="insertion-label">Insertion à 6 mois</span><span class="insertion-value">72%</span></div>
-        <div class="insertion-row"><span class="insertion-label">Satisfaction globale</span><span class="insertion-value">78%</span></div>
+        <div class="insertion-row"><span class="insertion-label">Réussite à la certification</span><div class="insertion-bar-wrap"><div class="insertion-bar insertion-bar-teal" data-width="93"></div></div><span class="insertion-value" data-target="93" data-suffix="%">0</span></div>
+        <div class="insertion-row"><span class="insertion-label">Insertion à 6 mois</span><div class="insertion-bar-wrap"><div class="insertion-bar insertion-bar-teal" data-width="72"></div></div><span class="insertion-value" data-target="72" data-suffix="%">0</span></div>
+        <div class="insertion-row"><span class="insertion-label">Satisfaction globale</span><div class="insertion-bar-wrap"><div class="insertion-bar insertion-bar-teal" data-width="78"></div></div><span class="insertion-value" data-target="78" data-suffix="%">0</span></div>
       </div>
       <div class="insertion-card">
         <div class="insertion-card-title"><span class="ic-dot ic-dot-blue"></span> MBA — Stage alterné</div>
-        <div class="insertion-row"><span class="insertion-label">Réussite à la certification</span><span class="insertion-value">97%</span></div>
-        <div class="insertion-row"><span class="insertion-label">Insertion à 6 mois</span><span class="insertion-value">71%</span></div>
-        <div class="insertion-row"><span class="insertion-label">Satisfaction globale</span><span class="insertion-value">80%</span></div>
+        <div class="insertion-row"><span class="insertion-label">Réussite à la certification</span><div class="insertion-bar-wrap"><div class="insertion-bar insertion-bar-blue" data-width="97"></div></div><span class="insertion-value" data-target="97" data-suffix="%">0</span></div>
+        <div class="insertion-row"><span class="insertion-label">Insertion à 6 mois</span><div class="insertion-bar-wrap"><div class="insertion-bar insertion-bar-blue" data-width="71"></div></div><span class="insertion-value" data-target="71" data-suffix="%">0</span></div>
+        <div class="insertion-row"><span class="insertion-label">Satisfaction globale</span><div class="insertion-bar-wrap"><div class="insertion-bar insertion-bar-blue" data-width="80"></div></div><span class="insertion-value" data-target="80" data-suffix="%">0</span></div>
       </div>
       <div class="insertion-card">
         <div class="insertion-card-title"><span class="ic-dot ic-dot-coral"></span> MBA — Apprentissage</div>
-        <div class="insertion-row"><span class="insertion-label">Réussite à la certification</span><span class="insertion-value">97%</span></div>
-        <div class="insertion-row"><span class="insertion-label">Insertion à 6 mois</span><span class="insertion-value">59%</span></div>
-        <div class="insertion-row"><span class="insertion-label">Satisfaction globale</span><span class="insertion-value">73%</span></div>
+        <div class="insertion-row"><span class="insertion-label">Réussite à la certification</span><div class="insertion-bar-wrap"><div class="insertion-bar insertion-bar-coral" data-width="97"></div></div><span class="insertion-value" data-target="97" data-suffix="%">0</span></div>
+        <div class="insertion-row"><span class="insertion-label">Insertion à 6 mois</span><div class="insertion-bar-wrap"><div class="insertion-bar insertion-bar-coral" data-width="59"></div></div><span class="insertion-value" data-target="59" data-suffix="%">0</span></div>
+        <div class="insertion-row"><span class="insertion-label">Satisfaction globale</span><div class="insertion-bar-wrap"><div class="insertion-bar insertion-bar-coral" data-width="73"></div></div><span class="insertion-value" data-target="73" data-suffix="%">0</span></div>
       </div>
     </div>
     <p class="insertion-source">Source : données officielles ESCAET — Promotions 2024</p>
@@ -484,12 +534,12 @@ a{color:var(--teal);text-decoration:none}a:hover{color:var(--teal-light)}
   <div class="section-inner">
     <div class="section-header"><div class="section-eyebrow">Débouchés</div><h2 class="section-title">Les métiers après l'ESCAET</h2></div>
     <div class="careers-grid">
-      <div class="career-domain"><h4><span>🎯</span> Commercial & Développement</h4><p>Conseiller voyage, business developer, account manager, chargé de développement, responsable relation client</p></div>
-      <div class="career-domain"><h4><span>🗺️</span> Production & Achats</h4><p>Chef de produit, responsable production touristique, coordinateur transport, acheteur voyage</p></div>
-      <div class="career-domain"><h4><span>📱</span> Marketing & Digital</h4><p>Community manager, responsable webmarketing, chargé de communication, social media manager</p></div>
-      <div class="career-domain"><h4><span>📊</span> Revenue Management & Data</h4><p>Revenue manager, yield manager, flight analyst, analyste pricing, inventaire hôtelier</p></div>
-      <div class="career-domain"><h4><span>🎪</span> Événementiel & Projet</h4><p>Chef de projet MICE, chargé de projets d'innovation, consultant tourisme, organisateur de congrès</p></div>
-      <div class="career-domain"><h4><span>🏢</span> Direction & Entrepreneuriat</h4><p>Créateur d'entreprise, responsable d'activité, directeur de marque, gérant d'agence</p></div>
+      <div class="career-domain"><div class="cd-icon cd-teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><h4>Commercial & Développement</h4><p>Conseiller voyage, business developer, account manager, chargé de développement, responsable relation client</p></div>
+      <div class="career-domain"><div class="cd-icon cd-coral"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div><h4>Production & Achats</h4><p>Chef de produit, responsable production touristique, coordinateur transport, acheteur voyage</p></div>
+      <div class="career-domain"><div class="cd-icon cd-navy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><h4>Marketing & Digital</h4><p>Community manager, responsable webmarketing, chargé de communication, social media manager</p></div>
+      <div class="career-domain"><div class="cd-icon cd-violet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg></div><h4>Revenue Management & Data</h4><p>Revenue manager, yield manager, flight analyst, analyste pricing, inventaire hôtelier</p></div>
+      <div class="career-domain"><div class="cd-icon cd-amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div><h4>Événementiel & Projet</h4><p>Chef de projet MICE, chargé de projets d'innovation, consultant tourisme, organisateur de congrès</p></div>
+      <div class="career-domain"><div class="cd-icon cd-green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div><h4>Direction & Entrepreneuriat</h4><p>Créateur d'entreprise, responsable d'activité, directeur de marque, gérant d'agence</p></div>
     </div>
   </div>
 </section>
@@ -499,9 +549,9 @@ a{color:var(--teal);text-decoration:none}a:hover{color:var(--teal-light)}
   <div class="section-inner">
     <div class="section-header"><div class="section-eyebrow">Écosystème</div><h2 class="section-title">Réseau & Innovation</h2></div>
     <div class="network-grid">
-      <div class="network-card"><h4>🚀 Un incubateur dédié au voyage</h4><p>Provence Travel Innovation, cofondé avec des acteurs régionaux, a accompagné plus de 30 startups dans la travel tech, le tourisme durable et les solutions de mobilité.</p></div>
-      <div class="network-card"><h4>🎓 3 000+ alumni dans le secteur</h4><p>Les diplômés de l'ESCAET occupent des postes à responsabilité dans les agences, chez les TO, dans l'aérien, l'hôtellerie et les plateformes de distribution du voyage.</p></div>
-      <div class="network-card"><h4>💡 Recherche et prospective</h4><p>L'école organise des rencontres régulières entre professionnels, chercheurs et étudiants pour analyser les mutations du secteur et anticiper les besoins de demain.</p></div>
+      <div class="network-card"><div class="nw-icon cd-coral"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><h4>Un incubateur dédié au voyage</h4><p>Provence Travel Innovation, cofondé avec des acteurs régionaux, a accompagné plus de 30 startups dans la travel tech, le tourisme durable et les solutions de mobilité.</p></div>
+      <div class="network-card"><div class="nw-icon cd-teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div><h4>3 000+ alumni dans le secteur</h4><p>Les diplômés de l'ESCAET occupent des postes à responsabilité dans les agences, chez les TO, dans l'aérien, l'hôtellerie et les plateformes de distribution.</p></div>
+      <div class="network-card"><div class="nw-icon cd-amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div><h4>Recherche et prospective</h4><p>L'école organise des rencontres régulières entre professionnels, chercheurs et étudiants pour analyser les mutations du secteur et anticiper les besoins de demain.</p></div>
     </div>
   </div>
 </section>
@@ -628,6 +678,13 @@ document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el)});
 // COUNTERS
 var cobs=new IntersectionObserver(function(e){e.forEach(function(x){if(!x.isIntersecting)return;var el=x.target,t=+el.dataset.target,s=el.dataset.suffix||'',st=performance.now();function tick(n){var p=Math.min((n-st)/1500,1),v=1-Math.pow(1-p,3);el.textContent=Math.round(t*v)+s;if(p<1)requestAnimationFrame(tick)}requestAnimationFrame(tick);cobs.unobserve(el)})},{threshold:0.5});
 document.querySelectorAll('.key-figure-value').forEach(function(el){cobs.observe(el)});
+
+// INSERTION BARS + VALUES ANIMATION
+var iobs=new IntersectionObserver(function(e){e.forEach(function(x){if(!x.isIntersecting)return;
+x.target.querySelectorAll('.insertion-bar').forEach(function(b){b.style.width=b.dataset.width+'%'});
+x.target.querySelectorAll('.insertion-value').forEach(function(el){if(!el.dataset.target)return;var t=+el.dataset.target,s=el.dataset.suffix||'',st=performance.now();function tick(n){var p=Math.min((n-st)/1200,1),v=1-Math.pow(1-p,3);el.textContent=Math.round(t*v)+s;if(p<1)requestAnimationFrame(tick)}requestAnimationFrame(tick)});
+iobs.unobserve(x.target)})},{threshold:0.3});
+document.querySelectorAll('.insertion-card').forEach(function(el){iobs.observe(el)});
 
 // FORMATIONS
 function filterFormations(b,t){document.querySelectorAll('.formations-tab').forEach(function(x){x.classList.remove('active')});b.classList.add('active');document.querySelectorAll('.formation-card').forEach(function(c){if(t==='all'||c.dataset.type.includes(t)){c.classList.remove('hidden')}else{c.classList.add('hidden')}})}
