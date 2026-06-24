@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Conseiller Voyage — Fiche Métier | TourMaG Platform</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:#1B2A4A;--navy-light:#243656;--teal:#0891B2;--teal-light:#06B6D4;--teal-bg:#ECFEFF;
+  --coral:#E8634A;--coral-hover:#D4523A;--warm-bg:#FDF8F4;--light-bg:#F7F8FA;--white:#FFFFFF;
+  --text:#1E293B;--text-secondary:#64748B;--text-light:#94A3B8;--border:#E2E8F0;
+  --shadow-sm:0 1px 3px rgba(27,42,74,0.06);--shadow-md:0 4px 12px rgba(27,42,74,0.08);
+  --shadow-lg:0 12px 32px rgba(27,42,74,0.10);--shadow-xl:0 20px 48px rgba(27,42,74,0.12);
+  --font-display:'Plus Jakarta Sans',system-ui,sans-serif;--font-body:'Plus Jakarta Sans',system-ui,sans-serif;
+  --font-serif:'Source Serif 4',Georgia,serif;
+  --radius-sm:6px;--radius-md:10px;--radius-lg:16px;--radius-xl:24px;
+  --ease:cubic-bezier(0.4,0,0.2,1);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;overflow:hidden;scrollbar-width:none}
+html::-webkit-scrollbar{display:none}
+body{font-family:var(--font-body);color:var(--text);background:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased;overflow:hidden}
+img{max-width:100%;display:block}
+a{color:var(--teal);text-decoration:none}
+a:hover{color:var(--teal-light)}
+#content-wrapper{overflow-x:hidden;max-width:100vw;scrollbar-width:none}
+#content-wrapper::-webkit-scrollbar{display:none}
+
+/* HERO — même style que fiche école */
+.hero{position:relative;min-height:420px;overflow:hidden;display:flex;align-items:flex-end}
+.hero-cover{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1600&q=80') center/cover}
+.hero-gradient{position:absolute;inset:0;background:linear-gradient(to top,rgba(27,42,74,0.92) 0%,rgba(27,42,74,0.55) 50%,rgba(27,42,74,0.35) 100%)}
+.hero-content{position:relative;z-index:2;width:100%;max-width:1200px;margin:0 auto;padding:60px 32px 48px}
+.hero-breadcrumb{font-size:0.8rem;color:rgba(255,255,255,0.5);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.hero-breadcrumb a{color:rgba(255,255,255,0.6)}
+.hero-breadcrumb a:hover{color:#fff}
+.hero-breadcrumb svg{width:12px;height:12px}
+.hero-content h1{font-family:var(--font-display);font-size:3rem;font-weight:800;color:#fff;line-height:1.1;letter-spacing:-1px;margin-bottom:12px}
+.hero-baseline{font-family:var(--font-serif);font-size:1.15rem;font-style:italic;color:rgba(255,255,255,0.85);max-width:680px;line-height:1.6;margin-bottom:24px}
+.hero-badges{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px}
+.hero-badge{display:inline-flex;align-items:center;gap:7px;padding:8px 16px;border-radius:100px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);backdrop-filter:blur(8px);color:#fff;font-size:0.82rem;font-weight:600}
+.hero-badge svg{width:15px;height:15px;opacity:0.7}
+.hero-badge-value{color:var(--teal-light)}
+.hero-ctas{display:flex;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:var(--radius-md);font-family:var(--font-display);font-size:0.9rem;font-weight:600;border:none;cursor:pointer;transition:all 0.25s var(--ease);white-space:nowrap}
+.btn svg{width:18px;height:18px}
+.btn-coral{background:var(--coral);color:#fff}
+.btn-coral:hover{background:var(--coral-hover);transform:translateY(-1px);box-shadow:var(--shadow-md)}
+.btn-teal{background:var(--teal);color:#fff}
+.btn-teal:hover{background:var(--teal-light);transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:var(--teal);border:1.5px solid var(--teal)}
+.btn-ghost:hover{background:var(--teal-bg)}
+.btn-white-outline{background:rgba(255,255,255,0.1);color:#fff;border:1.5px solid rgba(255,255,255,0.3)}
+.btn-white-outline:hover{background:rgba(255,255,255,0.2);border-color:rgba(255,255,255,0.5)}
+
+/* SECTIONS */
+.section{padding:64px 32px}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-header{margin-bottom:40px}
+.section-eyebrow{font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--teal);margin-bottom:8px}
+.section-title{font-family:var(--font-display);font-size:1.75rem;font-weight:800;color:var(--navy);letter-spacing:-0.3px}
+.section-subtitle{font-family:var(--font-serif);font-style:italic;color:var(--text-secondary);font-size:1rem;margin-top:6px}
+.section-alt{background:var(--light-bg)}
+.section-warm{background:var(--warm-bg)}
+
+/* PRÉSENTATION + EN BREF */
+.presentation-layout{display:grid;grid-template-columns:2fr 1fr;gap:48px;align-items:start}
+.presentation-text{font-family:var(--font-serif);font-size:1.08rem;line-height:1.8;color:var(--text)}
+.presentation-text p+p{margin-top:16px}
+.quick-facts{background:var(--light-bg);border-radius:var(--radius-xl);padding:28px;border:1px solid var(--border)}
+.quick-facts h3{font-size:0.95rem;font-weight:700;color:var(--navy);margin-bottom:20px;display:flex;align-items:center;gap:8px}
+.quick-facts h3 svg{width:18px;height:18px;color:var(--teal)}
+.quick-fact{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid var(--border)}
+.quick-fact:last-child{border-bottom:none}
+.qf-icon{width:32px;height:32px;border-radius:var(--radius-sm);background:var(--white);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--teal)}
+.qf-icon svg{width:15px;height:15px}
+.qf-label{font-size:0.72rem;color:var(--text-light);font-weight:500}
+.qf-value{font-size:0.88rem;color:var(--navy);font-weight:600;margin-top:1px}
+
+/* MISSIONS */
+.missions-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.mission-card{background:var(--white);border-radius:var(--radius-lg);border:1px solid var(--border);padding:28px;transition:all 0.3s var(--ease);position:relative;overflow:hidden}
+.mission-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--teal),var(--teal-light));opacity:0;transition:opacity 0.3s var(--ease)}
+.mission-card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.mission-card:hover::before{opacity:1}
+.mission-number{font-family:var(--font-display);font-size:2rem;font-weight:800;color:var(--teal);opacity:0.2;line-height:1;margin-bottom:12px}
+.mission-card h4{font-size:0.95rem;font-weight:700;color:var(--navy);margin-bottom:8px}
+.mission-card p{font-size:0.85rem;color:var(--text-secondary);line-height:1.55}
+
+/* COMPÉTENCES */
+.skills-layout{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.skills-column h3{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.sc-icon{width:32px;height:32px;border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center}
+.sc-icon svg{width:16px;height:16px}
+.sc-tech{background:var(--teal-bg);color:var(--teal)}
+.sc-soft{background:rgba(232,99,74,0.1);color:var(--coral)}
+.skill-item{display:flex;align-items:center;gap:14px;padding:14px 18px;border-radius:var(--radius-md);background:var(--white);border:1px solid var(--border);margin-bottom:10px;transition:all 0.2s var(--ease)}
+.skill-item:hover{border-color:var(--teal)}
+.skill-name{font-size:0.88rem;font-weight:600;color:var(--navy);flex:1}
+.skill-bar-wrap{width:80px;height:6px;border-radius:3px;background:var(--light-bg);overflow:hidden;flex-shrink:0}
+.skill-bar{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--teal),var(--teal-light))}
+.skill-bar-coral{background:linear-gradient(90deg,var(--coral),#F59E0B)}
+.skill-level{font-size:0.72rem;font-weight:700;color:var(--text-light);width:60px;text-align:right;flex-shrink:0}
+
+/* OÙ L'EXERCER */
+.exercer-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.exercer-card{background:var(--white);border-radius:var(--radius-lg);border:1px solid var(--border);padding:28px;transition:all 0.3s var(--ease)}
+.exercer-card:hover{box-shadow:var(--shadow-md)}
+.exercer-icon{width:44px;height:44px;border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.exercer-icon svg{width:22px;height:22px}
+.ei-teal{background:var(--teal-bg);color:var(--teal)}
+.ei-coral{background:rgba(232,99,74,0.1);color:var(--coral)}
+.ei-navy{background:rgba(27,42,74,0.08);color:var(--navy)}
+.ei-green{background:rgba(16,185,129,0.1);color:#059669}
+.exercer-card h4{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:8px}
+.exercer-card p{font-size:0.88rem;color:var(--text-secondary);line-height:1.6}
+
+/* CENTRES D'INTÉRÊT */
+.interests-wrap{display:flex;flex-wrap:wrap;gap:12px}
+.interest-tag{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:100px;background:var(--white);border:1.5px solid var(--border);font-size:0.9rem;font-weight:600;color:var(--navy);transition:all 0.25s var(--ease);cursor:pointer}
+.interest-tag:hover{border-color:var(--teal);background:var(--teal-bg);color:var(--teal);transform:translateY(-1px);box-shadow:var(--shadow-sm)}
+.interest-tag span.it-emoji{font-size:1.2rem}
+
+/* FORMATIONS */
+.formations-list{display:flex;flex-direction:column;gap:14px}
+.formation-link{display:flex;align-items:center;gap:18px;padding:20px 24px;background:var(--white);border-radius:var(--radius-lg);border:1px solid var(--border);transition:all 0.3s var(--ease);cursor:pointer;text-decoration:none;color:inherit}
+.formation-link:hover{border-color:var(--teal);box-shadow:var(--shadow-md);transform:translateX(4px);color:inherit}
+.formation-level{flex-shrink:0;width:52px;height:52px;border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.85rem;color:#fff}
+.level-bac2{background:#8B5CF6}
+.level-bac3{background:var(--teal)}
+.level-bac5{background:var(--navy)}
+.formation-link-info{flex:1}
+.formation-link-info h4{font-size:0.95rem;font-weight:700;color:var(--navy);margin-bottom:3px}
+.formation-link-info p{font-size:0.82rem;color:var(--text-secondary)}
+.formation-school-badge{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:100px;background:var(--light-bg);font-size:0.75rem;font-weight:600;color:var(--navy);flex-shrink:0}
+.formation-school-logo{width:20px;height:20px;border-radius:3px;background:var(--navy);display:flex;align-items:center;justify-content:center;color:#fff;font-size:0.5rem;font-weight:800}
+.formation-arrow{color:var(--text-light);flex-shrink:0;transition:color 0.2s,transform 0.2s}
+.formation-link:hover .formation-arrow{color:var(--teal);transform:translateX(4px)}
+.formation-arrow svg{width:18px;height:18px}
+
+/* ÉVOLUTION CARRIÈRE */
+.career-path{position:relative;display:flex;justify-content:space-between;gap:16px;padding-top:40px}
+.career-path::before{content:'';position:absolute;top:58px;left:60px;right:60px;height:3px;background:linear-gradient(90deg,var(--teal-bg),var(--teal),var(--navy));border-radius:2px}
+.career-step{flex:1;text-align:center;position:relative}
+.career-node{width:40px;height:40px;border-radius:50%;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;position:relative;z-index:2;transition:transform 0.2s var(--ease)}
+.career-step:hover .career-node{transform:scale(1.15)}
+.career-node svg{width:18px;height:18px;color:#fff}
+.cn-1{background:var(--teal-light)}.cn-2{background:var(--teal)}.cn-3{background:#0E7490}.cn-4{background:var(--navy-light)}.cn-5{background:var(--navy)}
+.career-title{font-size:0.88rem;font-weight:700;color:var(--navy);margin-bottom:4px}
+.career-exp{font-size:0.75rem;color:var(--text-light);font-weight:500;margin-bottom:8px}
+.career-salary{display:inline-block;padding:4px 12px;border-radius:100px;font-size:0.75rem;font-weight:700;background:var(--teal-bg);color:var(--teal)}
+
+/* SALAIRE */
+.salary-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:32px}
+.salary-card{background:var(--white);border-radius:var(--radius-lg);border:1px solid var(--border);padding:28px;text-align:center;transition:all 0.3s var(--ease)}
+.salary-card:hover{box-shadow:var(--shadow-md)}
+.salary-label{font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:var(--text-light);margin-bottom:12px}
+.salary-amount{font-family:var(--font-display);font-size:2rem;font-weight:800;letter-spacing:-1px;line-height:1.1}
+.salary-amount-teal{color:var(--teal)}.salary-amount-navy{color:var(--navy)}
+.salary-range{font-size:0.82rem;color:var(--text-secondary);margin-top:6px}
+.salary-note{font-size:0.82rem;color:var(--text-secondary);font-style:italic;text-align:center;max-width:640px;margin:0 auto;font-family:var(--font-serif)}
+
+/* EMPLOI & SECTEUR */
+.emploi-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:32px}
+.emploi-stat{text-align:center;padding:24px 16px;background:var(--white);border-radius:var(--radius-lg);border:1px solid var(--border)}
+.emploi-stat-value{font-family:var(--font-display);font-size:1.6rem;font-weight:800;color:var(--teal);margin-bottom:4px}
+.emploi-stat-label{font-size:0.78rem;color:var(--text-secondary);font-weight:500}
+.emploi-text{font-family:var(--font-serif);font-size:1rem;line-height:1.7;color:var(--text);max-width:860px}
+.emploi-text p+p{margin-top:14px}
+
+/* TÉMOIGNAGES */
+.testimonials-duo{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.testimonial-card{border-radius:var(--radius-xl);overflow:hidden;background:var(--white);box-shadow:var(--shadow-md);transition:all 0.3s var(--ease)}
+.testimonial-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-xl)}
+.testimonial-video{position:relative;aspect-ratio:16/9;background:var(--navy);overflow:hidden}
+.testimonial-video img{width:100%;height:100%;object-fit:cover}
+.video-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(27,42,74,0.3)}
+.play-btn{width:56px;height:56px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-lg)}
+.play-btn svg{width:22px;height:22px;color:var(--coral);margin-left:2px}
+.video-label{position:absolute;top:12px;left:12px;padding:4px 12px;border-radius:100px;font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;backdrop-filter:blur(8px)}
+.vl-pro{background:rgba(8,145,178,0.85);color:#fff}
+.vl-student{background:rgba(232,99,74,0.85);color:#fff}
+.testimonial-body{padding:22px 24px}
+.testimonial-body blockquote{font-family:var(--font-serif);font-style:italic;font-size:0.92rem;color:var(--text);line-height:1.6;margin-bottom:16px}
+.testimonial-author{display:flex;align-items:center;gap:12px}
+.testimonial-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--teal-light));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:0.82rem;flex-shrink:0}
+.testimonial-author-info h4{font-size:0.88rem;font-weight:700;color:var(--navy)}
+.testimonial-author-info p{font-size:0.75rem;color:var(--text-secondary)}
+.testimonial-source-link{font-size:0.75rem;font-weight:600;color:var(--teal);display:inline-flex;align-items:center;gap:4px;margin-top:4px}
+.testimonial-source-link svg{width:12px;height:12px}
+
+/* MÉTIERS PROCHES */
+.metiers-scroll{display:flex;gap:20px;overflow-x:auto;padding-bottom:12px;scrollbar-width:thin;scrollbar-color:var(--border) transparent}
+.metiers-scroll::-webkit-scrollbar{height:6px}
+.metiers-scroll::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+.metier-mini{flex:0 0 240px;background:var(--white);border-radius:var(--radius-lg);border:1px solid var(--border);padding:24px 20px;transition:all 0.3s var(--ease);cursor:pointer;text-decoration:none;color:inherit;display:block}
+.metier-mini:hover{border-color:var(--teal);box-shadow:var(--shadow-md);transform:translateY(-2px);color:inherit}
+.metier-mini-icon{width:48px;height:48px;border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;margin-bottom:14px;font-size:1.5rem}
+.metier-mini h4{font-size:0.92rem;font-weight:700;color:var(--navy);margin-bottom:4px}
+.metier-mini p{font-size:0.78rem;color:var(--text-secondary);line-height:1.4}
+.metier-mini-salary{display:inline-block;margin-top:10px;padding:3px 10px;border-radius:100px;font-size:0.72rem;font-weight:700;background:var(--teal-bg);color:var(--teal)}
+
+/* OFFRES D'EMPLOI */
+.jobs-list{display:flex;flex-direction:column;gap:12px}
+.job-card{display:flex;align-items:center;gap:20px;padding:20px 24px;background:var(--white);border-radius:var(--radius-lg);border:1px solid var(--border);transition:all 0.3s var(--ease);cursor:pointer}
+.job-card:hover{border-color:var(--teal);box-shadow:var(--shadow-md)}
+.job-company-logo{width:44px;height:44px;border-radius:var(--radius-sm);background:var(--light-bg);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.55rem;color:var(--navy);flex-shrink:0;line-height:1.1;text-align:center;padding:2px}
+.job-main{flex:1}
+.job-card h4{font-size:0.95rem;font-weight:700;color:var(--navy);margin-bottom:5px}
+.job-tags{display:flex;flex-wrap:wrap;gap:8px}
+.job-tag{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:100px;font-size:0.75rem;font-weight:600;background:var(--light-bg);color:var(--text-secondary)}
+.job-tag svg{width:12px;height:12px}
+.job-tag-cdi{background:#DBEAFE;color:#1E40AF}
+.job-tag-alt{background:#FEF3C7;color:#92400E}
+.job-tag-stage{background:#D1FAE5;color:#065F46}
+.job-date{font-size:0.78rem;color:var(--text-light);flex-shrink:0}
+.job-apply{flex-shrink:0;padding:8px 18px;border-radius:var(--radius-sm);background:var(--teal);color:#fff;font-size:0.82rem;font-weight:600;border:none;cursor:pointer;transition:all 0.2s var(--ease)}
+.job-apply:hover{background:var(--teal-light)}
+.jobs-footer{text-align:center;margin-top:24px}
+
+/* ARTICLES */
+.articles-scroll{display:flex;gap:20px;overflow-x:auto;padding-bottom:16px;scrollbar-width:thin;scrollbar-color:var(--border) transparent}
+.articles-scroll::-webkit-scrollbar{height:6px}
+.articles-scroll::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+.article-card{flex:0 0 300px;background:var(--white);border-radius:var(--radius-lg);border:1px solid var(--border);overflow:hidden;transition:all 0.3s var(--ease)}
+.article-card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.article-thumb{height:160px;overflow:hidden}
+.article-thumb img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s var(--ease)}
+.article-card:hover .article-thumb img{transform:scale(1.05)}
+.article-body{padding:18px 20px}
+.article-date{font-size:0.75rem;color:var(--text-light);font-weight:500;margin-bottom:6px}
+.article-body h4{font-size:0.92rem;font-weight:700;color:var(--navy);line-height:1.4;margin-bottom:8px}
+.article-body p{font-size:0.82rem;color:var(--text-secondary);line-height:1.5}
+
+/* POUR ALLER PLUS LOIN */
+.resources-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+.resource-link{display:flex;align-items:center;gap:14px;padding:16px 20px;background:var(--white);border-radius:var(--radius-md);border:1px solid var(--border);transition:all 0.2s var(--ease);text-decoration:none;color:inherit}
+.resource-link:hover{border-color:var(--teal);background:var(--teal-bg);color:inherit}
+.resource-icon{width:36px;height:36px;border-radius:var(--radius-sm);background:var(--light-bg);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--teal)}
+.resource-icon svg{width:16px;height:16px}
+.resource-link h4{font-size:0.85rem;font-weight:600;color:var(--navy)}
+.resource-link p{font-size:0.75rem;color:var(--text-secondary)}
+
+/* CTA FINAL */
+.cta-final{background:linear-gradient(135deg,var(--navy) 0%,#2D4A7A 100%);padding:64px 32px;text-align:center}
+.cta-final-inner{max-width:640px;margin:0 auto}
+.cta-final h2{font-family:var(--font-display);font-size:1.8rem;font-weight:800;color:#fff;margin-bottom:12px}
+.cta-final p{font-family:var(--font-serif);font-size:1.05rem;color:rgba(255,255,255,0.7);margin-bottom:32px;line-height:1.6}
+.cta-final-buttons{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+/* SIDE CTA */
+.side-cta{position:absolute;right:0;top:50%;z-index:100;opacity:0;transition:opacity 0.4s var(--ease)}
+.side-cta.visible{opacity:1}
+.side-cta-btn{display:flex;align-items:center;gap:8px;padding:14px 16px;background:var(--coral);color:#fff;border:none;border-radius:var(--radius-md) 0 0 var(--radius-md);font-family:var(--font-display);font-size:0.85rem;font-weight:700;cursor:pointer;box-shadow:-4px 2px 16px rgba(27,42,74,0.15);writing-mode:vertical-lr;text-orientation:mixed;letter-spacing:0.5px;transition:all 0.25s var(--ease)}
+.side-cta-btn:hover{background:var(--coral-hover);padding-right:22px;box-shadow:-6px 2px 24px rgba(27,42,74,0.2)}
+.side-cta-btn svg{width:18px;height:18px;transform:rotate(90deg);flex-shrink:0}
+
+/* MODAL */
+.modal-overlay{display:none;position:absolute;left:0;right:0;top:0;background:rgba(27,42,74,0.5);backdrop-filter:blur(4px);z-index:200;align-items:center;justify-content:center;padding:32px}
+.modal-overlay.active{display:flex}
+.modal{background:var(--white);border-radius:var(--radius-xl);max-width:520px;width:100%;padding:40px;box-shadow:var(--shadow-xl);position:relative}
+.modal-close{position:absolute;top:16px;right:16px;width:36px;height:36px;border-radius:50%;border:none;background:var(--light-bg);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.2s}
+.modal-close:hover{background:var(--border)}
+.modal-close svg{width:18px;height:18px;color:var(--text-secondary)}
+.modal h3{font-size:1.3rem;font-weight:800;color:var(--navy);margin-bottom:6px}
+.modal>p{font-size:0.9rem;color:var(--text-secondary);margin-bottom:24px}
+.form-group{margin-bottom:18px}
+.form-group label{display:block;font-size:0.82rem;font-weight:600;color:var(--text);margin-bottom:6px}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-family:var(--font-body);font-size:0.9rem;color:var(--text);transition:border-color 0.2s;background:var(--white)}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px rgba(8,145,178,0.1)}
+.form-group textarea{min-height:100px;resize:vertical}
+.modal .btn{width:100%;justify-content:center;margin-top:8px}
+.form-success{display:none;text-align:center;padding:40px 20px}
+.form-success.show{display:block}
+.form-fields.hide{display:none}
+.form-success-icon{width:64px;height:64px;border-radius:50%;background:#D1FAE5;margin:0 auto 20px;display:flex;align-items:center;justify-content:center}
+.form-success-icon svg{width:32px;height:32px;color:#059669}
+.form-success h4{font-size:1.1rem;font-weight:700;color:var(--navy);margin-bottom:8px}
+.form-success p{font-size:0.9rem;color:var(--text-secondary)}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .presentation-layout{grid-template-columns:1fr}
+  .missions-grid{grid-template-columns:repeat(2,1fr)}
+  .skills-layout{grid-template-columns:1fr}
+  .exercer-grid{grid-template-columns:1fr}
+  .career-path{flex-wrap:wrap;justify-content:center}
+  .career-path::before{display:none}
+  .career-step{flex:0 0 calc(33% - 12px)}
+  .testimonials-duo{grid-template-columns:1fr}
+  .emploi-stats{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:768px){
+  .hero{min-height:auto}
+  .hero-content{padding:50px 16px 36px}
+  .hero-content h1{font-size:2rem}
+  .hero-badges{gap:8px}
+  .hero-badge{font-size:0.75rem;padding:6px 12px}
+  .hero-ctas{flex-direction:column}
+  .section{padding:48px 16px}
+  .section-title{font-size:1.3rem}
+  .missions-grid{grid-template-columns:1fr}
+  .salary-grid{grid-template-columns:1fr}
+  .career-step{flex:0 0 calc(50% - 8px)}
+  .emploi-stats{grid-template-columns:1fr}
+  .job-card{flex-wrap:wrap}
+  .job-date{order:-1;width:100%}
+  .job-apply{width:100%;text-align:center}
+  .article-card{flex:0 0 260px}
+  .metier-mini{flex:0 0 200px}
+  .cta-final-buttons{flex-direction:column;align-items:center}
+  .interests-wrap{gap:8px}
+  .interest-tag{padding:10px 16px;font-size:0.82rem}
+  .side-cta{display:none!important}
+}
+</style>
+</head>
+<body>
+
+<div id="content-wrapper">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-cover"></div>
+  <div class="hero-gradient"></div>
+  <div class="hero-content">
+    <div class="hero-breadcrumb">
+      <a href="#">Fiches métiers</a>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      <span>Vente & Conseil</span>
+    </div>
+    <h1>Conseiller Voyage</h1>
+    <p class="hero-baseline">Le spécialiste qui transforme un rêve de voyage en itinéraire concret, en combinant expertise destination, sens commercial et maîtrise technique.</p>
+    <div class="hero-badges">
+      <span class="hero-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5"/></svg><span class="hero-badge-value">Bac+2 à Bac+5</span></span>
+      <span class="hero-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg><span class="hero-badge-value">24K€ — 42K€</span></span>
+      <span class="hero-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg><span class="hero-badge-value">Débutant accepté</span></span>
+      <span class="hero-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span class="hero-badge-value">Forte demande</span></span>
+    </div>
+    <div class="hero-ctas">
+      <a href="#formations" class="btn btn-coral"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5"/></svg>Trouver une formation</a>
+      <a href="#offres" class="btn btn-white-outline"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>Voir les offres d'emploi</a>
+    </div>
+  </div>
+</section>
+
+<!-- PRÉSENTATION + EN BREF -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-header"><div class="section-eyebrow">Le métier</div><h2 class="section-title">Qu'est-ce qu'un conseiller voyage ?</h2></div>
+    <div class="presentation-layout">
+      <div class="presentation-text">
+        <p>Le conseiller voyage est bien plus qu'un vendeur de billets d'avion ou de séjours packagés. C'est un expert de la destination qui accompagne le client dans la conception d'un voyage adapté à ses envies, son budget et ses contraintes. Il combine une connaissance fine des territoires, une maîtrise des outils de réservation (GDS, extranet hôtelier, yield management) et un vrai sens de la relation client.</p>
+        <p>En agence de voyages, chez un tour-opérateur, dans un réseau intégré ou en ligne, le conseiller voyage écoute, propose, négocie et organise. Son quotidien mêle entretiens clients, montage technique d'itinéraires, suivi des dossiers et veille sur les destinations. Avec la montée en puissance du sur-mesure et du digital, le métier s'est profondément transformé ces dix dernières années.</p>
+        <p>C'est un métier de passion — on ne vend pas du voyage sans aimer le monde — mais aussi de rigueur. La maîtrise des réglementations, la gestion du stress en haute saison et la capacité à gérer plusieurs dossiers en parallèle sont des compétences essentielles.</p>
+      </div>
+      <div class="quick-facts">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>En bref</h3>
+        <div class="quick-fact"><div class="qf-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div><div class="qf-label">Aussi appelé</div><div class="qf-value">Agent de voyages, Travel Consultant, Conseiller en séjour</div></div></div>
+        <div class="quick-fact"><div class="qf-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><div class="qf-label">Lieux d'exercice</div><div class="qf-value">Agence, TO, réseau, online, réceptif</div></div></div>
+        <div class="quick-fact"><div class="qf-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div><div class="qf-label">Rythme</div><div class="qf-value">Horaires variables, pics saisonniers</div></div></div>
+        <div class="quick-fact"><div class="qf-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><div><div class="qf-label">Secteur</div><div class="qf-value">Tourisme, transport, hôtellerie</div></div></div>
+        <div class="quick-fact"><div class="qf-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><div><div class="qf-label">Tendance emploi</div><div class="qf-value" style="color:var(--teal)">Forte demande ↗</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MISSIONS -->
+<section class="section section-alt">
+  <div class="section-inner">
+    <div class="section-header"><div class="section-eyebrow">Au quotidien</div><h2 class="section-title">Les missions du conseiller voyage</h2></div>
+    <div class="missions-grid">
+      <div class="mission-card"><div class="mission-number">01</div><h4>Accueil & conseil client</h4><p>Identifier les attentes du voyageur, comprendre son budget, ses envies et ses contraintes pour proposer l'offre la plus adaptée.</p></div>
+      <div class="mission-card"><div class="mission-number">02</div><h4>Conception d'itinéraires</h4><p>Assembler les prestations (vols, hébergements, transferts, activités) en un programme cohérent, optimisé et personnalisé.</p></div>
+      <div class="mission-card"><div class="mission-number">03</div><h4>Réservation & billetterie</h4><p>Maîtriser les GDS (Amadeus, Galileo), les extranets fournisseurs et les outils de yield pour sécuriser les meilleures conditions tarifaires.</p></div>
+      <div class="mission-card"><div class="mission-number">04</div><h4>Suivi & service client</h4><p>Accompagner le client avant, pendant et après le voyage : envoi des documents, assistance en cas d'imprévu, gestion des réclamations.</p></div>
+      <div class="mission-card"><div class="mission-number">05</div><h4>Veille & expertise destination</h4><p>Actualiser en permanence ses connaissances : nouvelles lignes aériennes, ouvertures d'hôtels, situation géopolitique, formalités d'entrée.</p></div>
+      <div class="mission-card"><div class="mission-number">06</div><h4>Développement commercial</h4><p>Fidéliser le portefeuille clients, relancer les prospects, atteindre les objectifs de vente et contribuer aux opérations commerciales.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPÉTENCES -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-header"><div class="section-eyebrow">Profil</div><h2 class="section-title">Compétences requises</h2></div>
+    <div class="skills-layout">
+      <div class="skills-column">
+        <h3><span class="sc-icon sc-tech"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></span>Compétences techniques</h3>
+        <div class="skill-item"><span class="skill-name">GDS (Amadeus / Galileo)</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:90%"></div></div><span class="skill-level">Essentiel</span></div>
+        <div class="skill-item"><span class="skill-name">Connaissance destinations</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:95%"></div></div><span class="skill-level">Essentiel</span></div>
+        <div class="skill-item"><span class="skill-name">Billetterie & tarification</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:85%"></div></div><span class="skill-level">Important</span></div>
+        <div class="skill-item"><span class="skill-name">Réglementation tourisme</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:75%"></div></div><span class="skill-level">Important</span></div>
+        <div class="skill-item"><span class="skill-name">CRM & outils digitaux</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:65%"></div></div><span class="skill-level">Apprécié</span></div>
+        <div class="skill-item"><span class="skill-name">Anglais professionnel</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:80%"></div></div><span class="skill-level">Important</span></div>
+      </div>
+      <div class="skills-column">
+        <h3><span class="sc-icon sc-soft"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></span>Soft skills</h3>
+        <div class="skill-item"><span class="skill-name">Écoute & empathie</span><div class="skill-bar-wrap"><div class="skill-bar skill-bar-coral" style="width:95%"></div></div><span class="skill-level">Essentiel</span></div>
+        <div class="skill-item"><span class="skill-name">Sens commercial</span><div class="skill-bar-wrap"><div class="skill-bar skill-bar-coral" style="width:90%"></div></div><span class="skill-level">Essentiel</span></div>
+        <div class="skill-item"><span class="skill-name">Réactivité & gestion du stress</span><div class="skill-bar-wrap"><div class="skill-bar skill-bar-coral" style="width:85%"></div></div><span class="skill-level">Important</span></div>
+        <div class="skill-item"><span class="skill-name">Organisation & rigueur</span><div class="skill-bar-wrap"><div class="skill-bar skill-bar-coral" style="width:80%"></div></div><span class="skill-level">Important</span></div>
+        <div class="skill-item"><span class="skill-name">Curiosité & ouverture</span><div class="skill-bar-wrap"><div class="skill-bar skill-bar-coral" style="width:90%"></div></div><span class="skill-level">Essentiel</span></div>
+        <div class="skill-item"><span class="skill-name">Travail en équipe</span><div class="skill-bar-wrap"><div class="skill-bar skill-bar-coral" style="width:70%"></div></div><span class="skill-level">Apprécié</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OÙ L'EXERCER -->
+<section class="section section-warm">
+  <div class="section-inner">
+    <div class="section-header"><div class="section-eyebrow">Conditions d'exercice</div><h2 class="section-title">Le cadre de travail au quotidien</h2></div>
+    <div class="exercer-grid">
+      <div class="exercer-card"><div class="exercer-icon ei-teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><h4>Types de structures</h4><p>Agence de voyages (réseau ou indépendante), tour-opérateur, OTA (agence en ligne), réceptif local, croisiériste, compagnie aérienne, service voyages d'une grande entreprise, plateforme de travel management.</p></div>
+      <div class="exercer-card"><div class="exercer-icon ei-coral"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><h4>Rythme & horaires</h4><p>Horaires de bureau en semaine, avec des pics d'activité importants en janvier-février (ventes été) et septembre-octobre (ventes hiver). Travail le samedi fréquent en agence. Astreintes possibles pour le service client 24h/24 chez certains TO.</p></div>
+      <div class="exercer-card"><div class="exercer-icon ei-navy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><h4>Environnement de travail</h4><p>Bureau ou open space, souvent face à un double écran (GDS + CRM). Contact client permanent, en face à face en agence ou par téléphone/visio chez un TO. Ambiance commerciale avec objectifs de vente mensuels ou trimestriels.</p></div>
+      <div class="exercer-card"><div class="exercer-icon ei-green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div><h4>Mobilité & déplacements</h4><p>Métier essentiellement sédentaire au quotidien. En revanche, 1 à 3 éductours (voyages de repérage) par an, financés par les TO ou les offices de tourisme, pour tester les destinations et enrichir son expertise terrain.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CENTRES D'INTÉRÊT -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-header"><div class="section-eyebrow">Ce métier est fait pour vous si…</div><h2 class="section-title">Centres d'intérêt</h2><p class="section-subtitle">Vous vous reconnaissez dans plusieurs de ces profils ? Le métier de conseiller voyage pourrait vous correspondre.</p></div>
+    <div class="interests-wrap">
+      <span class="interest-tag"><span class="it-emoji">🌍</span> Le monde et les cultures m'attirent</span>
+      <span class="interest-tag"><span class="it-emoji">🤝</span> J'aime le contact humain et le conseil</span>
+      <span class="interest-tag"><span class="it-emoji">🛒</span> Le commerce et la négociation me plaisent</span>
+      <span class="interest-tag"><span class="it-emoji">📋</span> J'aime organiser et planifier</span>
+      <span class="interest-tag"><span class="it-emoji">💻</span> Je suis à l'aise avec les outils numériques</span>
+      <span class="interest-tag"><span class="it-emoji">✈️</span> Le secteur du transport me fascine</span>
+      <span class="interest-tag"><span class="it-emoji">🎯</span> J'aime atteindre des objectifs concrets</span>
+      <span class="interest-tag"><span class="it-emoji">📚</span> J'apprends vite et j'adore me former</span>
+    </div>
+  </div>
+</section>
+
+<!-- FORMATIONS -->
+<section class="section section-alt" id="formations">
+  <div class="section-inner">
+    <div class="section-header"><div class="section-eyebrow">Se former</div><h2 class="section-title">Les formations qui mènent à ce métier</h2><p class="section-subtitle">Cliquez sur une formation pour découvrir l'école et le programme détaillé</p></div>
+    <div class="formations-list">
+      <a href="#" class="formation-link"><div class="formation-level level-bac2">Bac+2</div><div class="formation-link-info"><h4>BTS Tourisme</h4><p>La porte d'entrée classique du métier. Formation en 2 ans avec stages en agence ou chez un TO.</p></div><span class="formation-school-badge"><span class="formation-school-logo">ESC</span>ESCAET + 12 écoles</span><span class="formation-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
+      <a href="#" class="formation-link"><div class="formation-level level-bac3">Bac+3</div><div class="formation-link-info"><h4>Bachelor spécialisé Travel</h4><p>Titre RNCP niv. 6 — Responsable des Activités du Tourisme et des Voyages. Accessible après Bac+2.</p></div><span class="formation-school-badge"><span class="formation-school-logo">ESC</span>ESCAET</span><span class="formation-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
+      <a href="#" class="formation-link"><div class="formation-level level-bac3">Bac+3</div><div class="formation-link-info"><h4>Licence Pro Métiers du Tourisme</h4><p>Formation universitaire professionnalisante avec spécialisation commercialisation des produits touristiques.</p></div><span class="formation-school-badge"><span class="formation-school-logo">UNI</span>4 universités</span><span class="formation-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
+      <a href="#" class="formation-link"><div class="formation-level level-bac5">Bac+5</div><div class="formation-link-info"><h4>MBA International Travel Management</h4><p>Titre RNCP niv. 7 — Pour évoluer rapidement vers des postes d'encadrement ou de direction commerciale.</p></div><span class="formation-school-badge"><span class="formation-school-logo">ESC</span>ESCAET</span><span class="formation-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ÉVOLUTION DE CARRIÈRE -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-header"><div class="section-eyebrow">Perspectives</div><h2 class="section-title">Évolution de carrière</h2></div>
+    <div class="career-path">
+      <div class="career-step"><div class="career-node cn-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div class="career-title">Conseiller junior</div><div class="career-exp">0 – 2 ans</div><span class="career-salary">24K – 28K€</span></div>
+      <div class="career-step"><div class="career-node cn-2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div class="career-title">Conseiller confirmé</div><div class="career-exp">2 – 5 ans</div><span class="career-salary">28K – 34K€</span></div>
+      <div class="career-step"><div class="career-node cn-3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div><div class="career-title">Chef de plateau</div><div class="career-exp">5 – 8 ans</div><span class="career-salary">34K – 40K€</span></div>
+      <div class="career-step"><div class="career-node cn-4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5"/></svg></div><div class="career-title">Responsable d'agence</div><div class="career-exp">8 – 12 ans</div><span class="career-salary">38K – 48K€</span></div>
+      <div class="career-step"><div class="career-node cn-5"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div><div class="career-title">Directeur commercial</div><div class="career-exp">12+ ans</div><span class="career-salary">48K – 65K€+</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SALAIRE -->
+<section class="section section-warm">
+  <div class="section-inner">
+    <div class="section-header"><div class="section-eyebrow">Rémunération</div><h2 class="section-title">Combien gagne un conseiller voyage ?</h2></div>
+    <div class="salary-grid">
+      <div class="salary-card"><div class="salary-label">Débutant</div><div class="salary-amount salary-amount-teal">24 000€</div><div class="salary-range">22K – 26K€ brut annuel</div></div>
+      <div class="salary-card"><div class="salary-label">Confirmé (3-7 ans)</div><div class="salary-amount salary-amount-teal">32 000€</div><div class="salary-range">28K – 36K€ brut annuel</div></div>
+      <div class="salary-card"><div class="salary-label">Senior / Expert</div><div class="salary-amount salary-amount-navy">42 000€</div><div class="salary-range">36K – 48K€ brut annuel</div></div>
+    </div>
+    <p class="salary-note">Fourchettes indicatives pour la France métropolitaine. La rémunération varie selon le type de structure (réseau intégré, indépendant, TO, OTA), la localisation (Paris vs région, +10-15% en Île-de-France) et la part variable sur objectifs qui peut représenter 10 à 20% du salaire fixe.</p>
+  </div>
+</section>
+
+<!-- EMPLOI ET SECTEUR -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-header"><div class="section-eyebrow">Marché de l'emploi</div><h2 class="section-title">Emploi et secteur</h2></div>
+    <div class="emploi-stats">
+      <div class="emploi-stat"><div class="emploi-stat-value">23</div><div class="emploi-stat-label">offres sur la plateforme</div></div>
+      <div class="emploi-stat"><div class="emploi-stat-value">+18%</div><div class="emploi-stat-label">d'offres vs 2025</div></div>
+      <div class="emploi-stat"><div class="emploi-stat-value">IDF / PACA</div><div class="emploi-stat-label">régions qui recrutent le plus</div></div>
+      <div class="emploi-stat"><div class="emploi-stat-value">3 mois</div><div class="emploi-stat-label">délai moyen d'embauche</div></div>
+    </div>
+    <div class="emploi-text">
+      <p>Le métier de conseiller voyage connaît une tension forte depuis la reprise post-Covid. Les entreprises du secteur peinent à recruter des profils qualifiés, notamment sur les destinations long-courrier et sur la maîtrise des GDS. Les réseaux d'agences (Selectour, Havas, TUI) et les TO sur-mesure sont les premiers recruteurs.</p>
+      <p>Le digital transforme le métier sans le supprimer : l'IA prend en charge les demandes simples, mais le conseil expert sur les voyages complexes, les combinés multi-destinations et le sur-mesure restent l'apanage du conseiller humain. Les profils qui combinent expertise destination et compétences digitales (CRM, data, réseaux sociaux) sont particulièrement recherchés.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TÉMOIGNAGES -->
+<section class="section section-alt">
+  <div class="section-inner">
+    <div class="section-header"><div class="section-eyebrow">Ils témoignent</div><h2 class="section-title">Paroles de professionnels et d'étudiants</h2></div>
+    <div class="testimonials-duo">
+      <div class="testimonial-card">
+        <div class="testimonial-video"><img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&q=80" alt=""><div class="video-play"><div class="play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><span class="video-label vl-pro">Professionnelle</span></div>
+        <div class="testimonial-body"><blockquote>« En 12 ans de métier, je n'ai jamais eu deux journées identiques. Chaque client est un nouveau défi, chaque destination une nouvelle histoire à raconter. »</blockquote><div class="testimonial-author"><div class="testimonial-avatar">CB</div><div class="testimonial-author-info"><h4>Claire Beaumont</h4><p>Conseillère spécialiste Asie — Voyages Horizon</p><a href="#" class="testimonial-source-link">Voir la fiche entreprise <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div></div></div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-video"><img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600&q=80" alt=""><div class="video-play"><div class="play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><span class="video-label vl-student">Étudiante</span></div>
+        <div class="testimonial-body"><blockquote>« Mon stage m'a ouvert les yeux : le métier de conseiller voyage, c'est de la technique, de l'humain et du commerce. Trois dimensions que j'avais du mal à imaginer depuis l'école. »</blockquote><div class="testimonial-author"><div class="testimonial-avatar" style="background:linear-gradient(135deg,var(--coral),#F59E0B)">ML</div><div class="testimonial-author-info"><h4>Marie Lecomte</h4><p>MBA 2e année — ESCAET, alternance chez Kuoni</p><a href="#" class="testimonial-source-link">Voir le profil étudiant <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MÉTIERS PROCHES -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-header"><div class="section-eyebrow">À explorer aussi</div><h2 class="section-title">Métiers proches</h2></div>
+    <div class="metiers-scroll">
+      <a href="#" class="metier-mini"><div class="metier-mini-icon" style="background:var(--teal-bg)">🗺️</div><h4>Chef de produit tourisme</h4><p>Conception d'offres et de circuits pour un TO ou un réceptif</p><span class="metier-mini-salary">30K – 48K€</span></a>
+      <a href="#" class="metier-mini"><div class="metier-mini-icon" style="background:rgba(232,99,74,0.1)">📊</div><h4>Revenue Manager</h4><p>Optimisation tarifaire et yield management aérien ou hôtelier</p><span class="metier-mini-salary">35K – 55K€</span></a>
+      <a href="#" class="metier-mini"><div class="metier-mini-icon" style="background:rgba(27,42,74,0.08)">🏢</div><h4>Responsable d'agence</h4><p>Management d'équipe, pilotage commercial et relation réseau</p><span class="metier-mini-salary">38K – 52K€</span></a>
+      <a href="#" class="metier-mini"><div class="metier-mini-icon" style="background:#D1FAE5">✨</div><h4>Travel Designer</h4><p>Création de voyages sur-mesure haut de gamme et expérientiels</p><span class="metier-mini-salary">28K – 42K€</span></a>
+      <a href="#" class="metier-mini"><div class="metier-mini-icon" style="background:#EDE9FE">🎫</div><h4>Billettiste</h4><p>Spécialiste de la réservation et de la tarification aérienne</p><span class="metier-mini-salary">24K – 34K€</span></a>
+      <a href="#" class="metier-mini"><div class="metier-mini-icon" style="background:#FEF3C7">📦</div><h4>Forfaitiste</h4><p>Montage technique de packages et négociation fournisseurs</p><span class="metier-mini-salary">26K – 38K€</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- OFFRES D'EMPLOI -->
+<section class="section section-alt" id="offres">
+  <div class="section-inner">
+    <div class="section-header"><div class="section-eyebrow">Emploi</div><h2 class="section-title">Offres de conseiller voyage en ce moment</h2></div>
+    <div class="jobs-list">
+      <div class="job-card"><div class="job-company-logo">VOYAGES HORIZON</div><div class="job-main"><h4>Conseiller Voyages — Spécialiste Amérique Latine</h4><div class="job-tags"><span class="job-tag job-tag-cdi">CDI</span><span class="job-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Paris</span><span class="job-tag">26K – 32K€</span></div></div><span class="job-date">Il y a 2 jours</span><button class="job-apply">Postuler</button></div>
+      <div class="job-card"><div class="job-company-logo">HAVAS</div><div class="job-main"><h4>Conseiller Voyages Loisirs (H/F)</h4><div class="job-tags"><span class="job-tag job-tag-cdi">CDI</span><span class="job-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Lyon</span><span class="job-tag">24K – 28K€</span></div></div><span class="job-date">Il y a 3 jours</span><button class="job-apply">Postuler</button></div>
+      <div class="job-card"><div class="job-company-logo">KUONI</div><div class="job-main"><h4>Alternant(e) Conseiller Voyage Premium</h4><div class="job-tags"><span class="job-tag job-tag-alt">Alternance</span><span class="job-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Paris</span><span class="job-tag">Sept. 2026</span></div></div><span class="job-date">Il y a 5 jours</span><button class="job-apply">Postuler</button></div>
+      <div class="job-card"><div class="job-company-logo">TUI</div><div class="job-main"><h4>Stagiaire Conseil & Vente — Agence Toulouse</h4><div class="job-tags"><span class="job-tag job-tag-stage">Stage</span><span class="job-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Toulouse</span><span class="job-tag">6 mois</span></div></div><span class="job-date">Il y a 1 semaine</span><button class="job-apply">Postuler</button></div>
+    </div>
+    <div class="jobs-footer"><a class="btn btn-ghost" href="#">Voir toutes les offres conseiller voyage (23) <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
+  </div>
+</section>
+
+<!-- ARTICLES -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-header"><div class="section-eyebrow">Sur TourMaG.com</div><h2 class="section-title">Articles sur le métier</h2></div>
+    <div class="articles-scroll">
+      <div class="article-card"><div class="article-thumb"><img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=400&q=80" alt=""></div><div class="article-body"><div class="article-date">18 juin 2026</div><h4>Conseiller voyage en 2026 : comment l'IA redéfinit le métier sans le remplacer</h4><p>L'intelligence artificielle automatise les tâches à faible valeur ajoutée, mais renforce le rôle de conseil expert…</p></div></div>
+      <div class="article-card"><div class="article-thumb"><img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=400&q=80" alt=""></div><div class="article-body"><div class="article-date">3 juin 2026</div><h4>Pénurie de conseillers voyages : les réseaux multiplient les initiatives de formation</h4><p>Face à la difficulté de recruter, Selectour, Havas et TUI lancent des programmes accélérés…</p></div></div>
+      <div class="article-card"><div class="article-thumb"><img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=400&q=80" alt=""></div><div class="article-body"><div class="article-date">21 mai 2026</div><h4>Salaires dans le tourisme : où en est-on vraiment en 2026 ?</h4><p>Notre enquête exclusive sur les rémunérations par métier, type de structure et région…</p></div></div>
+      <div class="article-card"><div class="article-thumb"><img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=400&q=80" alt=""></div><div class="article-body"><div class="article-date">8 mai 2026</div><h4>Du BTS au MBA : quel parcours pour devenir conseiller voyage ?</h4><p>Panorama des formations qui mènent au métier, avec les retours d'expérience de trois diplômés…</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- POUR ALLER PLUS LOIN -->
+<section class="section section-alt">
+  <div class="section-inner">
+    <div class="section-header"><div class="section-eyebrow">Ressources</div><h2 class="section-title">Pour aller plus loin</h2></div>
+    <div class="resources-grid">
+      <a href="https://www.onisep.fr" target="_blank" class="resource-link"><div class="resource-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg></div><div><h4>Fiche ONISEP</h4><p>Fiche officielle du métier d'agent de voyages</p></div></a>
+      <a href="https://www.francetravail.fr" target="_blank" class="resource-link"><div class="resource-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg></div><div><h4>Fiche Rome — France Travail</h4><p>Code ROME G1303 — Vente de voyages</p></div></a>
+      <a href="#" class="resource-link"><div class="resource-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div><div><h4>Les Entreprises du Voyage</h4><p>Syndicat professionnel du secteur</p></div></a>
+      <a href="https://www.tourmag.com" target="_blank" class="resource-link"><div class="resource-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div><h4>Guide des métiers TourMaG</h4><p>Tous les métiers du tourisme sur TourMaG.com</p></div></a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-final">
+  <div class="cta-final-inner">
+    <h2>Le métier de conseiller voyage vous intéresse ?</h2>
+    <p>Trouvez la formation qui vous correspond ou consultez les offres d'emploi disponibles en ce moment dans le secteur.</p>
+    <div class="cta-final-buttons">
+      <a href="#" class="btn btn-coral"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5"/></svg>Trouver une formation</a>
+      <a href="#" class="btn btn-white-outline"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>23 offres d'emploi</a>
+    </div>
+  </div>
+</section>
+
+</div><!-- /content-wrapper -->
+
+<!-- CTA ONGLET LATÉRAL (desktop) -->
+<div class="side-cta"><button class="side-cta-btn" onclick="openModal('contactModal')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>En savoir plus</button></div>
+
+<!-- MODAL CONTACT -->
+<div class="modal-overlay" id="contactModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('contactModal')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <div class="form-fields" id="contactFields">
+      <h3>Besoin d'informations ?</h3>
+      <p>Posez vos questions sur ce métier, les formations ou les opportunités d'emploi.</p>
+      <div class="form-group"><label>Nom complet</label><input type="text" placeholder="Votre nom et prénom"></div>
+      <div class="form-group"><label>Email</label><input type="email" placeholder="votre@email.com"></div>
+      <div class="form-group"><label>Vous êtes</label><select><option value="">Sélectionnez votre profil</option><option>Étudiant(e)</option><option>Professionnel(le) en reconversion</option><option>Employeur / recruteur</option><option>École / organisme de formation</option><option>Autre</option></select></div>
+      <div class="form-group"><label>Votre message</label><textarea placeholder="Votre question…"></textarea></div>
+      <button class="btn btn-coral" onclick="submitForm('contactModal')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>Envoyer</button>
+    </div>
+    <div class="form-success" id="contactSuccess">
+      <div class="form-success-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+      <h4>Message envoyé !</h4>
+      <p>Nous vous répondrons dans les meilleurs délais.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+// MODALS
+function openModal(id){document.getElementById(id).classList.add('active');document.body.style.overflow='hidden'}
+function closeModal(id){var m=document.getElementById(id);m.classList.remove('active');document.body.style.overflow='';setTimeout(function(){var f=m.querySelector('.form-fields'),s=m.querySelector('.form-success');if(f&&s){f.classList.remove('hide');s.classList.remove('show')}},300)}
+function submitForm(id){var m=document.getElementById(id);m.querySelector('.form-fields').classList.add('hide');m.querySelector('.form-success').classList.add('show')}
+document.querySelectorAll('.modal-overlay').forEach(function(m){m.addEventListener('click',function(e){if(e.target===this)closeModal(this.id)})});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')document.querySelectorAll('.modal-overlay.active').forEach(function(m){closeModal(m.id)})});
+
+// IFRAME POSTMESSAGE
+(function(){
+  var RESIZE='plateforme-resize',MODAL_OPEN='plateforme-modal-open',MODAL_CLOSE='plateforme-modal-close';
+  var wrapper=document.getElementById('content-wrapper');
+
+  function sendHeight(){
+    var h=wrapper?wrapper.offsetHeight:document.documentElement.scrollHeight;
+    window.parent.postMessage({type:RESIZE,height:h},'*');
+  }
+  function signalModalOpen(){window.parent.postMessage({type:MODAL_OPEN},'*')}
+  function signalModalClose(){window.parent.postMessage({type:MODAL_CLOSE},'*')}
+
+  sendHeight();
+  setInterval(sendHeight,2000);
+  window.addEventListener('load',function(){setTimeout(sendHeight,500)});
+  if(window.MutationObserver){new MutationObserver(function(){setTimeout(sendHeight,100)}).observe(document.body,{childList:true,subtree:true,attributes:true})}
+
+  var _openModal=window.openModal;
+  window.openModal=function(id){_openModal(id);var m=document.getElementById(id);if(m)positionModal(m);signalModalOpen()};
+  var _closeModal=window.closeModal;
+  window.closeModal=function(id){_closeModal(id);signalModalClose();setTimeout(sendHeight,300)};
+
+  // SIDE CTA + MODAL POSITIONING
+  var sideCta=document.querySelector('.side-cta');
+  var lastScroll={scrollY:0,iframeTop:0,viewportHeight:window.innerHeight};
+
+  window.addEventListener('message',function(e){
+    if(e.data&&e.data.type==='plateforme-parent-scroll'){
+      lastScroll={scrollY:e.data.parentScrollY,iframeTop:e.data.iframeTop,viewportHeight:e.data.viewportHeight};
+      if(sideCta){
+        var mid=e.data.parentScrollY-e.data.iframeTop+(e.data.viewportHeight/2)-100;
+        sideCta.style.top=mid+'px';sideCta.style.transform='translateY(-50%)';
+        if(!sideCta.classList.contains('visible'))sideCta.classList.add('visible');
+      }
+      document.querySelectorAll('.modal-overlay.active').forEach(function(m){positionModal(m)});
+    }
+  });
+
+  function positionModal(m){
+    var top=lastScroll.scrollY-lastScroll.iframeTop;if(top<0)top=0;
+    m.style.top=top+'px';m.style.height=lastScroll.viewportHeight+'px';
+  }
+
+  // STANDALONE FALLBACK
+  if(window===window.parent){
+    if(sideCta){sideCta.style.position='fixed';sideCta.style.top='calc(50% - 100px)';sideCta.style.transform='translateY(-50%)';setTimeout(function(){sideCta.classList.add('visible')},1000)}
+    document.querySelectorAll('.modal-overlay').forEach(function(m){m.style.position='fixed';m.style.top='0';m.style.height='100%'});
+  }
+})();
+</script>
+
+</body>
+</html>
