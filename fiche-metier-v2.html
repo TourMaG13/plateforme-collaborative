@@ -280,6 +280,9 @@ a:hover{color:var(--teal-light)}
 .form-success h4{font-size:1.1rem;font-weight:700;color:var(--navy);margin-bottom:8px}
 .form-success p{font-size:0.9rem;color:var(--text-secondary)}
 
+.share-toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);padding:10px 24px;border-radius:100px;background:var(--navy);color:#fff;font-size:0.85rem;font-weight:600;box-shadow:var(--shadow-lg);z-index:999;opacity:0;transition:opacity 0.3s;pointer-events:none}
+.share-toast.show{opacity:1}
+
 /* RESPONSIVE */
 @media(max-width:1024px){
   .presentation-layout{grid-template-columns:1fr}
@@ -342,6 +345,7 @@ a:hover{color:var(--teal-light)}
     <div class="hero-ctas">
       <a href="#formations" class="btn btn-coral"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5"/></svg>Trouver une formation</a>
       <a href="#offres" class="btn btn-white-outline"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>Voir les offres d'emploi</a>
+      <button class="btn btn-white-outline" onclick="sharePage()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>Partager</button>
     </div>
   </div>
 </section>
@@ -608,6 +612,14 @@ a:hover{color:var(--teal-light)}
 </div>
 
 <script>
+// SHARE
+function sharePage(){
+  var url=window.location.href;
+  var title='Conseiller Voyage — Fiche Métier | TourMaG';
+  if(navigator.share){navigator.share({title:title,url:url}).catch(function(){})}
+  else{navigator.clipboard.writeText(url).then(function(){var t=document.getElementById('shareToast');t.classList.add('show');setTimeout(function(){t.classList.remove('show')},2000)}).catch(function(){})}
+}
+
 // MODALS
 function openModal(id){document.getElementById(id).classList.add('active');document.body.style.overflow='hidden'}
 function closeModal(id){var m=document.getElementById(id);m.classList.remove('active');document.body.style.overflow='';setTimeout(function(){var f=m.querySelector('.form-fields'),s=m.querySelector('.form-success');if(f&&s){f.classList.remove('hide');s.classList.remove('show')}},300)}
@@ -666,5 +678,6 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')document.que
 })();
 </script>
 
+<div id="shareToast" class="share-toast">Lien copié !</div>
 </body>
 </html>
