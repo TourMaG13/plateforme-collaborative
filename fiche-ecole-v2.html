@@ -116,6 +116,14 @@ a{color:var(--teal);text-decoration:none}a:hover{color:var(--teal-light)}
 .value-tag:hover{background:var(--teal);color:#fff}
 .value-tag svg{width:14px;height:14px}
 
+/* POURQUOI CHOISIR */
+.pillars-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.pillar-card{display:flex;gap:18px;padding:24px;background:var(--white);border-radius:var(--radius-lg);border:1px solid var(--border);transition:all 0.3s var(--ease)}
+.pillar-card:hover{box-shadow:var(--shadow-md);border-color:var(--teal)}
+.pillar-num{font-family:var(--font-display);font-size:1.6rem;font-weight:800;color:var(--teal);line-height:1;flex-shrink:0;width:36px}
+.pillar-content h4{font-size:0.95rem;font-weight:700;color:var(--navy);margin-bottom:6px}
+.pillar-content p{font-size:0.85rem;color:var(--text-secondary);line-height:1.55}
+
 /* FORMATIONS */
 .formations-tabs{display:flex;gap:4px;margin-bottom:32px;background:var(--light-bg);border-radius:var(--radius-md);padding:4px;width:fit-content}
 .formations-tab{padding:10px 20px;border-radius:var(--radius-sm);font-size:0.88rem;font-weight:600;color:var(--text-secondary);background:transparent;border:none;cursor:pointer;transition:all 0.2s var(--ease)}
@@ -380,6 +388,7 @@ a{color:var(--teal);text-decoration:none}a:hover{color:var(--teal-light)}
   .students-grid{grid-template-columns:1fr}
   .article-card{flex:0 0 240px}
   .careers-grid{grid-template-columns:1fr}
+  .pillars-grid{grid-template-columns:1fr}
   .access-list{grid-template-columns:1fr}
   .coords-layout{grid-template-columns:1fr}
   .direction-grid{grid-template-columns:1fr}
@@ -439,8 +448,8 @@ a{color:var(--teal);text-decoration:none}a:hover{color:var(--teal-light)}
       <div>
         <div class="presentation-text">
           <p>Depuis 1984, l'ESCAET forme les futurs cadres et dirigeants du secteur du tourisme et des voyages. Implantée à Aix-en-Provence, l'école a tissé un maillage étroit avec les acteurs du secteur — tour-opérateurs, compagnies aériennes, hôteliers, réceptifs, agences — pour proposer des formations au plus proche des réalités opérationnelles.</p>
-          <p>La pédagogie de l'ESCAET s'appuie sur un double ancrage : une spécialisation sectorielle pointue et une ouverture stratégique aux enjeux de transformation digitale, de yield management et de tourisme responsable. Chaque étudiant est accompagné individuellement, avec des immersions en entreprise dès la première année.</p>
-          <p>Au-delà de la formation initiale, l'ESCAET accompagne aussi les professionnels en poste à travers des parcours certifiants courts et des dispositifs de reconversion, accessibles en ligne ou en présentiel.</p>
+          <p>La pédagogie de l'ESCAET s'appuie sur un double ancrage : une spécialisation sectorielle pointue et une ouverture stratégique aux enjeux de transformation digitale, de yield management et de tourisme responsable. Chaque étudiant est accompagné individuellement, avec des immersions en entreprise dès la première année et un réseau de plus de 1 200 entreprises partenaires qui facilitent l'accès au stage, à l'alternance et au premier emploi.</p>
+          <p>Au-delà de la formation initiale, l'ESCAET accompagne aussi les professionnels en poste à travers des parcours certifiants courts et des dispositifs de reconversion, accessibles en ligne ou en présentiel. L'école est aujourd'hui la seule en France entièrement dédiée aux métiers du tourisme et du voyage, avec des cursus qui couvrent l'ensemble de la chaîne de valeur : distribution, production, revenue management, digital, événementiel et mobilité.</p>
         </div>
         <div class="presentation-links">
           <a href="https://www.escaet.fr" target="_blank" class="btn btn-teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>Visiter le site</a>
@@ -474,6 +483,21 @@ a{color:var(--teal);text-decoration:none}a:hover{color:var(--teal-light)}
           </ul>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- POURQUOI CHOISIR L'ESCAET -->
+<section class="section section-alt reveal">
+  <div class="section-inner">
+    <div class="section-header"><div class="section-eyebrow">Nos atouts</div><h2 class="section-title">Pourquoi choisir l'ESCAET ?</h2></div>
+    <div class="pillars-grid">
+      <div class="pillar-card"><div class="pillar-num">01</div><div class="pillar-content"><h4>La seule école 100% tourisme et voyages</h4><p>Contrairement aux écoles de commerce généralistes qui proposent une option tourisme en fin de cursus, l'ESCAET consacre l'intégralité de ses programmes aux problématiques du travel, de la distribution et des marchés du voyage depuis 1984.</p></div></div>
+      <div class="pillar-card"><div class="pillar-num">02</div><div class="pillar-content"><h4>L'alternance au cœur du modèle</h4><p>35% des étudiants sont en alternance, avec un réseau de 1 200 entreprises partenaires — tour-opérateurs, réseaux d'agences, compagnies aériennes, plateformes digitales — qui recrutent directement dans les promotions de l'école.</p></div></div>
+      <div class="pillar-card"><div class="pillar-num">03</div><div class="pillar-content"><h4>Des diplômes reconnus par l'État</h4><p>Les titres délivrés par l'ESCAET sont inscrits au RNCP aux niveaux 6 (Bachelor) et 7 (MBA), avec une certification Qualiopi AFNOR couvrant la formation, la VAE et l'apprentissage.</p></div></div>
+      <div class="pillar-card"><div class="pillar-num">04</div><div class="pillar-content"><h4>3 000+ alumni en poste dans le secteur</h4><p>Le réseau des diplômés de l'ESCAET constitue un levier concret d'insertion et de progression de carrière. Ces professionnels en activité interviennent aussi régulièrement dans les cours et les événements de l'école.</p></div></div>
+      <div class="pillar-card"><div class="pillar-num">05</div><div class="pillar-content"><h4>L'innovation intégrée à la formation</h4><p>Avec son incubateur Provence Travel Innovation et ses masterclasses animées par des dirigeants du secteur, l'ESCAET place la veille technologique et l'IA au cœur de ses enseignements.</p></div></div>
+      <div class="pillar-card"><div class="pillar-num">06</div><div class="pillar-content"><h4>Un format hybride adapté à chacun</h4><p>Cours en présentiel à Aix-en-Provence et modules à distance : un modèle souple compatible avec l'alternance, la reconversion professionnelle ou la formation continue des salariés en poste.</p></div></div>
     </div>
   </div>
 </section>
@@ -538,11 +562,11 @@ a{color:var(--teal);text-decoration:none}a:hover{color:var(--teal-light)}
 <section class="section reveal">
   <div class="section-inner">
     <div class="section-header"><div class="section-eyebrow">Pédagogie</div><h2 class="section-title">Nos méthodes d'enseignement</h2></div>
-    <p class="pedagogy-intro">L'ESCAET a développé un modèle pédagogique qui articule temps en entreprise et temps à l'école, avec des modules accessibles en présentiel à Aix-en-Provence et à distance. L'objectif : que chaque apprenant soit opérationnel dès sa sortie.</p>
+    <p class="pedagogy-intro">L'ESCAET a développé un modèle pédagogique qui articule temps en entreprise et temps à l'école, avec des modules accessibles en présentiel à Aix-en-Provence et à distance. L'objectif : que chaque apprenant soit opérationnel dès sa sortie, avec une compréhension fine des outils, des marchés et des enjeux stratégiques du secteur. Ce modèle repose sur trois piliers fondamentaux.</p>
     <div class="pedagogy-grid">
-      <div class="pedagogy-card"><div class="pedagogy-num">1</div><h4>Des intervenants en prise avec le terrain</h4><p>Les enseignements sont dispensés par des professionnels en activité — responsables distribution, experts pricing, directeurs marketing — qui apportent leur expérience quotidienne en cours.</p></div>
-      <div class="pedagogy-card"><div class="pedagogy-num">2</div><h4>Mises en situation et projets réels</h4><p>Chaque semestre est ponctué d'études de cas proposées par des entreprises partenaires, de challenges d'innovation et de masterclasses animées par des dirigeants du secteur.</p></div>
-      <div class="pedagogy-card"><div class="pedagogy-num">3</div><h4>Un suivi personnalisé de A à Z</h4><p>De la recherche d'alternance au placement post-diplôme, chaque étudiant bénéficie d'un accompagnement sur-mesure : coaching projet pro, préparation aux entretiens, tutorat individuel.</p></div>
+      <div class="pedagogy-card"><div class="pedagogy-num">1</div><h4>Des intervenants en prise avec le terrain</h4><p>Les enseignements sont dispensés par des professionnels en activité — responsables distribution, experts pricing, directeurs marketing, consultants en revenue management — qui apportent leur expérience quotidienne en cours. Plus de 70% du corps enseignant exerce en parallèle dans le secteur du tourisme.</p></div>
+      <div class="pedagogy-card"><div class="pedagogy-num">2</div><h4>Mises en situation et projets réels</h4><p>Chaque semestre est ponctué d'études de cas proposées par des entreprises partenaires, de challenges d'innovation et de masterclasses animées par des dirigeants du secteur. Les étudiants travaillent sur des problématiques concrètes — lancement de produit, stratégie digitale, optimisation tarifaire — qui nourrissent directement leur portfolio professionnel.</p></div>
+      <div class="pedagogy-card"><div class="pedagogy-num">3</div><h4>Un suivi personnalisé de A à Z</h4><p>De la recherche d'alternance au placement post-diplôme, chaque étudiant bénéficie d'un accompagnement sur-mesure : coaching projet professionnel, simulation d'entretiens, tutorat individuel par un professionnel référent. Ce dispositif contribue directement au taux d'insertion de 94% à la sortie de l'école.</p></div>
     </div>
   </div>
 </section>
@@ -601,9 +625,9 @@ a{color:var(--teal);text-decoration:none}a:hover{color:var(--teal-light)}
   <div class="section-inner">
     <div class="section-header"><div class="section-eyebrow">Écosystème</div><h2 class="section-title">Réseau & Innovation</h2></div>
     <div class="network-grid">
-      <div class="network-card"><div class="nw-icon cd-coral"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><h4>Un incubateur dédié au voyage</h4><p>Provence Travel Innovation, cofondé avec des acteurs régionaux, a accompagné plus de 30 startups dans la travel tech, le tourisme durable et les solutions de mobilité.</p></div>
-      <div class="network-card"><div class="nw-icon cd-teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div><h4>3 000+ alumni dans le secteur</h4><p>Les diplômés de l'ESCAET occupent des postes à responsabilité dans les agences, chez les TO, dans l'aérien, l'hôtellerie et les plateformes de distribution.</p></div>
-      <div class="network-card"><div class="nw-icon cd-amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div><h4>Recherche et prospective</h4><p>L'école organise des rencontres régulières entre professionnels, chercheurs et étudiants pour analyser les mutations du secteur et anticiper les besoins de demain.</p></div>
+      <div class="network-card"><div class="nw-icon cd-coral"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><h4>Un incubateur dédié au voyage</h4><p>Provence Travel Innovation, cofondé avec des acteurs régionaux en 2017, a déjà accompagné plus de 30 startups spécialisées dans la travel tech, le tourisme durable et les solutions de mobilité. Les étudiants de l'ESCAET participent activement aux projets de l'incubateur dans le cadre de leur cursus.</p></div>
+      <div class="network-card"><div class="nw-icon cd-teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div><h4>3 000+ alumni dans le secteur</h4><p>Les diplômés de l'ESCAET occupent des postes à responsabilité dans les agences, chez les TO, dans l'aérien, l'hôtellerie et les plateformes de distribution. Ce réseau actif intervient régulièrement dans les cours, propose des offres de stage et d'emploi, et facilite l'intégration des jeunes diplômés par cooptation.</p></div>
+      <div class="network-card"><div class="nw-icon cd-amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div><h4>Recherche et prospective</h4><p>L'école organise chaque année le Forum des Pionniers et les rencontres Stratégos, des événements qui rassemblent professionnels, chercheurs et étudiants pour analyser les mutations du secteur — IA, tourisme responsable, nouveaux modèles de distribution — et anticiper les compétences de demain.</p></div>
     </div>
   </div>
 </section>
@@ -621,7 +645,7 @@ a{color:var(--teal);text-decoration:none}a:hover{color:var(--teal-light)}
         <div class="direction-body">
           <h4>Julie Panadero</h4>
           <div class="dir-role">Directrice de l'ESCAET</div>
-          <blockquote>« Notre mission est de former des professionnels agiles, capables de s'adapter à un secteur en transformation permanente. L'ESCAET ne prépare pas à un métier figé, elle prépare à une carrière. »</blockquote>
+          <blockquote>« Notre mission est de former des professionnels agiles, capables de s'adapter à un secteur en transformation permanente. L'ESCAET ne prépare pas à un métier figé, elle prépare à une carrière. Nos diplômés évoluent dans l'aérien, le tour-operating, l'hôtellerie, le digital — parce que la base de compétences que nous construisons est transversale et solide. »</blockquote>
         </div>
       </div>
       <div class="direction-card">
@@ -632,7 +656,7 @@ a{color:var(--teal);text-decoration:none}a:hover{color:var(--teal-light)}
         <div class="direction-body">
           <h4>Responsable du programme Tourisme</h4>
           <div class="dir-role">Responsable pédagogique</div>
-          <blockquote>« Nos programmes sont conçus main dans la main avec les entreprises partenaires. Chaque module répond à un besoin concret identifié sur le terrain, pas à une grille théorique. »</blockquote>
+          <blockquote>« Nos programmes sont conçus main dans la main avec les entreprises partenaires. Chaque module répond à un besoin concret identifié sur le terrain, pas à une grille théorique. C'est pour ça que nos étudiants sont opérationnels dès le premier jour en entreprise — ils connaissent les outils, les processus et les réalités du marché. »</blockquote>
         </div>
       </div>
     </div>
@@ -695,7 +719,7 @@ a{color:var(--teal);text-decoration:none}a:hover{color:var(--teal-light)}
   <div class="section-inner">
     <div class="section-header"><div class="section-eyebrow">Inclusion</div><h2 class="section-title">Accessibilité & accueil des personnes en situation de handicap</h2></div>
     <div class="access-content">
-      <p style="font-size:0.92rem;color:var(--text);line-height:1.6;margin-bottom:16px">L'ESCAET s'engage dans une démarche inclusive à chaque étape du parcours, de la candidature jusqu'au placement en entreprise.</p>
+      <p style="font-size:0.92rem;color:var(--text);line-height:1.6;margin-bottom:16px">L'ESCAET s'engage dans une démarche inclusive à chaque étape du parcours, de la candidature jusqu'au placement en entreprise. L'école adapte ses dispositifs pédagogiques et ses infrastructures pour garantir à chaque apprenant les meilleures conditions de réussite, quelle que soit sa situation.</p>
       <div class="access-list">
         <div class="access-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Entretien individuel dès la candidature</span></div>
         <div class="access-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Étude de faisabilité pédagogique personnalisée</span></div>
