@@ -125,34 +125,49 @@ a{color:var(--teal);text-decoration:none}a:hover{color:var(--teal-light)}
 .pillar-content p{font-size:0.85rem;color:var(--text-secondary);line-height:1.55}
 
 /* FORMATIONS */
-.formations-tabs{display:flex;gap:4px;margin-bottom:32px;background:var(--light-bg);border-radius:var(--radius-md);padding:4px;width:fit-content}
-.formations-tab{padding:10px 20px;border-radius:var(--radius-sm);font-size:0.88rem;font-weight:600;color:var(--text-secondary);background:transparent;border:none;cursor:pointer;transition:all 0.2s var(--ease)}
-.formations-tab.active{background:var(--white);color:var(--navy);box-shadow:var(--shadow-sm)}
-.formations-tab:hover:not(.active){color:var(--text)}
-.formations-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:20px}
-.formation-card{background:var(--white);border-radius:var(--radius-lg);border:1px solid var(--border);padding:28px;transition:all 0.4s var(--ease);position:relative;overflow:hidden}
-.formation-card.hidden{opacity:0;transform:scale(0.95);max-height:0;padding:0 28px;margin:0;border:none;overflow:hidden}
-.formation-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--teal),var(--teal-light));opacity:0;transition:opacity 0.3s var(--ease)}
-.formation-card:hover{box-shadow:var(--shadow-lg);border-color:transparent;transform:translateY(-2px)}
-.formation-card:hover::before{opacity:1}
-.formation-badges{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap}
-.formation-badge{display:inline-block;padding:4px 12px;border-radius:100px;font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px}
+/* FORMATIONS — ONGLETS PAR PROGRAMME */
+.prog-tabs{display:flex;gap:4px;margin-bottom:32px;background:var(--light-bg);border-radius:var(--radius-md);padding:4px;width:100%;overflow-x:auto;scrollbar-width:none}
+.prog-tabs::-webkit-scrollbar{display:none}
+.prog-tab{padding:10px 18px;border-radius:var(--radius-sm);font-size:0.85rem;font-weight:600;color:var(--text-secondary);background:transparent;border:none;cursor:pointer;transition:all 0.2s var(--ease);white-space:nowrap;flex-shrink:0}
+.prog-tab.active{background:var(--white);color:var(--navy);box-shadow:var(--shadow-sm)}
+.prog-tab:hover:not(.active){color:var(--text)}
+.prog-panel{display:none}
+.prog-panel.active{display:block}
 .badge-alternance{background:#DBEAFE;color:#1E40AF}
 .badge-continue{background:#FEF3C7;color:#92400E}
 .badge-pro{background:#D1FAE5;color:#065F46}
 .badge-initial{background:#EDE9FE;color:#5B21B6}
-.formation-card h4{font-size:1.05rem;font-weight:700;color:var(--navy);margin-bottom:10px;line-height:1.35}
-.formation-card>p{font-size:0.88rem;color:var(--text-secondary);line-height:1.55;margin-bottom:8px}
-.formation-objective{font-size:0.85rem;color:var(--navy);font-weight:600;margin-bottom:16px;padding:12px 16px;border-left:3px solid var(--teal);background:var(--teal-bg);border-radius:0 var(--radius-sm) var(--radius-sm) 0}
-.formation-objective::before{content:'Objectif : ';font-weight:800;color:var(--teal)}
-.formation-meta{display:flex;flex-wrap:wrap;gap:16px;font-size:0.8rem;color:var(--text-secondary);padding-top:16px;border-top:1px solid var(--border)}
-.formation-meta span{display:flex;align-items:center;gap:5px}
-.formation-meta svg{width:14px;height:14px;color:var(--teal)}
-.formation-cta{display:none}
-.formation-details{max-height:none;opacity:1;overflow:visible}
-.formation-details-inner{padding-top:20px;margin-top:16px;border-top:1px dashed var(--border);font-size:0.85rem;color:var(--text-secondary);line-height:1.6}
-.formation-details-inner h5{font-size:0.82rem;font-weight:700;color:var(--navy);margin-bottom:6px;margin-top:14px}
-.formation-details-inner h5:first-child{margin-top:0}
+.prog-overview{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.prog-mini{background:var(--white);border-radius:var(--radius-lg);border:1px solid var(--border);padding:24px;cursor:pointer;transition:all 0.3s var(--ease)}
+.prog-mini:hover{box-shadow:var(--shadow-lg);border-color:var(--teal);transform:translateY(-2px)}
+.prog-mini-badges{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap}
+.prog-mini-badge{display:inline-block;padding:4px 12px;border-radius:100px;font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px}
+.prog-mini h4{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:8px}
+.prog-mini-obj{font-size:0.82rem;color:var(--teal);font-weight:600;margin-bottom:14px;padding:8px 12px;background:var(--teal-bg);border-radius:var(--radius-sm);border-left:3px solid var(--teal)}
+.prog-mini-meta{display:flex;flex-wrap:wrap;gap:14px;font-size:0.78rem;color:var(--text-secondary)}
+.prog-mini-meta span{display:flex;align-items:center;gap:4px}
+.prog-mini-meta svg{width:13px;height:13px;color:var(--teal)}
+.prog-mini-cta{display:inline-flex;align-items:center;gap:5px;margin-top:14px;font-size:0.82rem;font-weight:600;color:var(--teal)}
+.prog-mini-cta svg{width:14px;height:14px}
+.prog-detail{display:grid;grid-template-columns:1fr 1fr;gap:36px}
+.prog-detail-left{}
+.prog-detail-badges{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.prog-detail-badge{display:inline-block;padding:4px 12px;border-radius:100px;font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px}
+.prog-detail-left h3{font-size:1.4rem;font-weight:800;color:var(--navy);line-height:1.25;margin-bottom:16px}
+.prog-detail-desc{font-family:var(--font-serif);font-size:1rem;line-height:1.7;color:var(--text);margin-bottom:16px}
+.prog-detail-obj{font-size:0.88rem;color:var(--navy);font-weight:600;padding:14px 18px;background:var(--teal-bg);border-radius:var(--radius-sm);border-left:3px solid var(--teal);margin-bottom:16px}
+.prog-detail-obj span{color:var(--teal);font-weight:800}
+.prog-detail-meta{display:flex;flex-wrap:wrap;gap:16px;font-size:0.85rem;color:var(--text-secondary);padding-top:16px;border-top:1px solid var(--border)}
+.prog-detail-meta span{display:flex;align-items:center;gap:6px}
+.prog-detail-meta svg{width:15px;height:15px;color:var(--teal)}
+.prog-detail-right{display:flex;flex-direction:column;gap:16px}
+.prog-block{background:var(--white);border-radius:var(--radius-lg);border:1px solid var(--border);padding:22px}
+.prog-block h5{font-size:0.88rem;font-weight:700;color:var(--navy);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.prog-block h5 svg{width:16px;height:16px;color:var(--teal)}
+.prog-block p{font-size:0.85rem;color:var(--text-secondary);line-height:1.6}
+.prog-back{display:inline-flex;align-items:center;gap:6px;font-size:0.85rem;font-weight:600;color:var(--text-secondary);cursor:pointer;border:none;background:none;padding:0;font-family:var(--font-display);margin-bottom:20px;transition:color 0.2s}
+.prog-back:hover{color:var(--teal)}
+.prog-back svg{width:16px;height:16px}
 
 /* PÉDAGOGIE */
 .pedagogy-intro{font-family:var(--font-serif);font-size:1.05rem;line-height:1.7;color:var(--text);margin-bottom:32px}
@@ -375,10 +390,6 @@ a{color:var(--teal);text-decoration:none}a:hover{color:var(--teal-light)}
   .key-figure-value{font-size:1.6rem}
   .section{padding:40px 16px}.section-title{font-size:1.3rem}
   .presentation-links{flex-direction:column}.presentation-links .btn{width:100%;justify-content:center}
-  .formations-tabs{width:100%;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
-  .formations-tabs::-webkit-scrollbar{display:none}
-  .formations-tab{flex-shrink:0;font-size:0.82rem;padding:8px 14px}
-  .formations-grid{grid-template-columns:1fr}
   .videos-carousel{grid-template-columns:1fr}
   .gallery-grid{grid-template-columns:repeat(2,1fr);grid-template-rows:160px 160px 160px}
   .gallery-item:first-child{grid-column:span 2}
@@ -387,6 +398,8 @@ a{color:var(--teal);text-decoration:none}a:hover{color:var(--teal-light)}
   .article-card{flex:0 0 240px}
   .careers-grid{grid-template-columns:1fr}
   .pillars-grid{grid-template-columns:1fr}
+  .prog-overview{grid-template-columns:1fr}
+  .prog-detail{grid-template-columns:1fr;gap:24px}
   .access-list{grid-template-columns:1fr}
   .coords-layout{grid-template-columns:1fr}
   .direction-grid{grid-template-columns:1fr}
@@ -504,54 +517,126 @@ a{color:var(--teal);text-decoration:none}a:hover{color:var(--teal-light)}
 <section class="section section-alt reveal">
   <div class="section-inner">
     <div class="section-header"><div class="section-eyebrow">Formations</div><h2 class="section-title">Nos programmes</h2></div>
-    <div class="formations-tabs">
-      <button class="formations-tab active" onclick="filterFormations(this,'all')">Toutes</button>
-      <button class="formations-tab" onclick="filterFormations(this,'initial')">Formation initiale</button>
-      <button class="formations-tab" onclick="filterFormations(this,'alternance')">Alternance</button>
-      <button class="formations-tab" onclick="filterFormations(this,'pro')">Formation pro</button>
-      <button class="formations-tab" onclick="filterFormations(this,'continue')">Continue</button>
+    <div class="prog-tabs">
+      <button class="prog-tab active" onclick="showProg('overview',this)">Vue d'ensemble</button>
+      <button class="prog-tab" onclick="showProg('bachelor',this)">Bachelor Travel</button>
+      <button class="prog-tab" onclick="showProg('mba',this)">MBA International</button>
+      <button class="prog-tab" onclick="showProg('continue',this)">Certifiants courts</button>
+      <button class="prog-tab" onclick="showProg('reconv',this)">Reconversion</button>
     </div>
-    <div class="formations-grid">
-      <div class="formation-card" data-type="initial alternance">
-        <div class="formation-badges"><span class="formation-badge badge-initial">Formation initiale</span><span class="formation-badge badge-alternance">Alternance</span></div>
-        <div class="formation-icon fi-bachelor"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5"/></svg></div>
-        <h4>Bachelor spécialisé Travel</h4>
-        <p>Titre certifié RNCP niveau 6 — "Responsable des Activités du Tourisme et des Voyages". Accessible après un Bac+2 ou titre de niveau 5. Ce cursus d'un an forme des profils polyvalents, capables d'évoluer dans la vente, la production, le marketing digital ou l'événementiel touristique. Le programme intègre des périodes en entreprise dès le premier mois.</p>
-        <div class="formation-objective">Acquérir les compétences opérationnelles pour les métiers du tourisme, de l'événementiel, de la production et du digital</div>
-        <div class="formation-meta"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>1 an</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5"/></svg>Bac+3</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>RNCP niv. 6</span></div>
-        <div class="formation-details"><div class="formation-details-inner"><h5>Programme détaillé</h5><p>Marketing touristique et stratégie digitale, distribution et commercialisation des produits de voyage, revenue management et yield, e-tourisme et réseaux sociaux, management des opérations touristiques, droit du tourisme et réglementation, techniques de vente et relation client, langues vivantes (anglais obligatoire + LV2). Projets tutorés en partenariat avec des entreprises tout au long de l'année.</p><h5>Conditions d'admission</h5><p>Dossier de candidature + entretien de motivation (30 min). Ouvert aux titulaires d'un Bac+2 minimum (BTS Tourisme, DUT TC, L2, ou tout titre de niveau 5). Rentrée en octobre. Places limitées à 25 étudiants par promotion pour garantir un suivi personnalisé.</p><h5>Tarif & financement</h5><p>7 200€ pour l'année en formation initiale. Gratuit en alternance (prise en charge intégrale par l'OPCO de l'entreprise d'accueil). Éligible au CPF pour les parcours en reconversion.</p></div></div>
-      </div>
-      <div class="formation-card" data-type="initial alternance">
-        <div class="formation-badges"><span class="formation-badge badge-initial">Formation initiale</span><span class="formation-badge badge-alternance">Alternance</span></div>
-        <div class="formation-icon fi-mba"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
-        <h4>MBA International Travel Management</h4>
-        <p>Titre certifié RNCP niveau 7 — "Manager des Activités du Tourisme et des Voyages". Accessible après un Bac+3 ou titre de niveau 6. Ce programme de deux ans prépare à des fonctions d'encadrement et de pilotage stratégique : direction commerciale, revenue management, achats, gestion de centre de profit. En alternance, le rythme est de 3 semaines en entreprise pour 1 semaine à l'école.</p>
-        <div class="formation-objective">Former des managers capables de piloter une stratégie, des revenus, des achats complexes ou un projet touristique d'envergure</div>
-        <div class="formation-meta"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>2 ans</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5"/></svg>Bac+5</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>RNCP niv. 7</span></div>
-        <div class="formation-details"><div class="formation-details-inner"><h5>Programme détaillé</h5><p>Stratégie d'entreprise et management international, yield management avancé et pricing dynamique, data analytics appliquée au tourisme, leadership et management d'équipe, achats et négociation fournisseurs, marketing stratégique et communication de crise, gestion financière et pilotage de centre de profit, mémoire de recherche appliquée sur une problématique sectorielle.</p><h5>Conditions d'admission</h5><p>Titulaires d'un Bac+3 minimum (Bachelor, Licence, ou titre de niveau 6). Sélection sur dossier + tests écrits + entretien approfondi avec un jury de professionnels. En alternance : rythme de 3 semaines en entreprise / 1 semaine à l'école. Promotions de 20 étudiants maximum.</p><h5>Tarif & financement</h5><p>8 500€ par an en formation initiale (soit 17 000€ pour les 2 ans). Gratuit en alternance (prise en charge intégrale par l'OPCO). Possibilité de paiement échelonné en formation initiale.</p></div></div>
-      </div>
-      <div class="formation-card" data-type="continue">
-        <div class="formation-badges"><span class="formation-badge badge-continue">Formation continue</span></div>
-        <div class="formation-icon fi-continue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
-        <h4>Parcours certifiants courts</h4>
-        <p>7 modules thématiques conçus pour les salariés du tourisme qui veulent se spécialiser ou actualiser leurs compétences, sans quitter leur poste. Chaque parcours combine apports théoriques, études de cas et mises en pratique sur des outils métier (GDS, CRM, outils analytics). Les sessions sont 100% en ligne, compatibles avec une activité salariée, et éligibles au CPF.</p>
-        <div class="formation-objective">Monter en compétences sur une thématique précise en quelques jours, avec certification à la clé</div>
-        <div class="formation-meta"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>2 à 5 jours</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>100% en ligne</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5"/></svg>Certifiant</span></div>
-        <div class="formation-details"><div class="formation-details-inner"><h5>Thématiques disponibles</h5><p>Revenue management et optimisation tarifaire, marketing digital appliqué au tourisme, billetterie et GDS (Amadeus, Galileo), management d'équipe et leadership, tourisme durable et RSE, relation client premium et fidélisation, réseaux sociaux et stratégie d'influence. Chaque module peut être suivi indépendamment.</p><h5>Public & prérequis</h5><p>Salariés du secteur tourisme souhaitant monter en compétences, demandeurs d'emploi en phase de repositionnement, indépendants et auto-entrepreneurs du voyage. Aucun prérequis de diplôme, l'expérience professionnelle dans le secteur est valorisée.</p><h5>Tarif & financement</h5><p>De 890€ à 2 400€ selon le parcours et la durée. Éligible CPF (Mon Compte Formation) et prise en charge OPCO pour les salariés. Devis personnalisé sur demande.</p></div></div>
-      </div>
-      <div class="formation-card" data-type="pro">
-        <div class="formation-badges"><span class="formation-badge badge-pro">Reconversion pro</span></div>
-        <div class="formation-icon fi-reconv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg></div>
-        <h4>Bachelor Travel — Parcours accéléré</h4>
-        <p>Un an intensif pour les professionnels en reconversion vers le tourisme. Même diplôme RNCP niveau 6, avec un rythme et un accompagnement adaptés aux profils expérimentés. Le parcours valorise les acquis professionnels antérieurs et inclut un stage de 4 mois en entreprise pour ancrer la transition dans le concret. Ce programme est accessible via le CPF, Transitions Pro ou un financement Pôle Emploi.</p>
-        <div class="formation-objective">Permettre une transition professionnelle complète vers les métiers du voyage en un an</div>
-        <div class="formation-meta"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>1 an intensif</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>VAE possible</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>RNCP niv. 6</span></div>
-        <div class="formation-details"><div class="formation-details-inner"><h5>Spécificités du parcours</h5><p>Rythme intensif spécialement conçu pour les profils en reconversion, avec une valorisation systématique des acquis professionnels antérieurs. Tuteur référent dédié tout au long de l'année. Stage de 4 mois en entreprise partenaire pour ancrer la transition dans une réalité opérationnelle. Les compétences transférables (management, relation client, gestion de projet) sont identifiées et valorisées dans le parcours.</p><h5>Conditions d'admission</h5><p>Professionnels en reconversion, tous secteurs d'origine. Justifier de 3 ans d'expérience professionnelle minimum. Sélection sur dossier approfondi + entretien de motivation avec analyse du projet de reconversion. Rentrée en octobre, promotions de 15 personnes maximum.</p><h5>Tarif & financement</h5><p>7 200€ pour l'année. Éligible CPF (Mon Compte Formation), Transitions Pro (ex-Fongecif), financement Pôle Emploi (AIF), et plan de développement des compétences employeur. Accompagnement au montage du dossier de financement inclus.</p></div></div>
+
+    <!-- VUE D'ENSEMBLE -->
+    <div class="prog-panel active" id="panel-overview">
+      <div class="prog-overview">
+        <div class="prog-mini" onclick="showProg('bachelor',document.querySelector('[onclick*=bachelor]'))">
+          <div class="prog-mini-badges"><span class="prog-mini-badge badge-initial">Formation initiale</span><span class="prog-mini-badge badge-alternance">Alternance</span></div>
+          <h4>Bachelor spécialisé Travel</h4>
+          <div class="prog-mini-obj">Acquérir les compétences opérationnelles pour les métiers du tourisme, de l'événementiel et du digital</div>
+          <div class="prog-mini-meta"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>1 an</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5"/></svg>Bac+3</span><span>RNCP niv. 6</span></div>
+          <div class="prog-mini-cta">Voir le détail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+        <div class="prog-mini" onclick="showProg('mba',document.querySelector('[onclick*=mba]'))">
+          <div class="prog-mini-badges"><span class="prog-mini-badge badge-initial">Formation initiale</span><span class="prog-mini-badge badge-alternance">Alternance</span></div>
+          <h4>MBA International Travel Management</h4>
+          <div class="prog-mini-obj">Former des managers capables de piloter stratégie, revenus et achats dans l'industrie du voyage</div>
+          <div class="prog-mini-meta"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>2 ans</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5"/></svg>Bac+5</span><span>RNCP niv. 7</span></div>
+          <div class="prog-mini-cta">Voir le détail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+        <div class="prog-mini" onclick="showProg('continue',document.querySelector('[onclick*=continue]'))">
+          <div class="prog-mini-badges"><span class="prog-mini-badge badge-continue">Formation continue</span></div>
+          <h4>Parcours certifiants courts</h4>
+          <div class="prog-mini-obj">Monter en compétences sur une thématique précise en quelques jours, avec certification à la clé</div>
+          <div class="prog-mini-meta"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>2 à 5 jours</span><span>100% en ligne</span><span>Certifiant</span></div>
+          <div class="prog-mini-cta">Voir le détail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+        <div class="prog-mini" onclick="showProg('reconv',document.querySelector('[onclick*=reconv]'))">
+          <div class="prog-mini-badges"><span class="prog-mini-badge badge-pro">Reconversion pro</span></div>
+          <h4>Bachelor Travel — Parcours accéléré</h4>
+          <div class="prog-mini-obj">Permettre une transition professionnelle complète vers les métiers du voyage en un an</div>
+          <div class="prog-mini-meta"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>1 an intensif</span><span>VAE possible</span><span>RNCP niv. 6</span></div>
+          <div class="prog-mini-cta">Voir le détail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
       </div>
     </div>
+
+    <!-- BACHELOR -->
+    <div class="prog-panel" id="panel-bachelor">
+      <button class="prog-back" onclick="showProg('overview',document.querySelector('[onclick*=overview]'))"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>Retour à la vue d'ensemble</button>
+      <div class="prog-detail">
+        <div class="prog-detail-left">
+          <div class="prog-detail-badges"><span class="prog-detail-badge badge-initial">Formation initiale</span><span class="prog-detail-badge badge-alternance">Alternance</span></div>
+          <h3>Bachelor spécialisé Travel</h3>
+          <p class="prog-detail-desc">Titre certifié RNCP niveau 6 — "Responsable des Activités du Tourisme et des Voyages". Accessible après un Bac+2 ou titre de niveau 5. Ce cursus d'un an forme des profils polyvalents, capables d'évoluer dans la vente, la production, le marketing digital ou l'événementiel touristique. Le programme intègre des périodes en entreprise dès le premier mois.</p>
+          <div class="prog-detail-obj"><span>Objectif : </span>Acquérir les compétences opérationnelles pour les métiers du tourisme, de l'événementiel, de la production et du digital</div>
+          <div class="prog-detail-meta"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>1 an</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5"/></svg>Bac+3</span><span>RNCP niveau 6</span></div>
+        </div>
+        <div class="prog-detail-right">
+          <div class="prog-block"><h5><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>Programme détaillé</h5><p>Marketing touristique et stratégie digitale, distribution et commercialisation des produits de voyage, revenue management et yield, e-tourisme et réseaux sociaux, management des opérations touristiques, droit du tourisme et réglementation, techniques de vente et relation client, langues vivantes (anglais obligatoire + LV2). Projets tutorés en partenariat avec des entreprises tout au long de l'année.</p></div>
+          <div class="prog-block"><h5><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>Conditions d'admission</h5><p>Dossier de candidature + entretien de motivation (30 min). Ouvert aux titulaires d'un Bac+2 minimum (BTS Tourisme, DUT TC, L2, ou tout titre de niveau 5). Rentrée en octobre. Places limitées à 25 étudiants par promotion pour garantir un suivi personnalisé.</p></div>
+          <div class="prog-block"><h5><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>Tarif & financement</h5><p>7 200€ pour l'année en formation initiale. Gratuit en alternance (prise en charge intégrale par l'OPCO de l'entreprise d'accueil). Éligible au CPF pour les parcours en reconversion.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MBA -->
+    <div class="prog-panel" id="panel-mba">
+      <button class="prog-back" onclick="showProg('overview',document.querySelector('[onclick*=overview]'))"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>Retour à la vue d'ensemble</button>
+      <div class="prog-detail">
+        <div class="prog-detail-left">
+          <div class="prog-detail-badges"><span class="prog-detail-badge badge-initial">Formation initiale</span><span class="prog-detail-badge badge-alternance">Alternance</span></div>
+          <h3>MBA International Travel Management</h3>
+          <p class="prog-detail-desc">Titre certifié RNCP niveau 7 — "Manager des Activités du Tourisme et des Voyages". Accessible après un Bac+3 ou titre de niveau 6. Ce programme de deux ans prépare à des fonctions d'encadrement et de pilotage stratégique : direction commerciale, revenue management, achats, gestion de centre de profit. En alternance, le rythme est de 3 semaines en entreprise pour 1 semaine à l'école.</p>
+          <div class="prog-detail-obj"><span>Objectif : </span>Former des managers capables de piloter une stratégie, des revenus, des achats complexes ou un projet touristique d'envergure</div>
+          <div class="prog-detail-meta"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>2 ans</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5"/></svg>Bac+5</span><span>RNCP niveau 7</span></div>
+        </div>
+        <div class="prog-detail-right">
+          <div class="prog-block"><h5><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>Programme détaillé</h5><p>Stratégie d'entreprise et management international, yield management avancé et pricing dynamique, data analytics appliquée au tourisme, leadership et management d'équipe, achats et négociation fournisseurs, marketing stratégique et communication de crise, gestion financière et pilotage de centre de profit, mémoire de recherche appliquée sur une problématique sectorielle.</p></div>
+          <div class="prog-block"><h5><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>Conditions d'admission</h5><p>Titulaires d'un Bac+3 minimum (Bachelor, Licence, ou titre de niveau 6). Sélection sur dossier + tests écrits + entretien approfondi avec un jury de professionnels. En alternance : rythme de 3 semaines en entreprise / 1 semaine à l'école. Promotions de 20 étudiants maximum.</p></div>
+          <div class="prog-block"><h5><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>Tarif & financement</h5><p>8 500€ par an en formation initiale (soit 17 000€ pour les 2 ans). Gratuit en alternance (prise en charge intégrale par l'OPCO). Possibilité de paiement échelonné en formation initiale.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CERTIFIANTS COURTS -->
+    <div class="prog-panel" id="panel-continue">
+      <button class="prog-back" onclick="showProg('overview',document.querySelector('[onclick*=overview]'))"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>Retour à la vue d'ensemble</button>
+      <div class="prog-detail">
+        <div class="prog-detail-left">
+          <div class="prog-detail-badges"><span class="prog-detail-badge badge-continue">Formation continue</span></div>
+          <h3>Parcours certifiants courts</h3>
+          <p class="prog-detail-desc">7 modules thématiques conçus pour les salariés du tourisme qui veulent se spécialiser ou actualiser leurs compétences, sans quitter leur poste. Chaque parcours combine apports théoriques, études de cas et mises en pratique sur des outils métier (GDS, CRM, outils analytics). Les sessions sont 100% en ligne, compatibles avec une activité salariée, et éligibles au CPF.</p>
+          <div class="prog-detail-obj"><span>Objectif : </span>Monter en compétences sur une thématique précise en quelques jours, avec certification à la clé</div>
+          <div class="prog-detail-meta"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>2 à 5 jours</span><span>100% en ligne</span><span>Certifiant</span></div>
+        </div>
+        <div class="prog-detail-right">
+          <div class="prog-block"><h5><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>Thématiques disponibles</h5><p>Revenue management et optimisation tarifaire, marketing digital appliqué au tourisme, billetterie et GDS (Amadeus, Galileo), management d'équipe et leadership, tourisme durable et RSE, relation client premium et fidélisation, réseaux sociaux et stratégie d'influence. Chaque module peut être suivi indépendamment.</p></div>
+          <div class="prog-block"><h5><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>Public & prérequis</h5><p>Salariés du secteur tourisme souhaitant monter en compétences, demandeurs d'emploi en phase de repositionnement, indépendants et auto-entrepreneurs du voyage. Aucun prérequis de diplôme, l'expérience professionnelle dans le secteur est valorisée.</p></div>
+          <div class="prog-block"><h5><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>Tarif & financement</h5><p>De 890€ à 2 400€ selon le parcours et la durée. Éligible CPF (Mon Compte Formation) et prise en charge OPCO pour les salariés. Devis personnalisé sur demande.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RECONVERSION -->
+    <div class="prog-panel" id="panel-reconv">
+      <button class="prog-back" onclick="showProg('overview',document.querySelector('[onclick*=overview]'))"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>Retour à la vue d'ensemble</button>
+      <div class="prog-detail">
+        <div class="prog-detail-left">
+          <div class="prog-detail-badges"><span class="prog-detail-badge badge-pro">Reconversion pro</span></div>
+          <h3>Bachelor Travel — Parcours accéléré</h3>
+          <p class="prog-detail-desc">Un an intensif pour les professionnels en reconversion vers le tourisme. Même diplôme RNCP niveau 6, avec un rythme et un accompagnement adaptés aux profils expérimentés. Le parcours valorise les acquis professionnels antérieurs et inclut un stage de 4 mois en entreprise pour ancrer la transition dans le concret. Ce programme est accessible via le CPF, Transitions Pro ou un financement Pôle Emploi.</p>
+          <div class="prog-detail-obj"><span>Objectif : </span>Permettre une transition professionnelle complète vers les métiers du voyage en un an</div>
+          <div class="prog-detail-meta"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>1 an intensif</span><span>VAE possible</span><span>RNCP niveau 6</span></div>
+        </div>
+        <div class="prog-detail-right">
+          <div class="prog-block"><h5><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>Spécificités du parcours</h5><p>Rythme intensif spécialement conçu pour les profils en reconversion, avec une valorisation systématique des acquis professionnels antérieurs. Tuteur référent dédié tout au long de l'année. Stage de 4 mois en entreprise partenaire pour ancrer la transition dans une réalité opérationnelle. Les compétences transférables (management, relation client, gestion de projet) sont identifiées et valorisées dans le parcours.</p></div>
+          <div class="prog-block"><h5><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>Conditions d'admission</h5><p>Professionnels en reconversion, tous secteurs d'origine. Justifier de 3 ans d'expérience professionnelle minimum. Sélection sur dossier approfondi + entretien de motivation avec analyse du projet de reconversion. Rentrée en octobre, promotions de 15 personnes maximum.</p></div>
+          <div class="prog-block"><h5><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>Tarif & financement</h5><p>7 200€ pour l'année. Éligible CPF (Mon Compte Formation), Transitions Pro (ex-Fongecif), financement Pôle Emploi (AIF), et plan de développement des compétences employeur. Accompagnement au montage du dossier de financement inclus.</p></div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
-
 <!-- 3. NOS MÉTHODES D'ENSEIGNEMENT -->
 <section class="section reveal">
   <div class="section-inner">
@@ -804,7 +889,8 @@ iobs.unobserve(x.target)})},{threshold:0.3});
 document.querySelectorAll('.insertion-card').forEach(function(el){iobs.observe(el)});
 
 // FORMATIONS
-function filterFormations(b,t){document.querySelectorAll('.formations-tab').forEach(function(x){x.classList.remove('active')});b.classList.add('active');document.querySelectorAll('.formation-card').forEach(function(c){if(t==='all'||c.dataset.type.includes(t)){c.classList.remove('hidden')}else{c.classList.add('hidden')}});setTimeout(function(){if(window._sendH)window._sendH()},200)}
+// PROGRAMMES — onglets
+function showProg(id,btn){document.querySelectorAll('.prog-tab').forEach(function(t){t.classList.remove('active')});if(btn)btn.classList.add('active');document.querySelectorAll('.prog-panel').forEach(function(p){p.classList.remove('active')});var panel=document.getElementById('panel-'+id);if(panel)panel.classList.add('active');setTimeout(function(){if(window._sendH)window._sendH()},200)}
 
 // MODALS
 function openModal(id){document.getElementById(id).classList.add('active');document.body.style.overflow='hidden'}
