@@ -677,9 +677,6 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')document.que
   }
 })();
 
-// Popup mode: réactiver le scroll quand ouvert depuis la fiche produit
-(function(){if(new URLSearchParams(location.search).get('mode')==='popup'){document.documentElement.style.cssText='overflow:auto!important;height:auto!important';document.body.style.cssText+='overflow:auto!important;height:auto!important';var w=document.getElementById('content-wrapper');if(w)w.style.cssText+='overflow:auto!important;height:auto!important';}})();
-
   
 </script>
 
